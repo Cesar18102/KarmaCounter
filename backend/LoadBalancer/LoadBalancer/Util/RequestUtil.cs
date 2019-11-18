@@ -11,7 +11,7 @@ namespace LoadBalancer.Util
             string origin = (requestMessage.Properties["MS_HttpContext"] as HttpContextWrapper).Request.UserHostAddress;
 
             if (origin == "::1")
-                return (null, null);
+                return (new Uri("http://127.0.0.1"), new Uri("https://127.0.0.1"));
 
             Uri httpOrigin = origin.Contains("http://") ? new Uri(origin) : new Uri("http://" + origin);
             Uri httpsOrigin = origin.Contains("https://") ? new Uri(origin) : new Uri("https://" + origin);

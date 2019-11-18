@@ -4,7 +4,7 @@ using System.Web.Http;
 
 using Autofac;
 
-using LoadBalancer.Log;
+using Logger;
 using LoadBalancer.Models;
 
 namespace LoadBalancer
@@ -25,11 +25,12 @@ namespace LoadBalancer
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             InitServices();
 
             ILogger logger = DI.Resolve<ILogger>(new TypedParameter(typeof(string), "C:/AspServer/balancer/Log"));
             logger.Debug("App started");
+
+            GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }

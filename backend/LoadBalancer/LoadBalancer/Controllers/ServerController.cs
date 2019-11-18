@@ -1,59 +1,53 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 using Autofac;
 
-using LoadBalancer.Log;
+using Logger;
 using LoadBalancer.Util;
 using LoadBalancer.Models;
-using System.Net.Http;
+using LoadBalancer.Attributes;
+using LoadBalancer.Exceptions;
 
 namespace LoadBalancer.Controllers
 {
     public class ServerController : ApiController
     {
-        [HttpGet]
-        public Server Get() => Global.DI.Resolve<Balancer>().GetServer();
+        private const string SESSION_SERVER = "http://109.86.209.135";
+
+        private Balancer balancer = Global.DI.Resolve<Balancer>();
+        private ILogger logger = Global.DI.Resolve<ILogger>();
 
         [HttpGet]
-        public BoolResult Connect()
+        public Server Get() => balancer.GetServer();
+
+        [HttpGet]
+        [Whitelist(SESSION_SERVER)]
+        public BoolResult Connect(string url) => Auth(url, "connect", S => S.Connect());
+
+        [HttpGet]
+        [Whitelist(SESSION_SERVER)]
+        public BoolResult Disconnect(string url) => Auth(url, "disconnect", S => S.Disconnect());
+
+        private BoolResult Auth(string url, string action, Action<Server> callback)
         {
-            Server server = CheckSender(Request);
+            if (!ModelState.IsValid)
+                throw new BadRequestException(ModelState);
 
-            if (server == null)
+            logger.Debug($"Attempt to {action} at server {url}");
+            Server localServer = balancer.GetByUrl(new Uri(url));
+
+            if (localServer == null)
             {
-                Global.DI.Resolve<ILogger>().Debug($"Failed to log in");
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
+                logger.Debug($"Failed to {action}: server not listed");
+                throw new BadRequestException("Server not listed");
             }
 
-            Global.DI.Resolve<ILogger>().Debug($"Logged in from {server.Url}");
-            server.Connect();
+            callback(localServer);
 
             return new BoolResult(true);
-        }
-
-        [HttpGet]
-        public BoolResult Disconnect()
-        {
-            Server server = CheckSender(Request);
-
-            if (server == null)
-            {
-                Global.DI.Resolve<ILogger>().Debug($"Failed to log out");
-                throw new HttpResponseException(HttpStatusCode.Forbidden);
-            }
-
-            Global.DI.Resolve<ILogger>().Debug($"Logged out from {server.Url}");
-            server.Disconnect();
-
-            return new BoolResult(true);
-        }
-
-        private Server CheckSender(HttpRequestMessage request)
-        {
-            (Uri httpOrigin, Uri httpsOrigin) = RequestUtil.GetOriginIP(request);
-            return Global.DI.Resolve<Balancer>().GetByUrl(httpOrigin, httpsOrigin);
         }
     }
 }

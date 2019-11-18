@@ -14,8 +14,6 @@ namespace LoadBalancer.Models
         };
 
         public Server GetServer() => Servers.Count == 0 ? null : Servers.Min();
-
-        public bool Contains(Uri httpUrl, Uri httpsUrl) => GetByUrl(httpUrl, httpsUrl) != null;
-        public Server GetByUrl(Uri httpUrl, Uri httpsUrl) => Servers.SingleOrDefault(S => S.Url.Equals(httpUrl) || S.Url.Equals(httpsUrl));
+        public Server GetByUrl(Uri url) => Servers.SingleOrDefault(S => S.Url.Equals(url));
     }
 }

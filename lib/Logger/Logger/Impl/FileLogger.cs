@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace LoadBalancer.Log
+namespace Logger
 {
     public class FileLogger : ILogger
     {

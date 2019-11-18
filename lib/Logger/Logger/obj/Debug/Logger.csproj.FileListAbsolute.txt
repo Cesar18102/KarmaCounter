@@ -1,0 +1,5 @@
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\Logger.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\Logger.pdb
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.csprojAssemblyReference.cache
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.pdb

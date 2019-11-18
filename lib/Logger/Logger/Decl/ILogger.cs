@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LoadBalancer.Log
+namespace Logger
 {
     public interface ILogger
     {
