@@ -36,12 +36,12 @@ namespace LoadBalancer.Controllers
             if (!ModelState.IsValid)
                 throw new BadRequestException(ModelState);
 
-            logger.Debug($"Attempt to {action} at server {url}");
-            Server localServer = balancer.GetByUrl(new Uri(url));
+            logger.Debug($"{action} to {url} succeeded");
+            Server localServer = balancer.GetByUrl(RequestUtil.GetUris(url));
 
             if (localServer == null)
             {
-                logger.Debug($"Failed to {action}: server not listed");
+                logger.Debug($"{action} to {url} failed: server not listed");
                 throw new BadRequestException("Server not listed");
             }
 
