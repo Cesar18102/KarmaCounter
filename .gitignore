@@ -3,6 +3,11 @@
 /backend/LoadBalancer/LoadBalancer/bin
 /backend/LoadBalancer/LoadBalancer/obj
 
+/backend/SessionServer/.vs
+/backend/SessionServer/packages
+/backend/SessionServer/SessionServer/bin
+/backend/SessionServer/SessionServer/obj
+
 /lib/DbUtil/.vs
 /lib/DbUtil/packages
 /lib/DbUtil/DbUtil/bin
