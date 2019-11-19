@@ -2,3 +2,13 @@
 /backend/LoadBalancer/packages
 /backend/LoadBalancer/LoadBalancer/bin
 /backend/LoadBalancer/LoadBalancer/obj
+
+/lib/DbUtil/.vs
+/lib/DbUtil/packages
+/lib/DbUtil/DbUtil/bin
+/lib/DbUtil/DbUtil/obj
+
+/lib/Logger/.vs
+/lib/Logger/packages
+/lib/Logger/Logger/bin
+/lib/Logger/Logger/obj

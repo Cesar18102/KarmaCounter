@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Threading.Tasks;
 
 using Autofac;
 
@@ -15,7 +14,8 @@ namespace LoadBalancer.Controllers
 {
     public class ServerController : ApiController
     {
-        private const string SESSION_SERVER = "http://109.86.209.135";
+        private const string WHITELIST_INI_SECTION = "session_server";
+        private const string WHITELIST_INI_KEY = "url";
 
         private Balancer balancer = Global.DI.Resolve<Balancer>();
         private ILogger logger = Global.DI.Resolve<ILogger>();
@@ -24,28 +24,28 @@ namespace LoadBalancer.Controllers
         public Server Get() => balancer.GetServer();
 
         [HttpGet]
-        [Whitelist(SESSION_SERVER)]
-        public BoolResult Connect(string url) => Auth(url, "connect", S => S.Connect());
+        [Whitelist(WHITELIST_INI_SECTION, WHITELIST_INI_KEY)]
+        public async Task<BoolResult> Connect(string url) => await Auth(url, "connect", S => S.Connect());
 
         [HttpGet]
-        [Whitelist(SESSION_SERVER)]
-        public BoolResult Disconnect(string url) => Auth(url, "disconnect", S => S.Disconnect());
+        [Whitelist(WHITELIST_INI_SECTION, WHITELIST_INI_KEY)]
+        public async Task<BoolResult> Disconnect(string url) => await Auth(url, "disconnect", S => S.Disconnect());
 
-        private BoolResult Auth(string url, string action, Action<Server> callback)
+        private async Task<BoolResult> Auth(string url, string action, Action<Server> callback)
         {
             if (!ModelState.IsValid)
                 throw new BadRequestException(ModelState);
 
-            logger.Debug($"{action} to {url} succeeded");
             Server localServer = balancer.GetByUrl(RequestUtil.GetUris(url));
 
             if (localServer == null)
             {
-                logger.Debug($"{action} to {url} failed: server not listed");
+                await logger.Trace($"{action} to {url} failed: server not listed");
                 throw new BadRequestException("Server not listed");
-            }
+            }            
 
             callback(localServer);
+            await logger.Trace($"{action} to {url} succeeded");
 
             return new BoolResult(true);
         }

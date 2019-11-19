@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Logger
 {
@@ -18,15 +19,15 @@ namespace Logger
             using (File.CreateText(LogFileName)) { }
         }
 
-        public void Debug(string log) => Log("DEBUG", log);
-        public void Error(Exception ex) => Log("ERROR", $"{ex.GetType().Name}: {ex.Message}");
+        public async Task Trace(string log) => await Trace("TRACE", log);
+        public async Task Error(Exception ex) => await Trace("ERROR", $"{ex.GetType().Name}: {ex.Message}");
 
-        public void Log(string caption, string log)
+        public async Task Trace(string caption, string log)
         {
             using (StreamWriter LogStream = new StreamWriter(LogFileName, true))
             {
                 DateTime now = DateTime.Now;
-                LogStream.WriteLine($"{now.ToShortDateString()} {now.ToShortTimeString()} {caption}: {log}");
+                await LogStream.WriteLineAsync($"{now.ToShortDateString()} {now.ToShortTimeString()} {caption}: {log}");
             }
         }
     }

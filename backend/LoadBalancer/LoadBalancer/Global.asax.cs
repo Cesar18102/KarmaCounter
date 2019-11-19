@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Web;
+using System.Linq;
 using System.Web.Http;
+using System.Collections.Generic;
 
 using Autofac;
+using Autofac.Core;
+
+using IniParser;
+
+using DbUtil;
 
 using Logger;
+using Logger.Impl;
+using Logger.Util;
+
 using LoadBalancer.Models;
+using LoadBalancer.Attributes;
 
 namespace LoadBalancer
 {
@@ -13,22 +24,50 @@ namespace LoadBalancer
     {
         public static IContainer DI { get; private set; }
 
+        public const string WHITELIST_INI_FILE_NAME = "whitelist.ini";
+        public static string WHITELIST_INI_FILE_PATH { get; private set; }
+
+        private const string SERVERS_INI_FILE_NAME = "servers.ini";
+        private const string SERVERS_INI_SECTION = "servers";
+
+        private const string LOGGER_DB_SERVER = "karmaloadbalancerdb.mssql.somee.com";
+        private const string LOGGER_DB = "karmaloadbalancerdb";
+        private const string LOGGER_DB_LOGIN = "KarmaLBalancer_SQLLogin_1";
+        private const string LOGGER_DB_PWD = "q2ezdduggr";
+
+        private const string LOG_TABLE_NAME = "log";
+        private const string LOG_TABLE_CAPTION_FIELD = "caption";
+        private const string LOG_TABLE_DATE_TIME_FIELD = "date_time_code";
+        private const string LOG_TABLE_MESSAGE_FIELD = "message";
+
         private void InitServices()
         {
             ContainerBuilder builder = new ContainerBuilder();
 
-            builder.RegisterType<Balancer>().SingleInstance().AsSelf();
-            builder.RegisterType<FileLogger>().SingleInstance().As<ILogger>().UsingConstructor(new Type[] { typeof(string) });
+            //builder.RegisterType<Balancer>().SingleInstance().AsSelf().
+            //    UsingConstructor(new Type[] { typeof(string[]) }).
+            //    WithParameters(new Parameter[] {
+            //        new TypedParameter(typeof(string[]), new FileIniDataParser().ReadFile(Server.MapPath(SERVERS_INI_FILE_NAME))[SERVERS_INI_SECTION].Select(S => S.Value).ToArray())
+            //    })
+
+            builder.RegisterType<MsSqlDbLogger>().SingleInstance().As<ILogger>().
+                UsingConstructor(new Type[] { typeof(MsSqlRepoFactory), typeof(DbLogConfig) }).
+                WithParameters(new Parameter[] {
+                    new TypedParameter(typeof(MsSqlRepoFactory), new MsSqlRepoFactory(LOGGER_DB_SERVER, LOGGER_DB, LOGGER_DB_LOGIN, LOGGER_DB_PWD)),
+                    new TypedParameter(typeof(DbLogConfig), new DbLogConfig(LOG_TABLE_NAME, LOG_TABLE_CAPTION_FIELD, LOG_TABLE_DATE_TIME_FIELD, LOG_TABLE_MESSAGE_FIELD))
+                });
 
             DI = builder.Build();
+
+            WHITELIST_INI_FILE_PATH = Server.MapPath(WHITELIST_INI_FILE_NAME);
         }
 
-        protected void Application_Start(object sender, EventArgs e)
+        protected async void Application_Start(object sender, EventArgs e)
         {
             InitServices();
 
-            ILogger logger = DI.Resolve<ILogger>(new TypedParameter(typeof(string), "C:/AspServer/balancer/Log"));
-            logger.Debug("App started");
+            await DI.Resolve<ILogger>().Trace("App started");
+            await DI.Resolve<ILogger>().Trace(Server.MapPath(SERVERS_INI_FILE_NAME));
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

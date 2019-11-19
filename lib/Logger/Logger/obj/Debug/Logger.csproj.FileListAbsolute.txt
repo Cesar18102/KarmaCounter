@@ -3,3 +3,10 @@ D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\Logger.pdb
 D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.csprojAssemblyReference.cache
 D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.dll
 D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.pdb
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\BouncyCastle.Crypto.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\DbUtil.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\Google.Protobuf.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\MySql.Data.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\Renci.SshNet.dll
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\bin\Debug\MySql.Data.xml
+D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\lib\Logger\Logger\obj\Debug\Logger.csproj.CopyComplete
