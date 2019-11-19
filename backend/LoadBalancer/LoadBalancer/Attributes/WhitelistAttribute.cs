@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Hosting;
 using System.Collections.Generic;
 using System.Web.Http.Controllers;
 
@@ -21,8 +22,8 @@ namespace LoadBalancer.Attributes
         private List<Uri> Whitelist { get; set; }
 
         public WhitelistAttribute(string[] urls) => Whitelist = urls.Select(U => new Uri(U)).ToList();
-        public WhitelistAttribute(string sectionName, string keyName) => 
-            Whitelist = new List<Uri>() { /*new Uri(new FileIniDataParser().ReadFile(Global.WHITELIST_INI_FILE_PATH)[sectionName][keyName])*/ };
+        public WhitelistAttribute(string whitelistIniFilePath, string sectionName, string keyName) =>
+            Whitelist = new List<Uri>() { new Uri(new FileIniDataParser().ReadFile(HostingEnvironment.MapPath("~") + whitelistIniFilePath)[sectionName][keyName]) };
 
         protected override bool IsAuthorized(HttpActionContext actionContext)
         {
@@ -34,6 +35,7 @@ namespace LoadBalancer.Attributes
             return permit;
         }
 
-        protected override void HandleUnauthorizedRequest(HttpActionContext actionContext) => throw new WhitelistViolationException();
+        protected override void HandleUnauthorizedRequest(HttpActionContext actionContext) => 
+            throw new WhitelistViolationException();
     }
 }

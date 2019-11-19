@@ -2,7 +2,7 @@
 using System.Web;
 using System.Linq;
 using System.Web.Http;
-using System.Collections.Generic;
+using System.Web.Hosting;
 
 using Autofac;
 using Autofac.Core;
@@ -16,7 +16,6 @@ using Logger.Impl;
 using Logger.Util;
 
 using LoadBalancer.Models;
-using LoadBalancer.Attributes;
 
 namespace LoadBalancer
 {
@@ -24,10 +23,7 @@ namespace LoadBalancer
     {
         public static IContainer DI { get; private set; }
 
-        public const string WHITELIST_INI_FILE_NAME = "whitelist.ini";
-        public static string WHITELIST_INI_FILE_PATH { get; private set; }
-
-        private const string SERVERS_INI_FILE_NAME = "servers.ini";
+        private const string SERVERS_INI_FILE_PATH = "bin/servers.ini";
         private const string SERVERS_INI_SECTION = "servers";
 
         private const string LOGGER_DB_SERVER = "karmaloadbalancerdb.mssql.somee.com";
@@ -44,11 +40,11 @@ namespace LoadBalancer
         {
             ContainerBuilder builder = new ContainerBuilder();
 
-            //builder.RegisterType<Balancer>().SingleInstance().AsSelf().
-            //    UsingConstructor(new Type[] { typeof(string[]) }).
-            //    WithParameters(new Parameter[] {
-            //        new TypedParameter(typeof(string[]), new FileIniDataParser().ReadFile(Server.MapPath(SERVERS_INI_FILE_NAME))[SERVERS_INI_SECTION].Select(S => S.Value).ToArray())
-            //    })
+            builder.RegisterType<Balancer>().SingleInstance().AsSelf().
+                UsingConstructor(new Type[] { typeof(string[]) }).
+                WithParameters(new Parameter[] {
+                    new TypedParameter(typeof(string[]), new FileIniDataParser().ReadFile(HostingEnvironment.MapPath("~") + SERVERS_INI_FILE_PATH)[SERVERS_INI_SECTION].Select(S => S.Value).ToArray())
+                });
 
             builder.RegisterType<MsSqlDbLogger>().SingleInstance().As<ILogger>().
                 UsingConstructor(new Type[] { typeof(MsSqlRepoFactory), typeof(DbLogConfig) }).
@@ -58,18 +54,17 @@ namespace LoadBalancer
                 });
 
             DI = builder.Build();
-
-            WHITELIST_INI_FILE_PATH = Server.MapPath(WHITELIST_INI_FILE_NAME);
         }
 
         protected async void Application_Start(object sender, EventArgs e)
         {
             InitServices();
-
             await DI.Resolve<ILogger>().Trace("App started");
-            await DI.Resolve<ILogger>().Trace(Server.MapPath(SERVERS_INI_FILE_NAME));
-
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
+
+        private async void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) =>
+            await DI.Resolve<ILogger>().Error(e.ExceptionObject as Exception);
     }
 }

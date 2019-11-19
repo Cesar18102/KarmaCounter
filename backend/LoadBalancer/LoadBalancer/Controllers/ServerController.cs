@@ -14,6 +14,7 @@ namespace LoadBalancer.Controllers
 {
     public class ServerController : ApiController
     {
+        public const string WHITELIST_INI_FILE_NAME = "bin/whitelist.ini";
         private const string WHITELIST_INI_SECTION = "session_server";
         private const string WHITELIST_INI_KEY = "url";
 
@@ -24,11 +25,11 @@ namespace LoadBalancer.Controllers
         public Server Get() => balancer.GetServer();
 
         [HttpGet]
-        [Whitelist(WHITELIST_INI_SECTION, WHITELIST_INI_KEY)]
+        [Whitelist(WHITELIST_INI_FILE_NAME, WHITELIST_INI_SECTION, WHITELIST_INI_KEY)]
         public async Task<BoolResult> Connect(string url) => await Auth(url, "connect", S => S.Connect());
 
         [HttpGet]
-        [Whitelist(WHITELIST_INI_SECTION, WHITELIST_INI_KEY)]
+        [Whitelist(WHITELIST_INI_FILE_NAME, WHITELIST_INI_SECTION, WHITELIST_INI_KEY)]
         public async Task<BoolResult> Disconnect(string url) => await Auth(url, "disconnect", S => S.Disconnect());
 
         private async Task<BoolResult> Auth(string url, string action, Action<Server> callback)
@@ -42,7 +43,7 @@ namespace LoadBalancer.Controllers
             {
                 await logger.Trace($"{action} to {url} failed: server not listed");
                 throw new BadRequestException("Server not listed");
-            }            
+            }
 
             callback(localServer);
             await logger.Trace($"{action} to {url} succeeded");
