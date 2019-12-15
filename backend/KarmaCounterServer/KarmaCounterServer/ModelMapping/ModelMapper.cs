@@ -5,11 +5,23 @@ using System.Data.Common;
 using System.Collections.Generic;
 
 using KarmaCounterServer.Model;
+using KarmaCounterServer.ModelMapping.AttributeTemplates;
 
 namespace KarmaCounterServer.ModelMapping
 {
     public class ModelMapper
     {
+        public DbMappingInfo MapFromModel<M, TB, FN>(M mask = null)
+            where M : class, IModelElement, new()
+            where TB : DbMappingTableAttribute
+            where FN : DbMappingAttribute => MapFromModel<M, TB, FN, ForeignIgnore, SelectIgnore>(mask);
+
+        public DbMappingInfo MapFromModel<M, TB, FN, FK>(M mask = null)
+            where M : class, IModelElement, new()
+            where TB : DbMappingTableAttribute
+            where FN : DbMappingAttribute
+            where FK : DbMappingForeignAttribute => MapFromModel<M, TB, FN, FK, SelectIgnore>(mask);
+
         public DbMappingInfo MapFromModel<M, TB, FN, FK, WC>(M mask = null)
             where M : class, IModelElement, new()
             where TB : DbMappingTableAttribute
@@ -18,12 +30,23 @@ namespace KarmaCounterServer.ModelMapping
             where WC : DbMappingAttribute =>
             MapFromModel<TB, FN, FK, WC>(typeof(M), mask);
 
+        public M MapToModelSingle<M, TB, FN>(DbDataReader reader)
+            where M : class, IModelElement, new()
+            where TB : DbMappingTableAttribute
+            where FN : DbMappingAttribute =>
+            MapToModelSingle<TB, FN, ForeignIgnore>(reader, true, typeof(M)) as M;
+
         public M MapToModelSingle<M, TB, FN, FK>(DbDataReader reader) 
             where M : class, IModelElement, new()
             where TB : DbMappingTableAttribute
             where FN : DbMappingAttribute
             where FK : DbMappingForeignAttribute =>
             MapToModelSingle<TB, FN, FK>(reader, true, typeof(M)) as M;
+
+        public List<M> MapToModel<M, TB, FN>(DbDataReader reader)
+            where M : class, IModelElement, new()
+            where TB : DbMappingTableAttribute
+            where FN : DbMappingAttribute => MapToModel<M, TB, FN, ForeignIgnore>(reader);
 
         public List<M> MapToModel<M, TB, FN, FK>(DbDataReader reader)
             where M : class, IModelElement, new()
@@ -88,6 +111,7 @@ namespace KarmaCounterServer.ModelMapping
 
             List<PropertyInfo> mappedModelProps = modelProps.Where(P => P.GetCustomAttribute<FN>() != null).ToList();
             List<PropertyInfo> foreignProperties = modelProps.Where(P => P.GetCustomAttribute<FK>() != null).ToList();
+            List<PropertyInfo> whereConstProperties = modelProps.Where(P => P.GetCustomAttribute<WC>() != null).ToList();
 
             List<(string, string, object)> fields = mappedModelProps.Aggregate(
                 new List<(string, string, object)>(),
@@ -99,11 +123,18 @@ namespace KarmaCounterServer.ModelMapping
                         return A.Append(MapFromModel<TB, FN, FK, WC>(P.PropertyType, P.GetValue(mask) as IModelElement).KeysValues.
                                                                                  Select(KV => (attr.Name, KV.alias, KV.value)).First()).ToList();
 
-                    WC whereConst = P.GetCustomAttribute<WC>();
-                    object val = whereConst == null ? null : (whereConst.DefaultValue == null ? (mask == null ? null : P.GetValue(mask)) : whereConst.DefaultValue);
-
-                    return A.Append((attr.Name, attr.Alias, val)).ToList();
+                    return A.Append((attr.Name, attr.Alias, attr.MapValue ? (attr.DefaultValue ?? (mask == null ? null : P.GetValue(mask))) : null)).ToList();
                 }).ToList();
+
+            List<(string, object)> whereConsts = whereConstProperties.Aggregate(
+                new List<(string, object)>(),
+                (A, P) =>
+                {
+                    WC attr = P.GetCustomAttribute<WC>();
+                    object val = attr.DefaultValue == null ? (mask == null ? null : P.GetValue(mask)) : attr.DefaultValue;
+                    return A.Append((attr.Name, val)).ToList();
+                }
+            );
 
             List<(string innerKeyName, string outerKeyName, DbMappingInfo info)> foreign = foreignProperties.Select(
                 FP => (
@@ -114,7 +145,7 @@ namespace KarmaCounterServer.ModelMapping
                 )
             ).ToList();
 
-            return new DbMappingInfo(tableName, primaryKey, fields, foreign);
+            return new DbMappingInfo(tableName, primaryKey, whereConsts, fields, foreign);
         }
     }
 }

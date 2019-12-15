@@ -11,38 +11,46 @@ namespace KarmaCounterServer.Model
     [Table("karma_groups", "id")]
     public class Group : IModelElement
     {
+        [MembershipSelectWhereGroup("id")]
         [MembershipInsert("id")]
-        [GroupSelect("id")]
-        [GroupSelectWhere("id")]
+        
         [GroupSelectInserted("id")]
+        [GroupSelectWhere("id")]
+        [GroupSelect("id")]
+
         [JsonProperty("id")]
         public long Id { get; private set; }
 
         [GroupSelect("name")]
         [GroupInsert("name")]
+
         [JsonProperty("name")]
         public string Name { get; private set; }
 
         [GroupSelect("description")]
         [GroupInsert("description")]
+
         [JsonProperty("description")]
         public string Description { get; private set; }
 
         [GroupSelect("is_public")]
         [GroupInsert("is_public")]
+
         [JsonProperty("is_public")]
         public bool IsPublic { get; private set; }
 
         [GroupSelect("is_local")]
         [GroupInsert("is_local")]
+
         [JsonProperty("is_local")]
         public bool IsLocal { get; private set; }
 
-        [JsonProperty("members_karma")]
+        [JsonProperty("members")]
         public List<Membership> Members { get; private set; }
 
         [GroupSelectForeign("owner_id", "id")]
         [GroupInsertForeign("owner_id", "id")]
+
         [JsonIgnore]
         public Ownership Rights { get; set; }
 
@@ -52,6 +60,8 @@ namespace KarmaCounterServer.Model
         public Group() => Members = new List<Membership>();
 
         public Group(long id) : this() => Id = id;
+
+        public Group(Ownership ownership) : this() => Rights = ownership;
 
         public Group(long id, string name, string description,
                      bool is_public, bool is_local, Ownership rights) : 

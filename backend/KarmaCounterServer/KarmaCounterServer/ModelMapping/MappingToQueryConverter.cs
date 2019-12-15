@@ -13,7 +13,10 @@ namespace KarmaCounterServer.ModelMapping
         public static (string, List<(string param, object value)>) CreateSelectText(this DbMappingInfo mapping)
         {
             List<(string table, string key, string param, object value)> parameters =
-                mapping.AllKeyValues.Where(K => K.value != null).Select(K => (K.t, K.key, $"@{K.key}", K.value)).ToList();
+                mapping.AllKeyValues.Where(K => K.value != null).
+                Select(K => (K.t, K.key, K.value)).
+                Concat(mapping.AllWhereConsts).
+                Select(K => (K.t, K.key, $"@{K.key}", K.value)).ToList();
 
             List<string> whereConstraints = mapping.AllEquations.Select(EQ => $"{EQ.t1}.{EQ.key1} = {EQ.t2}.{EQ.key2}").
                                                                  Concat(parameters.Select(K => $"{K.table}.{K.key} = @{K.key}")).ToList();

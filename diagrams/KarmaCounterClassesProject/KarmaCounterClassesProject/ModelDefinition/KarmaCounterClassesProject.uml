@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="1aec613b-8ba2-4cdd-b780-b799c1a04019"
   name="KarmaCounterClassesProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -1635,81 +1635,6 @@
             </type_NamedElement>
           </property>
           <property
-            Id="52913e12-96ab-4d7f-94f1-f3c8efb6e21b"
-            name="MembersKarma"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="a0ee27e7-a7ad-418d-8e10-04e37707a724"
-                name="property"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="faa10cbc-0bcd-483e-aa66-a0f2fe4156ef">
-                    <propertyInstance
-                      Id="4d320268-256e-44d6-8a83-997d6bb8637c"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6c383cc5-8987-46d9-a7dc-504f963e1c56">
-                    <propertyInstance
-                      Id="0bf5ae7b-504b-428f-81c8-81ab57409f6f"
-                      name="Get"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="034d2886-bd27-472f-a1a5-236d01b9ea06">
-                    <propertyInstance
-                      Id="40cb965e-ba4c-4154-93f4-0df9833deb7f"
-                      name="HasBody"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6352bf6d-c2fc-4555-a96a-12349e62dbd8">
-                    <propertyInstance
-                      Id="9c1bda7d-b26b-49b6-8d08-5f0d15b784b0"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="100cfcea-57d9-4107-a120-e98722b5f807">
-                    <propertyInstance
-                      Id="2b539f9e-fc78-47db-9382-d27ced33d908"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e06e76b1-ea64-4230-b5b3-9218b5025879">
-                    <propertyInstance
-                      Id="217d4b83-1383-4ce8-9816-ac15fcf8fd32"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="dcd7e4c5-d4df-4624-a922-4fbb3ebfac92">
-                    <propertyInstance
-                      Id="a6788457-9ec0-4391-bafc-a197617bee4f"
-                      name="Set"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="78cbb8c7-2cbb-445a-b5d3-126c32c26e13"
-                LastKnownName="Dictionary&lt;RegisteredUser, double&gt;"
-                LastKnownLocation="KarmaCounterClassesProject.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="96a42ba6-679f-48a0-8461-81653b1fda7d"
             name="Name"
             isLeaf="false"
@@ -2006,6 +1931,23 @@
               <undefinedTypeMoniker
                 Id="793079f2-c477-48ec-ada5-cb094e7772e5"
                 LastKnownName="List&lt;Rule&gt;"
+                LastKnownLocation="KarmaCounterClassesProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="cbdaab08-cd99-4e25-8361-3b9b16480fb9"
+            name="Memers"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="05c2c87b-dfe6-4eab-8744-802fcda07411"
+                LastKnownName="List&lt;Membership&gt;"
                 LastKnownLocation="KarmaCounterClassesProject.uml" />
             </type_NamedElement>
           </property>
@@ -3426,8 +3368,8 @@
             </type_NamedElement>
           </property>
           <property
-            Id="5db58f67-cc7d-49f4-ac4a-cff9cf38a43b"
-            name="MemberGroup"
+            Id="772d09e8-c947-4d15-8485-1ad978e7fb8c"
+            name="LocalKarma"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -3436,67 +3378,10 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="af988e0b-8fb7-45e3-a997-7833e341821a"
-                name="property"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="32e014d4-08d2-4e04-9b5f-a85f4d226ed9">
-                    <propertyInstance
-                      Id="d090e951-cf95-4447-b9ee-352bee47cb66"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="47b899d1-0dac-4982-b231-5d450a886d92">
-                    <propertyInstance
-                      Id="19fedd2a-c67e-4d2b-8aa7-e88fd9fcb9cf"
-                      name="Get"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ea1e0591-1e71-4f3a-9ae3-2f6f6c0034c6">
-                    <propertyInstance
-                      Id="2b32bb6b-0a5e-4cf8-b082-42d21d48d997"
-                      name="HasBody"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="62cd5606-7b78-4d59-a7ec-ed5963ca52fa">
-                    <propertyInstance
-                      Id="8b61d534-4269-40e4-ad6e-c3abc8021011"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b447b844-feeb-4009-87dd-61132a56e4f6">
-                    <propertyInstance
-                      Id="e77e6bbf-1de0-411b-81fc-ddc724ea339c"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6fea7a21-2abc-4219-88b5-8dac9ec3141c">
-                    <propertyInstance
-                      Id="413bb349-f053-4949-a8bd-6c62028b8e54"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9b61406b-6f2a-4240-b1c4-76cd46b4964a">
-                    <propertyInstance
-                      Id="07763205-b172-41d6-863d-e3d612094021"
-                      name="Set"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
             <type_NamedElement>
-              <classMoniker
-                Id="bd709be8-ebfe-4af7-b3e9-7df7c03af099"
-                LastKnownName="Group"
+              <undefinedTypeMoniker
+                Id="0591aa55-0a6b-43af-8843-9da91b6fc865"
+                LastKnownName="double"
                 LastKnownLocation="KarmaCounterClassesProject.uml" />
             </type_NamedElement>
           </property>

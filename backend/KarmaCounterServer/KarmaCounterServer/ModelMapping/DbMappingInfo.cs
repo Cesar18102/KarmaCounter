@@ -7,18 +7,27 @@ namespace KarmaCounterServer.ModelMapping
     {
         public string TableName { get; private set; }
         public string PrimaryKey { get; private set; }
+        public List<(string key, object value)> Wheres { get; private set; }
         public List<(string key, string alias, object value)> Fields { get; private set; }
         public List<(string innerKeyName, string outerKeyName, DbMappingInfo info)> Foreign { get; private set; }
 
         public DbMappingInfo(string tableName, string primaryKey,
+                             List<(string key, object value)> wheres = null,
                              List<(string key, string alias, object value)> fields = null,
                              List<(string innerKeyName, string outerKeyName, DbMappingInfo info)> foreign = null)
         {
             TableName = tableName;
             PrimaryKey = primaryKey;
+            Wheres = wheres == null ? new List<(string key, object value)>() : wheres;
             Fields = fields == null ? new List<(string key, string alias, object value)>() : fields;
             Foreign = foreign == null ? new List<(string innerKeyName, string outerKeyName, DbMappingInfo info)>() : foreign;
         }
+
+        public List<(string t, string key, object value)> WhereConsts =>
+            Wheres.Select(W => (TableName, W.key, W.value)).ToList();
+
+        public List<(string t, string key, object value)> AllWhereConsts =>
+            WhereConsts.Concat(Foreign.Aggregate(new List<(string t, string key, object value)>(), (A, F) => A.Concat(F.info.AllWhereConsts).ToList())).ToList();
 
         public List<(string t, string key, string alias, object value)> KeysValues =>
             Fields.Select(F => (TableName, F.key, F.alias, F.value)).ToList();

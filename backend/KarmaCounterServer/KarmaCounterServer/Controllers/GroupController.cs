@@ -1,12 +1,13 @@
 ﻿using System.Web.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Autofac;
 
 using KarmaCounterServer.Dto;
-using KarmaCounterServer.Exceptions;
 using KarmaCounterServer.Model;
 using KarmaCounterServer.Services;
+using KarmaCounterServer.Exceptions;
 
 namespace KarmaCounterServer.Controllers
 {
@@ -29,6 +30,14 @@ namespace KarmaCounterServer.Controllers
 
             return await Global.DI.Resolve<GroupService>().Join(joinForm);
         }
+
+        [HttpGet]
+        public async Task<List<Group>> GetByOwnerId(long id) =>
+            (await Global.DI.Resolve<GroupService>().GetByOwnerId(id)).owned;
+
+        [HttpGet]
+        public async Task<List<Group>> GetAll() =>
+            await Global.DI.Resolve<GroupService>().GetAll();
 
         [HttpGet]
         public async Task<Group> Get(long id) =>

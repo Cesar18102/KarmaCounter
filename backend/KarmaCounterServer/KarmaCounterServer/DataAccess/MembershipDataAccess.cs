@@ -40,8 +40,40 @@ namespace KarmaCounterServer.DataAccess
 
         public async Task<Membership> GetById(long id)
         {
-            //TODO
-            return null;
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo membershipSelectInfo = mapper.MapFromModel<Membership, TableAttribute, MembershipSelect, MembershipSelectForeign, MembershipSelectWhere>(new Membership(id));
+
+                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = membershipSelectInfo.CreateSelectText();
+                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+
+                await connection.OpenAsync();
+
+                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+                    return mapper.MapToModelSingle<Membership, TableAttribute, MembershipSelect, MembershipSelectForeign>(reader);
+            }
+        }
+
+        public async Task<List<Membership>> GetGroupMemberships(long groupId)
+        {
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo membershipSelectInfo = mapper.MapFromModel<Membership, TableAttribute, MembershipSelect, MembershipSelectForeign, MembershipSelectWhereGroup>(new Membership(new Group(groupId)));
+
+                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = membershipSelectInfo.CreateSelectText();
+                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+
+                await connection.OpenAsync();
+
+                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+                    return mapper.MapToModel<Membership, TableAttribute, MembershipSelect, MembershipSelectForeign>(reader);
+            }
         }
 
         public override Task<Membership> Delete(Membership model)

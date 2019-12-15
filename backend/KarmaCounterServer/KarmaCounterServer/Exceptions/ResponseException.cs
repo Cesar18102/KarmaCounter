@@ -10,10 +10,10 @@ namespace KarmaCounterServer.Exceptions
     [JsonObject]
     public class ResponseException : HttpResponseException
     {
-        public ResponseException(string message, HttpStatusCode status) :
-            base(new HttpResponseMessage(status) { Content = new StringContent("{ \"message\" : \"" + message + "\" }") }) { }
+        public ResponseException(string message, object body, HttpStatusCode status) :
+            base(new HttpResponseMessage(status) { Content = new StringContent("{ \"message\" : \"" + message + "\", \"body\" : " + JsonConvert.SerializeObject(body) + " }") }) { }
 
-        public ResponseException(Exception ex, HttpStatusCode status) :
-            base(new HttpResponseMessage(status) { Content = new StringContent("{ \"message\" : \"" + ex.Message + "\" }") }) { }
+        public ResponseException(Exception ex, object body, HttpStatusCode status) :
+            base(new HttpResponseMessage(status) { Content = new StringContent("{ \"message\" : \"" + ex.Message + "\", \"body\" : " + JsonConvert.SerializeObject(body).Trim('"') + " }") }) { }
     }
 }

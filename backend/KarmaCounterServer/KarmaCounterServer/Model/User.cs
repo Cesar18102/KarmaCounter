@@ -12,19 +12,27 @@ namespace KarmaCounterServer.Model
     [Table("users", "id")]
     public class User : IModelElement
     {
+        [MembershipSelect("id", "member_id")]
         [MembershipInsert("id")]
+
+        [GroupSelectWhereOwner("id")]
         [GroupSelect("id", "owner_id")]
         [GroupInsert("id")]
-        [UserSelectWhere("id")]
+        
         [UserSelectInserted("id")]
+        [UserSelectWhere("id")]
         [UserSelect("id")]
+
         [JsonProperty("id")]
         public long Id { get; private set; }
 
+        [MembershipSelect("login")]
         [GroupSelect("login")]
+
         [UserSelectWhereLogin("login")]
-        [UserInsert("login")]
         [UserSelect("login")]
+        [UserInsert("login")]
+
         [JsonProperty("login")]
         public string Login { get; private set; }
 
@@ -32,9 +40,12 @@ namespace KarmaCounterServer.Model
         [JsonIgnore]
         public string Password { get; private set; }
 
+        [MembershipSelect("email")]
         [GroupSelect("email")]
-        [UserInsert("email")]
+
         [UserSelect("email")]
+        [UserInsert("email")]
+
         [JsonProperty("email")]
         public string Email { get; private set; }
 

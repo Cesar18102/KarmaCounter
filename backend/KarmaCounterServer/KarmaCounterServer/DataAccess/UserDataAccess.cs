@@ -26,7 +26,7 @@ namespace KarmaCounterServer.DataAccess
 
             using (DbConnection connection = repoFactory.GetConnection())
             {
-                DbMappingInfo userInsertInfo = mapper.MapFromModel<User, TableAttribute, UserInsert, ForeignIgnore, UserInsert>(user);
+                DbMappingInfo userInsertInfo = mapper.MapFromModel<User, TableAttribute, UserInsert>(user);
 
                 (string cmdText, List<(string key, object val)> par) cmdInsertInfo = userInsertInfo.CreateInsertText();
                 DbCommand cmd = CreateCommand(cmdInsertInfo.cmdText, connection, repoFactory, cmdInsertInfo.par);
@@ -34,7 +34,7 @@ namespace KarmaCounterServer.DataAccess
                 await connection.OpenAsync();
 
                 using (DbDataReader reader = await cmd.ExecuteReaderAsync())
-                    newUser = mapper.MapToModelSingle<User, TableAttribute, UserSelectInserted, ForeignIgnore>(reader);
+                    newUser = mapper.MapToModelSingle<User, TableAttribute, UserSelectInserted>(reader);
             }
 
             return await GetById(newUser.Id);
@@ -60,7 +60,7 @@ namespace KarmaCounterServer.DataAccess
                 cmd.Parameters.Add(repoFactory.CreateParameter("@login", loginForm.Login));
 
                 await connection.OpenAsync();
-                return Global.DI.Resolve<ModelMapper>().MapToModelSingle<BoolResult, DbMappingTableAttribute, DbMappingAttribute, ForeignIgnore>(await cmd.ExecuteReaderAsync()).Result;
+                return Global.DI.Resolve<ModelMapper>().MapToModelSingle<BoolResult, DbMappingTableAttribute, DbMappingAttribute>(await cmd.ExecuteReaderAsync()).Result;
             }
         }
 
@@ -95,7 +95,7 @@ namespace KarmaCounterServer.DataAccess
                 await connection.OpenAsync();
 
                 using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
-                    return mapper.MapToModelSingle<User, TableAttribute, UserSelect, ForeignIgnore>(reader);
+                    return mapper.MapToModelSingle<User, TableAttribute, UserSelect>(reader);
             }
         }
 
@@ -114,7 +114,7 @@ namespace KarmaCounterServer.DataAccess
                 await connection.OpenAsync();
 
                 using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
-                    return mapper.MapToModelSingle<User, TableAttribute, UserSelect, ForeignIgnore>(reader);
+                    return mapper.MapToModelSingle<User, TableAttribute, UserSelect>(reader);
             }
         }
 

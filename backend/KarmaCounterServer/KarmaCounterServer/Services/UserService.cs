@@ -21,7 +21,7 @@ namespace KarmaCounterServer.Services
             User user = new User(registrationForm.Login, encodedPassword, registrationForm.Email);
 
             if (await Global.DI.Resolve<UserDataAccess>().GetByLogin(user.Login) != null)
-                throw new UserConflictException();
+                throw new ConflictException("User");
 
             await Global.DI.Resolve<UserDataAccess>().Create(user);
             User createdUser = await GetUserByLogin(user.Login);
@@ -33,7 +33,7 @@ namespace KarmaCounterServer.Services
             User user = await GetUserByLogin(loginForm.Login); //may throw not found exception
 
             if (!(await Global.DI.Resolve<UserDataAccess>().CheckPassword(loginForm)))
-                throw new ForbiddenException();
+                throw new WrongPasswordException();
 
             return await Global.DI.Resolve<SessionService>().CreateSession(user.Id.ToString());
         }

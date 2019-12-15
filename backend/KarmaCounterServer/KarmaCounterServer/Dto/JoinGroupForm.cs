@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel.DataAnnotations;
+
+using Newtonsoft.Json;
 
 using KarmaCounterServer.Model;
 
@@ -8,9 +10,13 @@ namespace KarmaCounterServer.Dto
     {
         public override bool IsValid => true;
 
+        [Required]
+        [JsonRequired]
         [JsonProperty("group_id")]
         public long GroupId { get; private set; }
 
+        [Required]
+        [JsonRequired]
         [JsonProperty("member_session")]
         public Session MemberSession { get; private set; }
 

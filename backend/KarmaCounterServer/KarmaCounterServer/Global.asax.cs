@@ -56,7 +56,6 @@ namespace KarmaCounterServer
 
             builder.RegisterType<UserService>().SingleInstance().AsSelf();
             builder.RegisterType<GroupService>().SingleInstance().AsSelf();
-            builder.RegisterType<OwnershipService>().SingleInstance().AsSelf();
             builder.RegisterType<SessionService>().SingleInstance().AsSelf();
 
             builder.RegisterType<UserDataAccess>().SingleInstance().AsSelf();
