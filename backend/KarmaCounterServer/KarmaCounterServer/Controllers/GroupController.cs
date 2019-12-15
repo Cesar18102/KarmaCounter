@@ -31,6 +31,15 @@ namespace KarmaCounterServer.Controllers
             return await Global.DI.Resolve<GroupService>().Join(joinForm);
         }
 
+        [HttpPost]
+        public async Task<Invitation> Invite([FromBody] InviteGroupForm inviteForm)
+        {
+            if (!ModelState.IsValid || inviteForm == null || !inviteForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<GroupInvitationService>().Invite(inviteForm);
+        }
+
         [HttpGet]
         public async Task<List<Group>> GetByOwnerId(long id) =>
             (await Global.DI.Resolve<GroupService>().GetByOwnerId(id)).owned;

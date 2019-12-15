@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Autofac;
 
@@ -28,6 +29,33 @@ namespace KarmaCounterServer.Controllers
                 throw new BadRequestException(ModelState);
 
             return await Global.DI.Resolve<UserService>().Login(loginForm);
+        }
+
+        [HttpPost]
+        public async Task<List<Invitation>> GetInvitations([FromBody]CheckedGetForm getForm)
+        {
+            if (!ModelState.IsValid || getForm == null || !getForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<GroupInvitationService>().GetInvitations(getForm.Session);
+        }
+
+        [HttpPost]
+        public async Task<Ownership> GetOwnership([FromBody] GetOwnershipForm getOwnershipForm)
+        {
+            if (!ModelState.IsValid || getOwnershipForm == null || !getOwnershipForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<OwnershipService>().GetOwnership(getOwnershipForm);
+        }
+
+        [HttpPost]
+        public async Task<List<Ownership>> GetOwnerships([FromBody] CheckedGetForm getForm)
+        {
+            if (!ModelState.IsValid || getForm == null || !getForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<OwnershipService>().GetUserOwnerships(getForm);
         }
 
         [HttpGet]

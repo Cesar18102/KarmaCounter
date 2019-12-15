@@ -15,6 +15,15 @@ namespace KarmaCounterServer.Services
 {
     public class GroupService
     {
+        private const int MAX_FREE_GROUP_CREATIONS = 1;
+        private const double GLOBAL_GROUP_CREATION_MIN_FEE = 10;
+
+        private double CalcExtraGroupCreationFee(int count) => 
+            count - MAX_FREE_GROUP_CREATIONS;
+
+        private double CalcGlobalGroupCreationFee(int count) =>
+            GLOBAL_GROUP_CREATION_MIN_FEE + count - MAX_FREE_GROUP_CREATIONS;
+
         public async Task<Ownership> CreateGroup(GroupForm groupForm)
         {
             KeccakEncoder encoder = new KeccakEncoder();
@@ -26,8 +35,11 @@ namespace KarmaCounterServer.Services
 
             (User owner, List<Group> owned) owningInfo = await GetByOwnerId(groupForm.CreatorSession.UserId); //may throw not found exception
 
-            if (owningInfo.owned.Count >= 1) //ask for payment if some groups already created
-                throw new PaymentNeededException(owningInfo.owned.Count - 1);
+            if (owningInfo.owned.Count >= MAX_FREE_GROUP_CREATIONS) //ask for payment if some groups already created
+                throw new PaymentNeededException(CalcExtraGroupCreationFee(owningInfo.owned.Count + 1));
+
+            if (!groupForm.IsLocal) //ask for payment if creating global group
+                throw new PaymentNeededException(CalcGlobalGroupCreationFee(owningInfo.owned.Count + 1));
 
             Ownership ownership = new Ownership(owningInfo.owner, publicKey, privateKey);
             Group group = new Group(groupForm.Name, groupForm.Description, groupForm.IsPublic, groupForm.IsLocal, ownership);
@@ -41,7 +53,7 @@ namespace KarmaCounterServer.Services
                 throw new InvalidSessionException();
 
             User member = await Global.DI.Resolve<UserService>().GetUserById(joinForm.MemberSession.UserId); //may throw not found exception
-            Group group = await Global.DI.Resolve<GroupDataAccess>().GetById(joinForm.GroupId); //may throw not found exception
+            Group group = await GetById(joinForm.GroupId); //may throw not found exception
 
             if (group.Members.Exists(M => M.Member.Id == joinForm.MemberSession.UserId)) //if user is already a member of the group
                 throw new ConflictException("Member");
@@ -49,18 +61,12 @@ namespace KarmaCounterServer.Services
             if (group.Owner.Id == joinForm.MemberSession.UserId) //if user is an owner of the group
                 throw new ConflictException("Owner");
 
+            if (!group.IsPublic && !(await Global.DI.Resolve<GroupInvitationService>().CheckInvitation(member.Id, group.Id)))
+                throw new NotFoundException("Invitation"); //if group is not public and user not invited
+
             Membership membership = new Membership(group, member);
             return await Global.DI.Resolve<MembershipDataAccess>().Create(membership);
         }
-
-        public async Task<(User owner, List<Group> owned)> GetByOwnerId(long userId)
-        {
-            User owner = await Global.DI.Resolve<UserService>().GetUserById(userId); //may throw not found exception
-            return (owner, await Global.DI.Resolve<GroupDataAccess>().GetByOwner(owner));
-        }
-
-        public async Task<List<Group>> GetAll() =>
-            await Global.DI.Resolve<GroupDataAccess>().GetAll();
 
         public async Task<Group> GetById(long id)
         {
@@ -71,5 +77,14 @@ namespace KarmaCounterServer.Services
 
             return group;
         }
+
+        public async Task<(User owner, List<Group> owned)> GetByOwnerId(long userId)
+        {
+            User owner = await Global.DI.Resolve<UserService>().GetUserById(userId); //may throw not found exception
+            return (owner, await Global.DI.Resolve<GroupDataAccess>().GetByOwner(owner));
+        }
+
+        public async Task<List<Group>> GetAll() =>
+            await Global.DI.Resolve<GroupDataAccess>().GetAll();
     }
 }

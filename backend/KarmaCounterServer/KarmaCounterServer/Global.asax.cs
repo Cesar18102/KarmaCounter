@@ -57,10 +57,14 @@ namespace KarmaCounterServer
             builder.RegisterType<UserService>().SingleInstance().AsSelf();
             builder.RegisterType<GroupService>().SingleInstance().AsSelf();
             builder.RegisterType<SessionService>().SingleInstance().AsSelf();
+            builder.RegisterType<OwnershipService>().SingleInstance().AsSelf();
+            builder.RegisterType<GroupInvitationService>().SingleInstance().AsSelf();
 
             builder.RegisterType<UserDataAccess>().SingleInstance().AsSelf();
             builder.RegisterType<GroupDataAccess>().SingleInstance().AsSelf();
+            builder.RegisterType<OwnershipDataAccess>().SingleInstance().AsSelf();
             builder.RegisterType<MembershipDataAccess>().SingleInstance().AsSelf();
+            builder.RegisterType<InvitationDataAccess>().SingleInstance().AsSelf();
 
             DI = builder.Build();
         }

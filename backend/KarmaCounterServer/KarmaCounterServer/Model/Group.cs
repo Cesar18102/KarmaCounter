@@ -5,12 +5,20 @@ using Newtonsoft.Json;
 using KarmaCounterServer.ModelMapping.AttributeTemplates;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Group;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Membership;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Invitation;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Ownership;
 
 namespace KarmaCounterServer.Model
 {
     [Table("karma_groups", "id")]
     public class Group : IModelElement
     {
+        [OwnershipSelectWhereGroup("id")]
+        [OwnershipSelect("id", "group_id")]
+
+        [InvitationSelect("id", "group_id")]
+        [InvitationInsert("id")]
+
         [MembershipSelectWhereGroup("id")]
         [MembershipInsert("id")]
         
@@ -21,11 +29,19 @@ namespace KarmaCounterServer.Model
         [JsonProperty("id")]
         public long Id { get; private set; }
 
+        [OwnershipSelect("name")]
+
+        [InvitationSelect("name")]
+
         [GroupSelect("name")]
         [GroupInsert("name")]
 
         [JsonProperty("name")]
         public string Name { get; private set; }
+
+        [OwnershipSelect("description")]
+
+        [InvitationSelect("description")]
 
         [GroupSelect("description")]
         [GroupInsert("description")]
@@ -33,11 +49,19 @@ namespace KarmaCounterServer.Model
         [JsonProperty("description")]
         public string Description { get; private set; }
 
+        [OwnershipSelect("is_public")]
+
+        [InvitationSelect("is_public")]
+
         [GroupSelect("is_public")]
         [GroupInsert("is_public")]
 
         [JsonProperty("is_public")]
         public bool IsPublic { get; private set; }
+
+        [OwnershipSelect("is_local")]
+
+        [InvitationSelect("is_local")]
 
         [GroupSelect("is_local")]
         [GroupInsert("is_local")]
@@ -47,6 +71,8 @@ namespace KarmaCounterServer.Model
 
         [JsonProperty("members")]
         public List<Membership> Members { get; private set; }
+
+        [OwnershipSelectForeign("owner_id", "id")]
 
         [GroupSelectForeign("owner_id", "id")]
         [GroupInsertForeign("owner_id", "id")]

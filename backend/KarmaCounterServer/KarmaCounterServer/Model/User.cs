@@ -6,12 +6,21 @@ using KarmaCounterServer.ModelMapping.AttributeTemplates;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.User;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Group;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Membership;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Invitation;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Ownership;
 
 namespace KarmaCounterServer.Model
 {
     [Table("users", "id")]
     public class User : IModelElement
     {
+        [OwnershipSelectWhereUser("id")]
+        [OwnershipSelect("id", "user_id")]
+
+        [InvitationSelectWhereUser("id")]
+        [InvitationSelect("id", "invitee_id")]
+        [InvitationInsert("id")]
+
         [MembershipSelect("id", "member_id")]
         [MembershipInsert("id")]
 
@@ -26,6 +35,9 @@ namespace KarmaCounterServer.Model
         [JsonProperty("id")]
         public long Id { get; private set; }
 
+        [OwnershipSelect("login")]
+
+        [InvitationSelect("login")]
         [MembershipSelect("login")]
         [GroupSelect("login")]
 
@@ -40,6 +52,9 @@ namespace KarmaCounterServer.Model
         [JsonIgnore]
         public string Password { get; private set; }
 
+        [OwnershipSelect("email")]
+
+        [InvitationSelect("email")]
         [MembershipSelect("email")]
         [GroupSelect("email")]
 

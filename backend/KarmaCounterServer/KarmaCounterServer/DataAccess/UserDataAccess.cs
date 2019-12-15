@@ -64,22 +64,6 @@ namespace KarmaCounterServer.DataAccess
             }
         }
 
-        //public  async Task<List<Group>> GetOwnedGroups(long userId)
-        //{
-        //    //IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
-
-        //    //using (DbConnection connection = repoFactory.GetConnection())
-        //    //{
-        //    //    DbCommand cmd = repoFactory.CreateCommand("SELECT G.* FROM users U, group_owners O, karma_groups G " +
-        //    //                                             $"WHERE U.id = @uid AND U.id = O.user_id AND O.id = G.owner_id;", connection);
-
-        //    //    cmd.Parameters.Add(repoFactory.CreateParameter("@uid", userId));
-
-        //    //    await connection.OpenAsync();
-        //    //    return Global.DI.Resolve<ModelMapper>().MapToModel<Group, DbMappingTableAttribute, DbMappingAttribute, DbMappingForeignAttribute>(await cmd.ExecuteReaderAsync());
-        //    //}
-        //}
-
         public async Task<User> GetByLogin(string login)
         {
             IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();

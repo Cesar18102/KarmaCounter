@@ -8,8 +8,6 @@ namespace KarmaCounterServer.Dto
 {
     public class JoinGroupForm : DtoForm
     {
-        public override bool IsValid => true;
-
         [Required]
         [JsonRequired]
         [JsonProperty("group_id")]
@@ -25,5 +23,7 @@ namespace KarmaCounterServer.Dto
             GroupId = group_id;
             MemberSession = member_session;
         }
+
+        public override bool IsValid => true;
     }
 }
