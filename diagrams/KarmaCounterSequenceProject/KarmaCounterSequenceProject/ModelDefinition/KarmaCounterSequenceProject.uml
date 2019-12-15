@@ -1,0 +1,1375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="4c2314ea-e70f-482c-8760-14f5ef5d121e"
+  name="KarmaCounterSequenceProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction
+        Id="74d7de74-cec8-49e5-badf-789b4a50d84b"
+        name="KarmaCounterSequence"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <ownedCommentsInternal>
+          <comment
+            Id="602a63d8-4381-422d-8b3c-e32714a4140a">
+            <body>Step is required if group is private</body>
+          </comment>
+          <comment
+            Id="07f6a3c7-3fbf-4173-9110-6abd033ba72e">
+            <body>Changes local or global karma depends on group type</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="2e065ff2-937e-4a89-bc85-97c4adc49d5e"
+            name="BehaviorExecutionSpecification23">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="f601fac6-0401-4492-98af-6d8d13cbd360"
+                LastKnownName="ExecutionOccurrenceSpecification46"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="ecbc73cc-0a77-4c0e-aa3e-190c2051ad38"
+                LastKnownName="ExecutionOccurrenceSpecification45"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="6ed027db-0e66-4f19-95c9-92af39731fd1"
+                LastKnownName="MessageOccurrenceSpecification68"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="78284969-187f-4d61-a4c3-61ce344bf5d5"
+                LastKnownName="MessageOccurrenceSpecification69"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="ecbc73cc-0a77-4c0e-aa3e-190c2051ad38"
+            name="ExecutionOccurrenceSpecification45">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="eace3ee6-cb05-4824-903c-47c22d07c276"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="6ed027db-0e66-4f19-95c9-92af39731fd1"
+            name="MessageOccurrenceSpecification68">
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="603e2b39-3a57-4208-9468-ab56539bed1b"
+            name="MessageOccurrenceSpecification67">
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="36f02158-a017-4e1c-bd78-db85b2b2a5e8"
+            name="MessageOccurrenceSpecification70">
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="78284969-187f-4d61-a4c3-61ce344bf5d5"
+            name="MessageOccurrenceSpecification69">
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="f601fac6-0401-4492-98af-6d8d13cbd360"
+            name="ExecutionOccurrenceSpecification46">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="40494b19-8f97-4f58-bf43-b6bdd35efc5a"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="8b3fc5fa-0820-42be-b4a0-9a0f773e1fa2"
+            name="BehaviorExecutionSpecification25">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="142c873d-c4c6-4918-8057-ffa148dbcc77"
+                LastKnownName="ExecutionOccurrenceSpecification50"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="8bdb296c-81dd-46a5-8fa9-c5a4ab24123c"
+                LastKnownName="ExecutionOccurrenceSpecification49"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="32a8bd15-6176-434b-afa7-bdbf3802c491"
+                LastKnownName="MessageOccurrenceSpecification76"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="8bdb296c-81dd-46a5-8fa9-c5a4ab24123c"
+            name="ExecutionOccurrenceSpecification49">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="d8771f5c-3af0-4462-ac4a-fb275e379097"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="cb450dd5-9c0e-4a17-85bc-5d354b1ecabf"
+            name="MessageOccurrenceSpecification75">
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="32a8bd15-6176-434b-afa7-bdbf3802c491"
+            name="MessageOccurrenceSpecification76">
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="142c873d-c4c6-4918-8057-ffa148dbcc77"
+            name="ExecutionOccurrenceSpecification50">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="2bac4bb8-a109-4e03-9df6-5fd75b2d0efd"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="7397e489-318d-4e53-8ac6-7eefa3c16477"
+            name="BehaviorExecutionSpecification16">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="7604acdf-a018-4214-ab0e-cf78b5718174"
+                LastKnownName="ExecutionOccurrenceSpecification32"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="0ecf1282-549a-48a5-9808-4e7aabd008c8"
+                LastKnownName="ExecutionOccurrenceSpecification31"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="a31fcd58-fd99-488e-91bf-853d3673b323"
+                LastKnownName="MessageOccurrenceSpecification50"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="c336ce02-2d2d-406b-ad1b-508408dc144b"
+                LastKnownName="MessageOccurrenceSpecification51"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="0ecf1282-549a-48a5-9808-4e7aabd008c8"
+            name="ExecutionOccurrenceSpecification31">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="7097ca44-80a2-4364-adb1-2b2383027e5f"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a31fcd58-fd99-488e-91bf-853d3673b323"
+            name="MessageOccurrenceSpecification50">
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="60ca0b87-1dc0-43b7-a50d-8acb3ca369fa"
+            name="MessageOccurrenceSpecification49">
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="dfe8ef07-a0a3-4ef6-84c2-652e2d71b402"
+            name="MessageOccurrenceSpecification52">
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c336ce02-2d2d-406b-ad1b-508408dc144b"
+            name="MessageOccurrenceSpecification51">
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="7604acdf-a018-4214-ab0e-cf78b5718174"
+            name="ExecutionOccurrenceSpecification32">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="6b8fa503-1be2-405b-b103-3d2d017ea8aa"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="6273d1b7-b73e-4208-a3c0-92876fa7242b"
+            name="BehaviorExecutionSpecification17">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="0542117b-4540-48ee-a78f-075681c37318"
+                LastKnownName="ExecutionOccurrenceSpecification34"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="e346b744-6022-4318-a8f0-75ec28a047bb"
+                LastKnownName="ExecutionOccurrenceSpecification33"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="a2e7811a-6c5a-4b65-ae1b-0bd8a874f677"
+                LastKnownName="MessageOccurrenceSpecification54"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="e346b744-6022-4318-a8f0-75ec28a047bb"
+            name="ExecutionOccurrenceSpecification33">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="7bbeeac3-94f2-4d90-8f51-3a61fa7641a7"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="6ce7cecc-1a5b-4b6d-9ca3-ccda4568211a"
+            name="MessageOccurrenceSpecification53">
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a2e7811a-6c5a-4b65-ae1b-0bd8a874f677"
+            name="MessageOccurrenceSpecification54">
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="0542117b-4540-48ee-a78f-075681c37318"
+            name="ExecutionOccurrenceSpecification34">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="7ba091cb-06cd-4e4e-860d-69d5c650dec2"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="fc37a3c1-150f-4b40-93a7-4d5392d4e290"
+            name="BehaviorExecutionSpecification21">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="36664845-4a1c-47ea-94fb-e38b88e783df"
+                LastKnownName="ExecutionOccurrenceSpecification42"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="e322c5ba-448f-4575-8042-1f0aefffb60e"
+                LastKnownName="ExecutionOccurrenceSpecification41"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="cde6cb15-9d7b-41aa-8ae5-bc0761850cf0"
+                LastKnownName="MessageOccurrenceSpecification64"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="e322c5ba-448f-4575-8042-1f0aefffb60e"
+            name="ExecutionOccurrenceSpecification41">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="df555906-cdca-40b9-a2c3-812b49690d95"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="cde6cb15-9d7b-41aa-8ae5-bc0761850cf0"
+            name="MessageOccurrenceSpecification64">
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="f18015f8-9b3b-4eb5-aa62-be20966cf00b"
+            name="MessageOccurrenceSpecification63">
+            <covered>
+              <lifelineMoniker
+                Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+                LastKnownName="Group Creator"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="36664845-4a1c-47ea-94fb-e38b88e783df"
+            name="ExecutionOccurrenceSpecification42">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="3aab970c-6dc3-44bf-8b6f-d1521c6dacb2"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="e9080718-4781-4227-b925-122fbd130041"
+            name="BehaviorExecutionSpecification22">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="f5a27d63-0a73-4892-9d03-dbc939b4068f"
+                LastKnownName="ExecutionOccurrenceSpecification44"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="d41e75d2-2943-48b7-a371-5c6733a0c2a2"
+                LastKnownName="ExecutionOccurrenceSpecification43"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="c57ef15f-ca4f-4ed7-a88b-3ef42e4b2dbe"
+                LastKnownName="MessageOccurrenceSpecification66"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="d41e75d2-2943-48b7-a371-5c6733a0c2a2"
+            name="ExecutionOccurrenceSpecification43">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="9b00ff61-ae1c-4a8c-bb04-22f33eaf74e1"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c57ef15f-ca4f-4ed7-a88b-3ef42e4b2dbe"
+            name="MessageOccurrenceSpecification66">
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="bd419847-5e5a-43a7-8673-bbb8cea93167"
+            name="MessageOccurrenceSpecification65">
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="a2e10eb2-01dc-4224-b066-b000bec88187"
+            name="BehaviorExecutionSpecification26">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="d19eb319-6e92-4c74-91ca-8da671b7d514"
+                LastKnownName="ExecutionOccurrenceSpecification52"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="3597267d-e95d-4470-91cd-fd84fda4e80f"
+                LastKnownName="ExecutionOccurrenceSpecification51"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="657984a4-ec74-4679-931e-7fcfb090857a"
+                LastKnownName="MessageOccurrenceSpecification78"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="3597267d-e95d-4470-91cd-fd84fda4e80f"
+            name="ExecutionOccurrenceSpecification51">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="f09715db-ea88-4cd7-bc0c-930a4247e8fc"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="63bcc4f6-f0c1-459a-ae53-800ffec5a315"
+            name="MessageOccurrenceSpecification77">
+            <covered>
+              <lifelineMoniker
+                Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+                LastKnownName="Authenticated User"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="657984a4-ec74-4679-931e-7fcfb090857a"
+            name="MessageOccurrenceSpecification78">
+            <covered>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="f5a27d63-0a73-4892-9d03-dbc939b4068f"
+            name="ExecutionOccurrenceSpecification44">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="9cf27576-58ea-4a2a-ab45-2ff6283ddca4"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="d19eb319-6e92-4c74-91ca-8da671b7d514"
+            name="ExecutionOccurrenceSpecification52">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="cfd14cf0-9bb5-4784-bf03-50b9517bf72c"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="f184413a-be8d-4e6f-afab-29f581a4418a"
+            name="BehaviorExecutionSpecification27">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="c912908c-7e8b-40c4-a7dd-6487c75e82c9"
+                LastKnownName="ExecutionOccurrenceSpecification54"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="0098f764-70fe-47d0-b9ff-cbf956d4c384"
+                LastKnownName="ExecutionOccurrenceSpecification53"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="8c9fa41f-385d-4ba6-99f1-d63ccf4d67a0"
+                LastKnownName="MessageOccurrenceSpecification80"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="d6257423-d85b-4542-8f79-1fd81b8b2b93"
+                LastKnownName="MessageOccurrenceSpecification81"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="0098f764-70fe-47d0-b9ff-cbf956d4c384"
+            name="ExecutionOccurrenceSpecification53">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="855713cc-fec6-4373-bc39-2aa98fee7cc8"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="7fbc766b-cefb-4f5c-8e01-736ebbbcd70f"
+            name="MessageOccurrenceSpecification79">
+            <covered>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="8c9fa41f-385d-4ba6-99f1-d63ccf4d67a0"
+            name="MessageOccurrenceSpecification80">
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="75f614f8-72ba-4777-8bca-7f036b47d32e"
+            name="MessageOccurrenceSpecification82">
+            <covered>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="d6257423-d85b-4542-8f79-1fd81b8b2b93"
+            name="MessageOccurrenceSpecification81">
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="c912908c-7e8b-40c4-a7dd-6487c75e82c9"
+            name="ExecutionOccurrenceSpecification54">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="2deac23d-96ec-4019-aa20-dc4b2a2f5bdb"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+                LastKnownName="Rule"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="9d3ddde0-1458-4bf6-99b8-e3419fc90f57"
+            name="BehaviorExecutionSpecification28">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="574cd0f3-d231-4f42-b282-e0fce832ba6f"
+                LastKnownName="ExecutionOccurrenceSpecification56"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="ca4526f9-6ae8-424a-af83-76f2fcd061ab"
+                LastKnownName="ExecutionOccurrenceSpecification55"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="e447edf3-b8ac-4386-ab01-f52da8f43740"
+                LastKnownName="MessageOccurrenceSpecification84"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="ca4526f9-6ae8-424a-af83-76f2fcd061ab"
+            name="ExecutionOccurrenceSpecification55">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="ee0568ea-dbc1-4a8f-9804-9a434496da05"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="997faf0e-6ebb-4c3d-9046-6b109e560680"
+            name="MessageOccurrenceSpecification83">
+            <covered>
+              <lifelineMoniker
+                Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+                LastKnownName="Group Member"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="e447edf3-b8ac-4386-ab01-f52da8f43740"
+            name="MessageOccurrenceSpecification84">
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="574cd0f3-d231-4f42-b282-e0fce832ba6f"
+            name="ExecutionOccurrenceSpecification56">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="0dbec1e3-cf98-415d-abfe-46ab8ae7fc33"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="d192f713-d74f-415e-9a50-9633930a816e"
+                LastKnownName="Group"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="e794d57a-79aa-437a-836a-6fc0753814a9"
+            name="Rule"
+            isActor="false"
+            lifelineDisplayName="Rule">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="0ecf1282-549a-48a5-9808-4e7aabd008c8"
+                LastKnownName="ExecutionOccurrenceSpecification31"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="7604acdf-a018-4214-ab0e-cf78b5718174"
+                LastKnownName="ExecutionOccurrenceSpecification32"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="0098f764-70fe-47d0-b9ff-cbf956d4c384"
+                LastKnownName="ExecutionOccurrenceSpecification53"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="c912908c-7e8b-40c4-a7dd-6487c75e82c9"
+                LastKnownName="ExecutionOccurrenceSpecification54"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="ffca00d8-f59a-4c4a-a65e-b8412e528356"
+            name="Group Creator"
+            isActor="true"
+            lifelineDisplayName="Group Creator">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="8bdb296c-81dd-46a5-8fa9-c5a4ab24123c"
+                LastKnownName="ExecutionOccurrenceSpecification49"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="142c873d-c4c6-4918-8057-ffa148dbcc77"
+                LastKnownName="ExecutionOccurrenceSpecification50"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="60ca0b87-1dc0-43b7-a50d-8acb3ca369fa"
+                LastKnownName="MessageOccurrenceSpecification49"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="dfe8ef07-a0a3-4ef6-84c2-652e2d71b402"
+                LastKnownName="MessageOccurrenceSpecification52"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="6ce7cecc-1a5b-4b6d-9ca3-ccda4568211a"
+                LastKnownName="MessageOccurrenceSpecification53"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="f18015f8-9b3b-4eb5-aa62-be20966cf00b"
+                LastKnownName="MessageOccurrenceSpecification63"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="d192f713-d74f-415e-9a50-9633930a816e"
+            name="Group"
+            isActor="false"
+            lifelineDisplayName="Group">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="ecbc73cc-0a77-4c0e-aa3e-190c2051ad38"
+                LastKnownName="ExecutionOccurrenceSpecification45"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="f601fac6-0401-4492-98af-6d8d13cbd360"
+                LastKnownName="ExecutionOccurrenceSpecification46"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="e346b744-6022-4318-a8f0-75ec28a047bb"
+                LastKnownName="ExecutionOccurrenceSpecification33"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="0542117b-4540-48ee-a78f-075681c37318"
+                LastKnownName="ExecutionOccurrenceSpecification34"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="d41e75d2-2943-48b7-a371-5c6733a0c2a2"
+                LastKnownName="ExecutionOccurrenceSpecification43"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="f5a27d63-0a73-4892-9d03-dbc939b4068f"
+                LastKnownName="ExecutionOccurrenceSpecification44"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="ca4526f9-6ae8-424a-af83-76f2fcd061ab"
+                LastKnownName="ExecutionOccurrenceSpecification55"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="574cd0f3-d231-4f42-b282-e0fce832ba6f"
+                LastKnownName="ExecutionOccurrenceSpecification56"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="413b3420-f160-4fe9-85a8-24efc11672dd"
+            name="Authenticated User"
+            isActor="true"
+            lifelineDisplayName="Authenticated User">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="603e2b39-3a57-4208-9468-ab56539bed1b"
+                LastKnownName="MessageOccurrenceSpecification67"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="36f02158-a017-4e1c-bd78-db85b2b2a5e8"
+                LastKnownName="MessageOccurrenceSpecification70"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="cb450dd5-9c0e-4a17-85bc-5d354b1ecabf"
+                LastKnownName="MessageOccurrenceSpecification75"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="e322c5ba-448f-4575-8042-1f0aefffb60e"
+                LastKnownName="ExecutionOccurrenceSpecification41"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="36664845-4a1c-47ea-94fb-e38b88e783df"
+                LastKnownName="ExecutionOccurrenceSpecification42"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="bd419847-5e5a-43a7-8673-bbb8cea93167"
+                LastKnownName="MessageOccurrenceSpecification65"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="63bcc4f6-f0c1-459a-ae53-800ffec5a315"
+                LastKnownName="MessageOccurrenceSpecification77"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="80279803-bca5-4aea-9edd-c79d1f34c4ca"
+            name="Group Member"
+            isActor="true"
+            lifelineDisplayName="Group Member">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="3597267d-e95d-4470-91cd-fd84fda4e80f"
+                LastKnownName="ExecutionOccurrenceSpecification51"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="d19eb319-6e92-4c74-91ca-8da671b7d514"
+                LastKnownName="ExecutionOccurrenceSpecification52"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="7fbc766b-cefb-4f5c-8e01-736ebbbcd70f"
+                LastKnownName="MessageOccurrenceSpecification79"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="75f614f8-72ba-4777-8bca-7f036b47d32e"
+                LastKnownName="MessageOccurrenceSpecification82"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="997faf0e-6ebb-4c3d-9046-6b109e560680"
+                LastKnownName="MessageOccurrenceSpecification83"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="14a8118b-20aa-4c9a-88af-894ef44b428b"
+            name="&lt;&lt;create&gt;&gt;"
+            messageKind="Complete"
+            messageSort="CreateMessage"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="603e2b39-3a57-4208-9468-ab56539bed1b"
+                LastKnownName="MessageOccurrenceSpecification67"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="6ed027db-0e66-4f19-95c9-92af39731fd1"
+                LastKnownName="MessageOccurrenceSpecification68"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="7f830a04-0074-434b-8e33-28100cdd5b7b"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="78284969-187f-4d61-a4c3-61ce344bf5d5"
+                LastKnownName="MessageOccurrenceSpecification69"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="36f02158-a017-4e1c-bd78-db85b2b2a5e8"
+                LastKnownName="MessageOccurrenceSpecification70"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="b333b128-ed4e-45b7-bf00-f8c7814f4378"
+            name="Becomes"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="cb450dd5-9c0e-4a17-85bc-5d354b1ecabf"
+                LastKnownName="MessageOccurrenceSpecification75"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="32a8bd15-6176-434b-afa7-bdbf3802c491"
+                LastKnownName="MessageOccurrenceSpecification76"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="900994d5-91ba-4c77-bb7a-37cfe7ca3c37"
+            name="&lt;&lt;create&gt;&gt;"
+            messageKind="Complete"
+            messageSort="CreateMessage"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="60ca0b87-1dc0-43b7-a50d-8acb3ca369fa"
+                LastKnownName="MessageOccurrenceSpecification49"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="a31fcd58-fd99-488e-91bf-853d3673b323"
+                LastKnownName="MessageOccurrenceSpecification50"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="0a9aefd2-182f-43b2-9fab-91de7a124a6d"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c336ce02-2d2d-406b-ad1b-508408dc144b"
+                LastKnownName="MessageOccurrenceSpecification51"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="dfe8ef07-a0a3-4ef6-84c2-652e2d71b402"
+                LastKnownName="MessageOccurrenceSpecification52"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="6854c6b6-a182-416f-9211-f12b2fdd6fb4"
+            name="Adds rules"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="6ce7cecc-1a5b-4b6d-9ca3-ccda4568211a"
+                LastKnownName="MessageOccurrenceSpecification53"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="a2e7811a-6c5a-4b65-ae1b-0bd8a874f677"
+                LastKnownName="MessageOccurrenceSpecification54"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="3e2d439b-5735-4d0a-84cb-2f94353f5603"
+            name="Invites"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="f18015f8-9b3b-4eb5-aa62-be20966cf00b"
+                LastKnownName="MessageOccurrenceSpecification63"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="cde6cb15-9d7b-41aa-8ae5-bc0761850cf0"
+                LastKnownName="MessageOccurrenceSpecification64"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="fc2564c0-1e44-4e71-863c-cf963d550293"
+            name="Joins"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="bd419847-5e5a-43a7-8673-bbb8cea93167"
+                LastKnownName="MessageOccurrenceSpecification65"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c57ef15f-ca4f-4ed7-a88b-3ef42e4b2dbe"
+                LastKnownName="MessageOccurrenceSpecification66"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="45ac9786-542d-4e02-bc0f-e8d8a050960c"
+            name="Becomes"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="63bcc4f6-f0c1-459a-ae53-800ffec5a315"
+                LastKnownName="MessageOccurrenceSpecification77"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="657984a4-ec74-4679-931e-7fcfb090857a"
+                LastKnownName="MessageOccurrenceSpecification78"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="d9ab5457-72ea-43f5-a0c9-04ee49d47f3c"
+            name="Violates/Adheres"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="7fbc766b-cefb-4f5c-8e01-736ebbbcd70f"
+                LastKnownName="MessageOccurrenceSpecification79"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="8c9fa41f-385d-4ba6-99f1-d63ccf4d67a0"
+                LastKnownName="MessageOccurrenceSpecification80"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="11c8059f-3726-4426-a4b6-4b2928639df1"
+            name="Karma changes"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="d6257423-d85b-4542-8f79-1fd81b8b2b93"
+                LastKnownName="MessageOccurrenceSpecification81"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="75f614f8-72ba-4777-8bca-7f036b47d32e"
+                LastKnownName="MessageOccurrenceSpecification82"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="40cddf1e-9c86-451b-b02c-0af3d9c1a7f1"
+            name="Leaves"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="997faf0e-6ebb-4c3d-9046-6b109e560680"
+                LastKnownName="MessageOccurrenceSpecification83"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="e447edf3-b8ac-4386-ab01-f52da8f43740"
+                LastKnownName="MessageOccurrenceSpecification84"
+                LastKnownLocation="KarmaCounterSequenceProject.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7097ca44-80a2-4364-adb1-2b2383027e5f"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="6b8fa503-1be2-405b-b103-3d2d017ea8aa"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7bbeeac3-94f2-4d90-8f51-3a61fa7641a7"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7ba091cb-06cd-4e4e-860d-69d5c650dec2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="df555906-cdca-40b9-a2c3-812b49690d95"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="3aab970c-6dc3-44bf-8b6f-d1521c6dacb2"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="9b00ff61-ae1c-4a8c-bb04-22f33eaf74e1"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="9cf27576-58ea-4a2a-ab45-2ff6283ddca4"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="eace3ee6-cb05-4824-903c-47c22d07c276"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="40494b19-8f97-4f58-bf43-b6bdd35efc5a"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d8771f5c-3af0-4462-ac4a-fb275e379097"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="2bac4bb8-a109-4e03-9df6-5fd75b2d0efd"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f09715db-ea88-4cd7-bc0c-930a4247e8fc"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="cfd14cf0-9bb5-4784-bf03-50b9517bf72c"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="855713cc-fec6-4373-bc39-2aa98fee7cc8"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="2deac23d-96ec-4019-aa20-dc4b2a2f5bdb"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ee0568ea-dbc1-4a8f-9804-9a434496da05"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="0dbec1e3-cf98-415d-abfe-46ab8ae7fc33"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

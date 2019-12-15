@@ -10,7 +10,7 @@ namespace LoadBalancer.Models
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        [JsonIgnore]
+        [JsonProperty("session_count")]
         public int UserCount { get; private set; }
 
         public Server(string url) => Url = new Uri(url);

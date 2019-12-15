@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b3b435b2-5764-4087-b683-929797b24d6c" name="KarmaCounterUseCase" linkedPackageId="625233e2-e328-4a4d-93df-d449c4843ed9" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="9582e9c9-ed3c-43ee-b751-987f153d3d0b">
+      <elementDefinition Id="627e8747-b3bb-4bc7-9e0e-e687427fa567" />
+    </comment>
+    <comment Id="2eaa5281-e703-4c90-a88a-019bab0f72b1">
+      <elementDefinition Id="fd47cdc1-aab8-4b9b-9653-edab543e4f78" />
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="42b5859b-a3b7-4efc-887a-ab2dfd5e63a2">
+      <profileInstance Id="73b062df-0f53-4cab-ac38-a3c245cd33cf" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="d2632ab7-7135-428e-9d08-ca19e3a9f566">
+      <profileInstance Id="d0b9caca-81a8-463e-9862-674538bb9388" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="93d1f1a3-186f-4c75-9449-d5a9a9f2a71f" name="Visitor" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="59deb78d-45d5-484e-9919-a753cb9ea2f1" />
+        <generalsInternal>
+          <generalization Id="fa8080eb-6f51-478a-999b-23a8d8099401" isSubstitutable="false">
+            <actorMoniker Id="47f6b242-3b0c-4610-b3f8-0785e6d15218" LastKnownName="Registered User" />
+            <elementDefinition Id="ece70cd6-fa0d-4e0f-a3a9-b1bf61989dda" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="ace2e0dc-73d4-40fb-bff3-addae7776119" isDerived="false" sourceEndRoleName="Visitor" targetEndRoleName="View group list" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5058b211-5def-4981-b798-ceb790412d0e" LastKnownName="View group list" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="43d27c0f-9280-4d7d-9b84-a14e0d82e401" name="Visitor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="229947c2-6601-4895-a9b0-f756a2385ccf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5ef62704-bc2b-4cf3-b0f8-4fb19a02d370" name="View group list" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9a20d249-af66-4fb7-b1cd-25227b2d2853" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d39ecbf1-33c2-4a40-bee0-54769f15ef8a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="47f6b242-3b0c-4610-b3f8-0785e6d15218" name="Registered User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8dead497-7214-4b20-9ac6-4b04920b1ffe" />
+        <generalsInternal>
+          <generalization Id="fc4ab147-61dc-4afe-9ed0-4744be04c730" isSubstitutable="false">
+            <actorMoniker Id="b3a0de9b-34b5-452a-9aac-1476f532a689" LastKnownName="Group member" />
+            <elementDefinition Id="79f8f6d3-6849-4953-b6bf-043a1933d9bd" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="eca07941-6671-4347-8e76-4d8335d0d5e8" isDerived="false" sourceEndRoleName="Registered User" targetEndRoleName="Create group" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="20673c91-1000-4148-ba6a-3cccbd0c7760" LastKnownName="Create group" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5fdd7441-353b-40ac-b539-649b5a46ced2" name="Registered User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5895ce84-450b-47c7-9ee1-93ce27f87b2b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cea7a06c-708e-48f9-a849-10a27ff59923" name="Create group" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="30c575c4-0ea9-41d4-b9bf-847d0c527691" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d0ccb6de-7471-46d4-864b-e8534fc7ed7d" />
+          </association>
+          <association Id="c5e76f5e-7e49-451e-9d0f-987dd3378e56" isDerived="false" sourceEndRoleName="Registered User" targetEndRoleName="Join group" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5b070807-18a4-493a-8ff4-7816130e788b" LastKnownName="Join group" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="794471e4-2db5-4dd8-9d1c-9dde7eb8bcc7" name="Registered User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c992c08f-1eb2-43d0-a4fe-304c7430510f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="48f4aa69-0f40-473b-8e76-27aabe698dc3" name="Join group" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7cff9538-c403-45e8-ba3a-b54f9d856415" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="11dfc2c4-2dfa-496f-8913-0710ff3e272c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="235fa11a-5a73-4adc-a99f-30bc758ec8f3" name="Group Owner" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4f683ffa-445a-4f71-9f09-fdfaaea8d3fc" />
+        <targetEnds>
+          <association Id="f960329e-f16c-4140-ab02-e7bf9ffe90da" isDerived="false" sourceEndRoleName="Group Owner" targetEndRoleName="Add a user to the group" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ecbd8117-c22c-430b-ba3b-17ce8f7f937f" LastKnownName="Add a user to the group" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d315f47b-bf46-4033-82db-091c0fce2496" name="Group Owner" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b6d3275c-dd43-4d34-8916-c88dc7d67863" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ddfc241f-72d0-4875-9fad-c870403224ce" name="Add a user to the group" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="554c83f3-96fd-4a47-8286-c146db5c9ff5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="289f0683-8437-434d-966a-31722f04b107" />
+          </association>
+          <association Id="d79273ad-2425-455b-8f76-ffcbc3dcda42" isDerived="false" sourceEndRoleName="Group Owner" targetEndRoleName="Provide some kind of adherence checking mechanism" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3c0ee77f-ac4b-4738-baba-eb64bb270455" LastKnownName="Provide some kind of adherence checking mechanism" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4b62963c-bb4d-4447-80f8-bc7150da2916" name="Group Owner" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2addb9bb-302c-4bbf-993e-3e505d473286" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a464f1ff-232e-4b13-9e8b-d06563636ac8" name="Provide some kind of adherence checking mechanism" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d8e9d297-2134-4eb9-ba0f-cc59c1617ab4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="05532b7c-a0e4-4c3a-917e-8e58bea6e05e" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" name="KarmaCounter" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="afaff016-9c87-437d-90c1-93fe21e73d4c" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="b3a0de9b-34b5-452a-9aac-1476f532a689" name="Group member" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a4bdd147-ce02-4a5a-998d-8a58029eaf44" />
+        <generalsInternal>
+          <generalization Id="87001654-008d-422e-8ed1-ada1f3cbf271" isSubstitutable="false">
+            <actorMoniker Id="235fa11a-5a73-4adc-a99f-30bc758ec8f3" LastKnownName="Group Owner" />
+            <elementDefinition Id="1e9d79d1-6fce-49a2-b489-fd0414eda912" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="c1fb2f15-8133-4d10-a104-8106f64b750a" isDerived="false" sourceEndRoleName="Group member" targetEndRoleName="Leave group" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="177f963c-2ca9-4b85-a13c-be96d2712bb2" LastKnownName="Leave group" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="aa718d32-8453-4f24-b04f-ac6e7db41d34" name="Group member" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ce3385fa-0aa5-4951-b21c-0f6482fa602f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dad62c51-b69e-4b22-bed7-0d85af7fb23b" name="Leave group" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c79658fe-31fb-4044-acc1-b8fc143dae75" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ea26fb04-4c9d-41c7-9254-eb8cc4a77e33" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="51034314-f76a-445b-a17c-7a69b8c01d6e" name="Adherence Checker" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f0d27d89-c447-461c-8caa-5133ce883ccc" />
+        <targetEnds>
+          <association Id="cf382dcf-896f-41f8-b0e8-4b60bbdfbab2" isDerived="false" sourceEndRoleName="Adherence Checker" targetEndRoleName="Manage group members' karma" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9cc3cf80-31da-4b2a-af72-47455f25ad52" LastKnownName="Manage group members' karma" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3d6cd009-ca69-4c14-b5cb-da2e4aecafd1" name="Adherence Checker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d0370d6d-d36c-4dc0-9e57-200fba4f1bdd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="953e8fea-f262-4558-ad55-582ccffb55c8" name="Manage group members' karma" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="37aa5d95-d45a-4bee-98a3-ec49027fd05d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8e4867af-c62a-4600-8c70-c1844ca1eca2" />
+          </association>
+          <association Id="565ee8fb-3321-4899-a52e-91d10894c249" isDerived="false" sourceEndRoleName="Adherence Checker" targetEndRoleName="Collect statistics" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6a0786c9-b19d-4019-8ee8-3c3045844686" LastKnownName="Collect statistics" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="61202698-d9fe-43ed-b78d-dddd2c138236" name="Adherence Checker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="79d0fd46-f405-4f74-a877-c48ba50c46f0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="034ba69d-7683-4cdc-8c88-152bd018310e" name="Collect statistics" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e4f5269a-19b3-42ec-a8ff-6f823411d0c8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1b60eeba-3f40-4e28-815a-74f76650b8e8" />
+          </association>
+          <association Id="1c84de2c-8142-41ee-b49e-38b561ef9227" isDerived="false" sourceEndRoleName="Adherence Checker" targetEndRoleName="Provide some kind of adherence checking mechanism" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3c0ee77f-ac4b-4738-baba-eb64bb270455" LastKnownName="Provide some kind of adherence checking mechanism" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="447a3204-6520-4b8b-bab5-c52e61b678fa" name="Adherence Checker" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d7eb96cf-8be9-4f3c-b247-306f1f4803a4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="557b5022-c422-45c1-a95b-65fd7f52e94c" name="Provide some kind of adherence checking mechanism" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="12079572-0050-4c7d-a6a0-3db4bacd8294" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0cf5b67a-4119-43a2-a402-f910f4c3f87b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="20673c91-1000-4148-ba6a-3cccbd0c7760" name="Create group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1884a64a-230f-407d-9383-1f3eaf71241e" />
+        <additions>
+          <include Id="02c2f02f-0c72-4203-923e-56573c50a6e7">
+            <useCaseMoniker Id="fed26d67-7a18-493a-8ed8-89d33980bf34" LastKnownName="Establish rules &amp; karma fees" />
+            <elementDefinition Id="9bf894fc-2172-456f-9eb6-a272c1e79c59" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="5b070807-18a4-493a-8ff4-7816130e788b" name="Join group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ab7d929f-8b75-4c9f-ba98-cde28ee8a200" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="177f963c-2ca9-4b85-a13c-be96d2712bb2" name="Leave group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d72f872c-a2ed-43f5-8896-4c8b7d02fc0c" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="fed26d67-7a18-493a-8ed8-89d33980bf34" name="Establish rules &amp; karma fees" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a5dd979a-a169-409c-8c1e-c864365025cd" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="371a3def-1941-4585-b02b-52f043b20c4f" name="Invite user to join group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="72bd67f1-bf72-4b50-9612-8b847547d908" />
+        <extendedCases>
+          <extend Id="f580c50b-fdee-4c39-948b-6b66581311de">
+            <useCaseMoniker Id="ecbd8117-c22c-430b-ba3b-17ce8f7f937f" LastKnownName="Add a user to the group" />
+            <elementDefinition Id="7e7a5c14-1939-4d00-92f8-6e0d2dad1fe0" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="ecbd8117-c22c-430b-ba3b-17ce8f7f937f" name="Add a user to the group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="83ee76e9-50d5-473f-8c70-69cbfa3f9008" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="5058b211-5def-4981-b798-ceb790412d0e" name="View group list" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="40d47d1a-5d95-4f58-b7f8-8caf161d754e" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="36f693b8-2a0e-41a6-9dcc-7d3093470e33" name="View particular group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="69959b37-cf12-47fa-a545-3b753ceca5be" />
+        <extendedCases>
+          <extend Id="fd3db25c-1193-41b1-89b4-f8de13b3f333">
+            <useCaseMoniker Id="5058b211-5def-4981-b798-ceb790412d0e" LastKnownName="View group list" />
+            <elementDefinition Id="d15f1b6e-645b-4bac-8460-0715b26c889b" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="637bef9b-0e28-4d52-aa1a-178a56c29353" name="Force put user to the group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f2dad553-06cd-44b6-b7f6-e0668d0a9729" />
+        <extendedCases>
+          <extend Id="b7e40495-efb0-47b8-93dd-6152de5ff89b">
+            <useCaseMoniker Id="ecbd8117-c22c-430b-ba3b-17ce8f7f937f" LastKnownName="Add a user to the group" />
+            <elementDefinition Id="45aca3fe-1638-4bc7-a11c-7a3987e1ef89" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="f7bea45e-d251-48d3-97a5-ccb22d48efec" name="Create local group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b68ff868-6585-41af-939f-14adf7628e29" />
+        <extendedCases>
+          <extend Id="732aae22-0c0b-4beb-9c4f-a8d38d364aea">
+            <useCaseMoniker Id="20673c91-1000-4148-ba6a-3cccbd0c7760" LastKnownName="Create group" />
+            <elementDefinition Id="0cc7c627-940a-4a39-bb79-57f1d61c58fa" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="428a3a36-827b-41ff-969e-cbc0ddce409b" name="Create global group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e2621f15-ba58-4ddf-b293-bc9effbb7d3f" />
+        <extendedCases>
+          <extend Id="485749c2-5b27-4adb-8b85-9a4089af339d">
+            <useCaseMoniker Id="20673c91-1000-4148-ba6a-3cccbd0c7760" LastKnownName="Create group" />
+            <elementDefinition Id="7c5d4485-611a-4608-a728-3275a4cf6734" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="abe3febc-3af1-405d-a790-efd6a5699466" name="Create public group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b24cee25-e95a-42b5-a658-ffe2fcc4be56" />
+        <extendedCases>
+          <extend Id="0dc75673-2f8b-4f1d-8f31-599398b2c56b">
+            <useCaseMoniker Id="20673c91-1000-4148-ba6a-3cccbd0c7760" LastKnownName="Create group" />
+            <elementDefinition Id="9c3e6950-e889-4ec7-99cd-70ec35efb880" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a07d780a-136c-4373-8917-b5fc241bec9e" name="Create private group" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="33602360-b611-4a64-8596-7b0641bc1fff" />
+        <extendedCases>
+          <extend Id="c0913789-7e10-48d0-a8f2-7d71e86c50aa">
+            <useCaseMoniker Id="20673c91-1000-4148-ba6a-3cccbd0c7760" LastKnownName="Create group" />
+            <elementDefinition Id="2052ea46-8a14-4dbf-961c-e34a25fb0087" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="9cc3cf80-31da-4b2a-af72-47455f25ad52" name="Manage group members' karma" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="836934bc-f9f5-4fdd-96db-c9eacc546df3" />
+        <targetEnds>
+          <association Id="af51392f-22a5-4d93-8b78-4986bf68a1eb" isDerived="false" sourceEndRoleName="Manage group members' karma" targetEndRoleName="Establish rules &amp; karma fees" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fed26d67-7a18-493a-8ed8-89d33980bf34" LastKnownName="Establish rules &amp; karma fees" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a40085b4-d906-4a11-aad3-b1266363dbbe" name="Manage group members' karma" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="50c7ce06-7082-4680-b377-bb7536e2b090" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b42b574f-8ecb-4960-9b54-bb907d5540e8" name="Establish rules &amp; karma fees" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0520ea2c-2156-476b-80e2-f57dd01579e3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="799ecae2-0a52-4e81-a4ef-3130e12a3bf5" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="3c0ee77f-ac4b-4738-baba-eb64bb270455" name="Provide some kind of adherence checking mechanism" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bb52a8ad-5c08-4f1c-b033-1152c06c485b" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="6a0786c9-b19d-4019-8ee8-3c3045844686" name="Collect statistics" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5d98090-4108-48e6-aa3e-d62fba380ee3" />
+        <subjects>
+          <subsystemMoniker Id="4d2848c7-84cf-4109-9bdb-d50580f0f5d4" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="625233e2-e328-4a4d-93df-d449c4843ed9" name="KarmaCounterUseCaseProject">
+    <elementDefinition Id="6e87634e-876d-4f79-9e46-caba4d53333a" />
+  </package>
+</useCaseModelRoot>

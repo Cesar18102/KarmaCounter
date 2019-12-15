@@ -8,6 +8,11 @@
 /backend/SessionServer/SessionServer/bin
 /backend/SessionServer/SessionServer/obj
 
+/backend/KarmaCounterServer/.vs
+/backend/KarmaCounterServer/packages
+/backend/KarmaCounterServer/KarmaCounterServer/bin
+/backend/KarmaCounterServer/KarmaCounterServer/obj
+
 /lib/DbUtil/.vs
 /lib/DbUtil/packages
 /lib/DbUtil/DbUtil/bin
@@ -17,3 +22,8 @@
 /lib/Logger/packages
 /lib/Logger/Logger/bin
 /lib/Logger/Logger/obj
+
+/lib/SolidityEncoder/.vs
+/lib/SolidityEncoder/packages
+/lib/SolidityEncoder/SolidityEncoder/bin
+/lib/SolidityEncoder/SolidityEncoder/obj

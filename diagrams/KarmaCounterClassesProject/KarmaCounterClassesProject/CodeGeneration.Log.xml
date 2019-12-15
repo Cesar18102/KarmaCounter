@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///D:/!!!OLEG/SOFTWARE/VS2012/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="ProjectPath = ..\KarmaCounterClassesProjectLib\KarmaCounterClassesProjectLib.csproj" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="TemplateFilePath = D:\!!!OLEG\SOFTWARE\VS2012\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Diagnostic" Text="ResolvedTemplateFilePath = D:\!!!OLEG\SOFTWARE\VS2012\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2019-12-01T01:38:58" Importance="Medium" Text="KarmaCounterClassesProject's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'KarmaCounterClassesProject::User' -  (Class), 'KarmaCounterClassesProject::Guest' -  (Class), 'KarmaCounterClassesProject::RegisteredUser' -  (Class), 'KarmaCounterClassesProject::Membership' -  (Class), 'KarmaCounterClassesProject::Ownership' -  (Class), 'KarmaCounterClassesProject::LocalGroup' -  (Class), 'KarmaCounterClassesProject::GlobalGroup' -  (Class), 'KarmaCounterClassesProject::Group' -  (Class), 'KarmaCounterClassesProject::Rule' -  (Class) " />
+  <Message Timestamp="2019-12-01T01:39:05" Importance="Medium" Text="Project Added: D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\KarmaCounterClassesProjectLib.csproj" />
+  <Message Timestamp="2019-12-01T01:39:05" Importance="Medium" Text="'KarmaCounterClassesProject::User' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\User.cs" />
+  <Message Timestamp="2019-12-01T01:39:06" Importance="Medium" Text="'KarmaCounterClassesProject::Guest' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\Guest.cs" />
+  <Message Timestamp="2019-12-01T01:39:06" Importance="Medium" Text="'KarmaCounterClassesProject::RegisteredUser' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\RegisteredUser.cs" />
+  <Message Timestamp="2019-12-01T01:39:06" Importance="Medium" Text="'KarmaCounterClassesProject::Membership' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\Membership.cs" />
+  <Message Timestamp="2019-12-01T01:39:06" Importance="Medium" Text="'KarmaCounterClassesProject::Ownership' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\Ownership.cs" />
+  <Message Timestamp="2019-12-01T01:39:06" Importance="Medium" Text="'KarmaCounterClassesProject::LocalGroup' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\LocalGroup.cs" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Medium" Text="'KarmaCounterClassesProject::GlobalGroup' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\GlobalGroup.cs" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Medium" Text="'KarmaCounterClassesProject::Group' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\Group.cs" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Medium" Text="'KarmaCounterClassesProject::Rule' -  (Class) : success (file created) - D:\!!!OLEG\!!!WORK\GitHub\KarmaCounter\diagrams\KarmaCounterClassesProject\KarmaCounterClassesProjectLib\GeneratedCode\Rule.cs" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="ProjectPath = ..\KarmaCounterClassesProjectLib\KarmaCounterClassesProjectLib.csproj" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="TemplateFilePath = D:\!!!OLEG\SOFTWARE\VS2012\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Diagnostic" Text="ResolvedTemplateFilePath = D:\!!!OLEG\SOFTWARE\VS2012\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2019-12-01T01:39:07" Importance="Medium" Text="KarmaCounterClassesProject's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'KarmaCounterClassesProject::User' -  (Class), 'KarmaCounterClassesProject::Guest' -  (Class), 'KarmaCounterClassesProject::RegisteredUser' -  (Class), 'KarmaCounterClassesProject::Membership' -  (Class), 'KarmaCounterClassesProject::Ownership' -  (Class), 'KarmaCounterClassesProject::LocalGroup' -  (Class), 'KarmaCounterClassesProject::GlobalGroup' -  (Class), 'KarmaCounterClassesProject::Group' -  (Class), 'KarmaCounterClassesProject::Rule' -  (Class) " />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::User' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::Guest' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::RegisteredUser' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::Membership' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::Ownership' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::LocalGroup' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::GlobalGroup' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::Group' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::Rule' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="The selection included 11 elements which were not bound to a template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'ad52ac64-7f79-4e4e-8448-c9f52ccaf0bd' -  (Generalization): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'d2ab1620-a93f-43a3-92a4-9dd544490cb8' -  (Generalization): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::' -  (Association): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::' -  (Association): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'d7ec1f0d-844b-43c9-81cc-49749aba90fe' -  (Comment): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'ed5dedd3-8a48-4ae0-b9d6-0b1685d2714f' -  (Generalization): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::' -  (Association): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::' -  (Association): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'901c0e24-0ebe-4738-a18d-f6164d879e97' -  (Comment): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'72ac65b5-092f-42fc-b69f-54b840c07699' -  (Generalization): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="Diagnostic" Text="'KarmaCounterClassesProject::' -  (Association): no bound template." />
+  <Message Timestamp="2019-12-01T01:39:08" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>

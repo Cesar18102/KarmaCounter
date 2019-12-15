@@ -60,6 +60,7 @@ namespace LoadBalancer
         {
             InitServices();
             await DI.Resolve<ILogger>().Trace("App started");
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }

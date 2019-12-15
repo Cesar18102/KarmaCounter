@@ -127,11 +127,9 @@
     <Compile Include="Util\RequestUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="servers.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="servers.ini" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

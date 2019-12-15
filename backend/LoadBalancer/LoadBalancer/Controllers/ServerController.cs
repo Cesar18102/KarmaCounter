@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Autofac;
 
@@ -50,5 +51,8 @@ namespace LoadBalancer.Controllers
 
             return new BoolResult(true);
         }
+
+        public List<Server> GetAll() =>
+            Global.DI.Resolve<Balancer>().Servers;
     }
 }
