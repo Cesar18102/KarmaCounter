@@ -9,6 +9,8 @@ namespace KarmaCounterServer.Model
     [Table("group_rules_fees", "id")]
     public class Rule : IModelElement
     {
+        [ActionSelectWhereRule("id")]
+        [ActionSelectByGroup("id", "rule_id")]
         [ActionSelect("id", "rule_id")]
         [ActionInsert("id")]
 
@@ -19,6 +21,7 @@ namespace KarmaCounterServer.Model
         [JsonProperty("id")]
         public long Id { get; private set; }
 
+        [ActionSelectByGroup("rule_title")]
         [ActionSelect("rule_title")]
 
         [RuleSelect("rule_title")]
@@ -27,6 +30,7 @@ namespace KarmaCounterServer.Model
         [JsonProperty("title")]
         public string Title { get; private set; }
 
+        [ActionSelectByGroup("rule_text")]
         [ActionSelect("rule_text")]
 
         [RuleSelect("rule_text")]
@@ -35,6 +39,7 @@ namespace KarmaCounterServer.Model
         [JsonProperty("text")]
         public string Text { get; private set; }
 
+        [ActionSelectByGroup("fee_formula")]
         [ActionSelect("fee_formula")]
 
         [RuleSelect("fee_formula")]
@@ -42,6 +47,8 @@ namespace KarmaCounterServer.Model
 
         [JsonProperty("fee_formula")]
         public string FeeFormula { get; private set; }
+
+        [ActionSelectForeign("group_id", "id")]
 
         [RuleSelectForeign("group_id", "id")]
         [RuleInsert("group_id")]

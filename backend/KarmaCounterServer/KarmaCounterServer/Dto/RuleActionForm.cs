@@ -28,9 +28,9 @@ namespace KarmaCounterServer.Dto
         public string Hash { get; private set; }
 
         [JsonProperty("values")]
-        public List<double> Values { get; private set; }
+        public List<object> Values { get; private set; }
 
-        public RuleActionForm(long rule_id, long user_id, string public_key, string hash, List<double> values)
+        public RuleActionForm(long rule_id, long user_id, string public_key, string hash, List<object> values)
         {
             RuleId = rule_id;
             UserId = user_id;

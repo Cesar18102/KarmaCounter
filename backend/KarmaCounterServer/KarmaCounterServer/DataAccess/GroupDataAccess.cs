@@ -139,13 +139,13 @@ namespace KarmaCounterServer.DataAccess
 
         private async Task<Group> AttachMemberships(Group group) 
         {
-            group.Members.AddRange(await Global.DI.Resolve<MembershipDataAccess>().GetGroupMemberships(group.Id));
+            group?.Members.AddRange(await Global.DI.Resolve<MembershipDataAccess>().GetGroupMemberships(group.Id));
             return group;
         }
 
         private async Task<Group> AttachRules(Group group) 
         {
-            group.Rules.AddRange(await Global.DI.Resolve<RuleDataAccess>().GetByGroup(group.Id));
+            group?.Rules.AddRange(await Global.DI.Resolve<RuleDataAccess>().GetByGroup(group.Id));
             return group;
         }
 

@@ -49,5 +49,21 @@ namespace KarmaCounterServer.ModelMapping
             return (cmdText, parameters.Select(P => (P.param, P.value)).
                                         Concat(foreign.Aggregate(new List<(string, object)>(), (A, F) => A.Concat(F.cmd.parameters).ToList())).ToList());
         }
+
+        public static (string, List<(string param, object value)>) CreateUpdateText(this DbMappingInfo mapping)
+        {
+            List<(string table, string key, string param, object value)> parameters =
+                mapping.KeysValues.Where(K => K.value != null && K.key != mapping.PrimaryKey).
+                Select(K => (K.t, K.key, $"@{K.key}", K.value)).ToList();
+
+            List<string> whereConstraints = mapping.AllEquations.Select(EQ => $"{EQ.t1}.{EQ.key1} = {EQ.t2}.{EQ.key2}").
+                                                                 Concat(mapping.WhereConsts.Select(K => $"{K.key} = @{K.key}")).ToList();
+
+            string cmdText = $"UPDATE {mapping.TableName} " +
+                             $"SET {String.Join(", ", parameters.Select(K => $"{K.key} = @{K.key}"))}" +
+                             (whereConstraints.Count == 0 ? ";" : $" WHERE {String.Join(" AND ", whereConstraints)};");
+
+            return (cmdText, parameters.Select(P => (P.param, P.value)).Concat(mapping.WhereConsts.Select(W => ($"@{W.key}", W.value))).ToList());
+        }
     }
 }

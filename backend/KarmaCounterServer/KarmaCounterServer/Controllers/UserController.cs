@@ -70,5 +70,8 @@ namespace KarmaCounterServer.Controllers
         public async Task<User> Get(string login) =>
             await Global.DI.Resolve<UserService>().GetUserByLogin(login);
 
+        [HttpGet]
+        public async Task<List<RuleAction>> GetActions(long userId) =>
+            await Global.DI.Resolve<UserService>().GetActions(userId);
     }
 }

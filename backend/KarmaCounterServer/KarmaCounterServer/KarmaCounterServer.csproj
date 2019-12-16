@@ -168,6 +168,7 @@
     <Compile Include="Dto\RegistrationForm.cs" />
     <Compile Include="Dto\RuleForm.cs" />
     <Compile Include="Dto\RuleActionForm.cs" />
+    <Compile Include="Dto\SetCustomDataForm.cs" />
     <Compile Include="Exceptions\ForbiddenException.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Exceptions\InvalidSessionException.cs" />
@@ -179,7 +180,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ModelMapping\AttributeTemplates\Action\ActionInsert.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectByGroup.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectInserted.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectWhereGroup.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectWhereUser.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectWhereRule.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectWhere.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelect.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectForeign.cs" />
@@ -198,6 +203,7 @@
     <Compile Include="ModelMapping\AttributeTemplates\Invitation\InvitationSelectForeign.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Invitation\InvitationSelectWhereUser.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Invitation\InvitationSelectWhere.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Membership\MembershipUpdate.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Membership\MembershipSelectInserted.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Membership\MembershipInsert.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Membership\MembershipSelect.cs" />
@@ -218,6 +224,7 @@
     <Compile Include="ModelMapping\AttributeTemplates\SelectIgnore.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\TableAttribute.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\User\UserInsert.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\User\UserUpdate.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\User\UserSelect.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\User\UserSelectInserted.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\User\UserSelectWhere.cs" />

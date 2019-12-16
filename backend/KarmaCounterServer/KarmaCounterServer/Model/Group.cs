@@ -15,6 +15,8 @@ namespace KarmaCounterServer.Model
     [Table("karma_groups", "id")]
     public class Group : IModelElement
     {
+        [ActionSelectWhereGroup("id")]
+
         [RuleSelectWhereGroup("id")]
         [RuleInsert("id")]
 
@@ -25,6 +27,7 @@ namespace KarmaCounterServer.Model
         [InvitationInsert("id")]
 
         [MembershipSelectWhereGroup("id")]
+        [MembershipUpdate("id")]
         [MembershipInsert("id")]
         
         [GroupSelectInserted("id")]

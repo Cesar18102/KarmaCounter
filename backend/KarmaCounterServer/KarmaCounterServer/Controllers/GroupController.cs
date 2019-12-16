@@ -67,12 +67,29 @@ namespace KarmaCounterServer.Controllers
             return await Global.DI.Resolve<RuleService>().AddRule(ruleForm);
         }
 
+        [HttpPost]
+        public async Task<Membership> UpdateCustomData([FromBody] SetCustomDataForm customDataForm)
+        {
+            if (!ModelState.IsValid || customDataForm == null || !customDataForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<GroupService>().UpdateCustomData(customDataForm);
+        }
+
         [HttpGet]
         public async Task<List<Group>> GetAll() =>
             await Global.DI.Resolve<GroupService>().GetAll();
 
         [HttpGet]
-        public async Task<Group> Get(long groupId) =>
-            await Global.DI.Resolve<GroupService>().GetById(groupId);
+        public async Task<Group> Get(long id) =>
+            await Global.DI.Resolve<GroupService>().GetById(id);
+
+        [HttpGet]
+        public async Task<List<RuleAction>> GetActionsByGroup(long groupId) =>
+            await Global.DI.Resolve<GroupService>().GetActionsByGroup(groupId);
+
+        [HttpGet]
+        public async Task<List<RuleAction>> GetActionsByRule(long ruleId) =>
+            await Global.DI.Resolve<GroupService>().GetActionsByRule(ruleId);
     }
 }

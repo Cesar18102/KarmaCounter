@@ -120,8 +120,10 @@ namespace KarmaCounterServer.ModelMapping
                     FN attr = P.GetCustomAttribute<FN>();
 
                     if (typeof(IModelElement).IsAssignableFrom(P.PropertyType))
-                        return A.Append(MapFromModel<TB, FN, FK, WC>(P.PropertyType, P.GetValue(mask) as IModelElement).KeysValues.
-                                                                                 Select(KV => (attr.Name, KV.alias, KV.value)).First()).ToList();
+                    {
+                        DbMappingInfo info = MapFromModel<TB, FN, FK, WC>(P.PropertyType, P.GetValue(mask) as IModelElement);
+                        return info.KeysValues.Count == 0? A : A.Append(info.KeysValues.Select(KV => (attr.Name, KV.alias, KV.value)).First()).ToList();
+                    }
 
                     return A.Append((attr.Name, attr.Alias, attr.MapValue ? (attr.DefaultValue ?? (mask == null ? null : P.GetValue(mask))) : null)).ToList();
                 }).ToList();

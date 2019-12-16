@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Autofac;
 
@@ -18,7 +19,7 @@ namespace KarmaCounterServer.Services
             KeccakEncoder encoder = new KeccakEncoder();
             string encodedPassword = encoder.Encode(new KeccakEncoder.ToBeHashed(KeccakEncoder.HashType.String, registrationForm.Password));
 
-            User user = new User(registrationForm.Login, encodedPassword, registrationForm.Email);
+            User user = new User(registrationForm.Login, encodedPassword, registrationForm.Email, 0);
 
             if (await Global.DI.Resolve<UserDataAccess>().GetByLogin(user.Login) != null)
                 throw new ConflictException("User");
@@ -56,6 +57,12 @@ namespace KarmaCounterServer.Services
                 throw new NotFoundException("User");
 
             return user;
+        }
+
+        public async Task<List<RuleAction>> GetActions(long userId)
+        {
+            User user = await GetUserById(userId); //may throw not found exception
+            return await Global.DI.Resolve<RuleActionDataAccess>().GetByUser(user);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace KarmaCounterServer.Model
     public class RuleAction : IModelElement
     {
         [ActionSelectInserted("id")]
+        [ActionSelectByGroup("id")]
         [ActionSelectWhere("id")]
         [ActionSelect("id")]
 
@@ -29,18 +30,21 @@ namespace KarmaCounterServer.Model
         [JsonProperty("rule")]
         public Rule ActionObject { get; private set; }
 
+        [ActionSelectByGroup("date_time")]
         [ActionSelect("date_time")]
         [ActionInsert("date_time")]
 
         [JsonProperty("time_stamp")]
         public DateTime TimeStamp { get; private set; }
 
+        [ActionSelectByGroup("violated")]
         [ActionSelect("violated")]
         [ActionInsert("violated")]
 
         [JsonProperty("violated")]
         public bool Violated { get; private set; }
 
+        [ActionSelectByGroup("fee")]
         [ActionSelect("fee")]
         [ActionInsert("fee")]
 
@@ -50,6 +54,10 @@ namespace KarmaCounterServer.Model
         public RuleAction() { }
 
         public RuleAction(long id) => Id = id;
+
+        public RuleAction(User user) => ActionSubject = user;
+
+        public RuleAction(Rule rule) => ActionObject = rule;
 
         public RuleAction(User user, Rule rule, DateTime date_time, bool violated, double fee)
         {

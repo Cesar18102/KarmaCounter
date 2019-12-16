@@ -102,12 +102,26 @@ namespace KarmaCounterServer.DataAccess
             }
         }
 
-        public override Task<User> Delete(User model)
+        public override async Task<User> Update(User model)
         {
-            throw new NotImplementedException();
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo userUpdateInfo = mapper.MapFromModel<User, TableAttribute, UserUpdate, ForeignIgnore, UserSelectWhere>(model);
+
+                (string cmdText, List<(string key, object val)> par) cmdUpdateInfo = userUpdateInfo.CreateUpdateText();
+                DbCommand cmdUpdate = CreateCommand(cmdUpdateInfo.cmdText, connection, repoFactory, cmdUpdateInfo.par);
+
+                await connection.OpenAsync();
+                await cmdUpdate.ExecuteNonQueryAsync();
+            }
+
+            return await GetById(model.Id);
         }
 
-        public override Task<User> Update(User model)
+        public override async Task<User> Delete(User model)
         {
             throw new NotImplementedException();
         }

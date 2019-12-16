@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 using SolidityEncoder;
 
@@ -19,7 +22,7 @@ namespace KarmaCounterServer.Services
         private const int MAX_FREE_GROUP_CREATIONS = 1;
         private const double GLOBAL_GROUP_CREATION_MIN_FEE = 10;
 
-        private double CalcExtraGroupCreationFee(int count) => 
+        private double CalcExtraGroupCreationFee(int count) =>
             count - MAX_FREE_GROUP_CREATIONS;
 
         private double CalcGlobalGroupCreationFee(int count) =>
@@ -106,5 +109,40 @@ namespace KarmaCounterServer.Services
 
         public async Task<List<Group>> GetAll() =>
             await Global.DI.Resolve<GroupDataAccess>().GetAll();
+
+        public async Task<List<RuleAction>> GetActionsByGroup(long groupId)
+        {
+            Group group = await GetById(groupId); //may throw not found exception
+            return await Global.DI.Resolve<RuleActionDataAccess>().GetByGroup(group);
+        }
+
+        public async Task<List<RuleAction>> GetActionsByRule(long ruleId)
+        {
+            Rule rule = await Global.DI.Resolve<RuleService>().GetById(ruleId); //may throw not found exception
+            return await Global.DI.Resolve<RuleActionDataAccess>().GetByRule(rule);
+        }
+
+        public async Task<Membership> UpdateCustomData(SetCustomDataForm customDataForm)
+        {
+            Group group = await Global.DI.Resolve<GroupService>().GetByPublicKey(customDataForm.PublicKey); //may throw not found exception
+            CheckKeys(customDataForm, group.Rights); //may throw forbidden exception
+
+            Membership membership = group.Members.SingleOrDefault(M => M.Member.Id == customDataForm.UserId);
+
+            if (membership == null)
+                throw new NotFoundException("Membership");
+
+            return await Global.DI.Resolve<MembershipDataAccess>().Update(new Membership(new Membership(membership, group), customDataForm.CustomData));
+        }
+
+        private static readonly MD5 mD5 = MD5.Create();
+        private void CheckKeys(SetCustomDataForm customDataForm, Ownership rights)
+        {
+            string rawHash = $"{rights.PrivateKey}_{customDataForm.UserId}_{customDataForm.GroupId}_{customDataForm.PublicKey}_{customDataForm.CustomData}_{rights.PrivateKey}";
+            string hash = BitConverter.ToString(mD5.ComputeHash(Encoding.UTF8.GetBytes(rawHash))).Replace("-", "").ToUpper();
+
+            if (hash != customDataForm.Hash)
+                throw new ForbiddenException("Invalid hash");
+        }
     }
 }

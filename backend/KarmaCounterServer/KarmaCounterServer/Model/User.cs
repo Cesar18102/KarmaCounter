@@ -15,6 +15,8 @@ namespace KarmaCounterServer.Model
     [Table("users", "id")]
     public class User : IModelElement
     {
+        [ActionSelectWhereUser("id")]
+        [ActionSelectByGroup("id", "user_id")]
         [ActionSelect("id", "user_id")]
         [ActionInsert("id")]
 
@@ -26,6 +28,7 @@ namespace KarmaCounterServer.Model
         [InvitationInsert("id")]
 
         [MembershipSelect("id", "member_id")]
+        [MembershipUpdate("id")]
         [MembershipInsert("id")]
 
         [GroupSelectWhereOwner("id")]
@@ -40,6 +43,7 @@ namespace KarmaCounterServer.Model
         [JsonProperty("id")]
         public long Id { get; private set; }
 
+        [ActionSelectByGroup("login")]
         [ActionSelect("login")]
         [OwnershipSelect("login")]
         [InvitationSelect("login")]
@@ -49,6 +53,7 @@ namespace KarmaCounterServer.Model
         [GroupSelect("login")]
 
         [UserSelectWhereLogin("login")]
+        [UserUpdate("login")]
         [UserSelect("login")]
         [UserInsert("login")]
 
@@ -59,6 +64,7 @@ namespace KarmaCounterServer.Model
         [JsonIgnore]
         public string Password { get; private set; }
 
+        [ActionSelectByGroup("email")]
         [ActionSelect("email")]
         [OwnershipSelect("email")]
         [InvitationSelect("email")]
@@ -67,11 +73,28 @@ namespace KarmaCounterServer.Model
         [GroupSelectSecure("email")]
         [GroupSelect("email")]
 
+        [UserUpdate("email")]
         [UserSelect("email")]
         [UserInsert("email")]
 
         [JsonProperty("email")]
         public string Email { get; private set; }
+
+        [ActionSelectByGroup("global_karma")]
+        [ActionSelect("global_karma")]
+        [OwnershipSelect("global_karma")]
+        [InvitationSelect("global_karma")]
+        [MembershipSelect("global_karma")]
+
+        [GroupSelectSecure("global_karma")]
+        [GroupSelect("global_karma")]
+
+        [UserUpdate("global_karma")]
+        [UserSelect("global_karma")]
+        [UserInsert("global_karma")]
+
+        [JsonProperty("global_karma")]
+        public double GlobalKarma { get; private set; }
 
         public User() { }
 
@@ -79,12 +102,15 @@ namespace KarmaCounterServer.Model
 
         public User(string login) => Login = login;
 
-        public User(string login, string pwd, string email) : this(login)
+        public User(string login, string pwd, string email, double global_karma) : this(login)
         {
             Password = pwd;
             Email = email;
+            GlobalKarma = global_karma;
         }
 
-        public User(long id, string login, string pwd, string email) : this(login, pwd, email) => Id = id;//?
+        public User(User user, double karma) : this(user.Id, user.Login, user.Password, user.Email, karma) { }
+
+        public User(long id, string login, string pwd, string email, double global_karma) : this(login, pwd, email, global_karma) => Id = id;
     }
 }

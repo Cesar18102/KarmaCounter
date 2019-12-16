@@ -23,6 +23,9 @@ namespace KarmaCounterServer.Services
             if (sourceGroup.Members.Exists(M => M.Member.Id == invitee.Id)) //if user is alreary member of the group
                 throw new ConflictException("Member");
 
+            if (sourceGroup.Owner.Id == inviteForm.InviteeId)
+                throw new ConflictException("Owner");
+
             if (!sourceGroup.Members.Exists(M => M.Member.Id == inviteForm.InviterSession.UserId) && sourceGroup.Owner.Id != inviteForm.InviterSession.UserId) 
                 throw new ForbiddenException("You're not a member or creator of the group"); //if invitation is illegal e.g. inviter is not member or owner of the group
 

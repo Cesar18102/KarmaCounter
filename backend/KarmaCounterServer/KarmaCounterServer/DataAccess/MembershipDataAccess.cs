@@ -76,12 +76,26 @@ namespace KarmaCounterServer.DataAccess
             }
         }
 
-        public override Task<Membership> Delete(Membership model)
+        public override async Task<Membership> Update(Membership model)
         {
-            throw new NotImplementedException();
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo membershipUpdateInfo = mapper.MapFromModel<Membership, TableAttribute, MembershipUpdate, ForeignIgnore, MembershipSelectWhere>(model);
+
+                 (string cmdText, List<(string key, object val)> par) cmdUpdateInfo = membershipUpdateInfo.CreateUpdateText();
+                DbCommand cmdUpdate = CreateCommand(cmdUpdateInfo.cmdText, connection, repoFactory, cmdUpdateInfo.par);
+
+                await connection.OpenAsync();
+                await cmdUpdate.ExecuteNonQueryAsync();
+            }
+
+            return await GetById(model.Id);
         }
 
-        public override Task<Membership> Update(Membership model)
+        public override async Task<Membership> Delete(Membership model)
         {
             throw new NotImplementedException();
         }

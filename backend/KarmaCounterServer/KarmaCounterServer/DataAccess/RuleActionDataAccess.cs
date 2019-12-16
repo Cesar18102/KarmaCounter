@@ -56,6 +56,63 @@ namespace KarmaCounterServer.DataAccess
             }
         }
 
+        public async Task<List<RuleAction>> GetByUser(User user)
+        {
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo ruleSelectInfo = mapper.MapFromModel<RuleAction, TableAttribute, ActionSelect, ActionSelectForeign, ActionSelectWhereUser>(new RuleAction(user));
+
+                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = ruleSelectInfo.CreateSelectText();
+                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+
+                await connection.OpenAsync();
+
+                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+                    return mapper.MapToModel<RuleAction, TableAttribute, ActionSelect, ActionSelectForeign>(reader);
+            }
+        }
+
+        public async Task<List<RuleAction>> GetByRule(Rule rule)
+        {
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo ruleSelectInfo = mapper.MapFromModel<RuleAction, TableAttribute, ActionSelect, ActionSelectForeign, ActionSelectWhereRule>(new RuleAction(rule));
+
+                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = ruleSelectInfo.CreateSelectText();
+                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+
+                await connection.OpenAsync();
+
+                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+                    return mapper.MapToModel<RuleAction, TableAttribute, ActionSelect, ActionSelectForeign>(reader);
+            }
+        }
+
+        public async Task<List<RuleAction>> GetByGroup(Group group)
+        {
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo ruleSelectInfo = mapper.MapFromModel<RuleAction, TableAttribute, ActionSelectByGroup, ActionSelectForeign, ActionSelectWhereGroup>(new RuleAction(new Rule(group)));
+
+                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = ruleSelectInfo.CreateSelectText();
+                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+
+                await connection.OpenAsync();
+
+                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+                    return mapper.MapToModel<RuleAction, TableAttribute, ActionSelectByGroup, ActionSelectForeign>(reader);
+            }
+        }
+
         public override Task<RuleAction> Delete(RuleAction model)
         {
             throw new System.NotImplementedException();
