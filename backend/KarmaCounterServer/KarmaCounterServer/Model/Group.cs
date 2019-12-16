@@ -7,12 +7,17 @@ using KarmaCounterServer.ModelMapping.AttributeTemplates.Group;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Membership;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Invitation;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Ownership;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Rule;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Action;
 
 namespace KarmaCounterServer.Model
 {
     [Table("karma_groups", "id")]
     public class Group : IModelElement
     {
+        [RuleSelectWhereGroup("id")]
+        [RuleInsert("id")]
+
         [OwnershipSelectWhereGroup("id")]
         [OwnershipSelect("id", "group_id")]
 
@@ -23,6 +28,7 @@ namespace KarmaCounterServer.Model
         [MembershipInsert("id")]
         
         [GroupSelectInserted("id")]
+        [GroupSelectSecure("id")]
         [GroupSelectWhere("id")]
         [GroupSelect("id")]
 
@@ -30,9 +36,9 @@ namespace KarmaCounterServer.Model
         public long Id { get; private set; }
 
         [OwnershipSelect("name")]
-
         [InvitationSelect("name")]
 
+        [GroupSelectSecure("name")]
         [GroupSelect("name")]
         [GroupInsert("name")]
 
@@ -40,9 +46,9 @@ namespace KarmaCounterServer.Model
         public string Name { get; private set; }
 
         [OwnershipSelect("description")]
-
         [InvitationSelect("description")]
 
+        [GroupSelectSecure("description")]
         [GroupSelect("description")]
         [GroupInsert("description")]
 
@@ -50,9 +56,9 @@ namespace KarmaCounterServer.Model
         public string Description { get; private set; }
 
         [OwnershipSelect("is_public")]
-
         [InvitationSelect("is_public")]
 
+        [GroupSelectSecure("is_public")]
         [GroupSelect("is_public")]
         [GroupInsert("is_public")]
 
@@ -60,9 +66,9 @@ namespace KarmaCounterServer.Model
         public bool IsPublic { get; private set; }
 
         [OwnershipSelect("is_local")]
-
         [InvitationSelect("is_local")]
 
+        [GroupSelectSecure("is_local")]
         [GroupSelect("is_local")]
         [GroupInsert("is_local")]
 
@@ -72,18 +78,25 @@ namespace KarmaCounterServer.Model
         [JsonProperty("members")]
         public List<Membership> Members { get; private set; }
 
+        [JsonProperty("rules")]
+        public List<Rule> Rules { get; private set; }
+
         [OwnershipSelectForeign("owner_id", "id")]
 
         [GroupSelectForeign("owner_id", "id")]
         [GroupInsertForeign("owner_id", "id")]
 
-        [JsonIgnore]
+        [JsonProperty("rights")]
         public Ownership Rights { get; set; }
 
         [JsonProperty("owner")]
         public User Owner => Rights?.Owner;
 
-        public Group() => Members = new List<Membership>();
+        public Group()
+        {
+            Members = new List<Membership>();
+            Rules = new List<Rule>();
+        }
 
         public Group(long id) : this() => Id = id;
 

@@ -10,6 +10,8 @@ namespace KarmaCounterServer.Model
     public class Ownership : IModelElement
     {
         [OwnershipSelect("id")]
+
+        [GroupSelectSecure("id", "ownership_id")]
         [GroupSelect("id", "ownership_id")]
 
         [JsonProperty("id")]
@@ -23,12 +25,10 @@ namespace KarmaCounterServer.Model
         [JsonProperty("owner")]
         public User Owner { get; private set; }
 
-        //[JsonProperty("group")]
-        //public Group OwnedGroup { get; private set; }
-
         [OwnershipSelect("public_key")]
 
-        [GroupSelect("public_key")]
+        [GroupSelectWherePublicKey("public_key")]
+        [GroupSelectSecure("public_key")]
         [GroupInsert("public_key")]
 
         [JsonProperty("public_key")]
@@ -36,7 +36,7 @@ namespace KarmaCounterServer.Model
 
         [OwnershipSelect("private_key")]
 
-        [GroupSelect("private_key")]
+        [GroupSelectSecure("private_key")]
         [GroupInsert("private_key")]
 
         [JsonProperty("private_key")]
@@ -48,13 +48,10 @@ namespace KarmaCounterServer.Model
 
         public Ownership(User owner) => Owner = owner;
 
-        //public Ownership(Group group) => OwnedGroup = group;
+        public Ownership(string public_key) => PublicKey = public_key;
 
-        public Ownership(long id, User owner, string public_key, string private_key) : this(owner, public_key, private_key)
-        {
-            Id = id;
-            //OwnedGroup = owned_group;
-        }
+        public Ownership(long id, User owner, string public_key, string private_key) : 
+            this(owner, public_key, private_key) => Id = id;
 
         public Ownership(User owner, string public_key, string private_key)
         {

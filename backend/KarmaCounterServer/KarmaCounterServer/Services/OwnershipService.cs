@@ -27,13 +27,5 @@ namespace KarmaCounterServer.Services
 
             return ownership;
         }
-
-        public async Task<List<Ownership>> GetUserOwnerships(CheckedGetForm checkedGetForm)
-        {
-            if (!(await Global.DI.Resolve<SessionService>().CheckSession(checkedGetForm.Session)).Result) //if user is unauthorized
-                throw new InvalidSessionException();
-
-            return await Global.DI.Resolve<OwnershipDataAccess>().GetByOwnerUserId(checkedGetForm.Session.UserId);
-        }
     }
 }

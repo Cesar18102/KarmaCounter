@@ -38,24 +38,24 @@ namespace KarmaCounterServer.DataAccess
             }
         }
 
-        public async Task<List<Ownership>> GetByOwnerUserId(long id)
-        {
-            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
-            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+        //public async Task<List<Ownership>> GetByOwnerUserId(long id)
+        //{
+        //    IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+        //    ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
 
-            using (DbConnection connection = repoFactory.GetConnection())
-            {
-                DbMappingInfo ownershipSelectInfo = mapper.MapFromModel<Ownership, TableAttribute, OwnershipSelect, OwnershipSelectForeign, OwnershipSelectWhereUser>(new Ownership(new User(id)));
+        //    using (DbConnection connection = repoFactory.GetConnection())
+        //    {
+        //        DbMappingInfo ownershipSelectInfo = mapper.MapFromModel<Ownership, TableAttribute, OwnershipSelect, OwnershipSelectForeign, OwnershipSelectWhereUser>(new Ownership(new User(id)));
 
-                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = ownershipSelectInfo.CreateSelectText();
-                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+        //        (string cmdText, List<(string key, object val)> par) cmdSelectInfo = ownershipSelectInfo.CreateSelectText();
+        //        DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
 
-                await connection.OpenAsync();
+        //        await connection.OpenAsync();
 
-                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
-                    return mapper.MapToModel<Ownership, TableAttribute, OwnershipSelect, OwnershipSelectForeign>(reader);
-            }
-        }
+        //        using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+        //            return mapper.MapToModel<Ownership, TableAttribute, OwnershipSelect, OwnershipSelectForeign>(reader);
+        //    }
+        //}
 
         public override Task<Ownership> Delete(Ownership model)
         {

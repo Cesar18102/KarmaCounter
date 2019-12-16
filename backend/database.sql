@@ -37,7 +37,7 @@ CREATE TABLE group_members(
 CREATE TABLE group_rules_fees(
     id INTEGER PRIMARY KEY IDENTITY(1,1),
     rule_title NVARCHAR(255) NOT NULL,
-    rule_NTEXT NTEXT,
+    rule_text NTEXT,
     fee_formula NTEXT NOT NULL,
     group_id INTEGER NOT NULL,
     FOREIGN KEY(group_id) REFERENCES karma_groups(id) ON UPDATE CASCADE ON DELETE CASCADE
@@ -45,7 +45,6 @@ CREATE TABLE group_rules_fees(
 
 CREATE TABLE rules_actions(
     id INTEGER PRIMARY KEY IDENTITY(1,1),
-    group_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     rule_id INTEGER NOT NULL,
     date_time DATETIME NOT NULL,

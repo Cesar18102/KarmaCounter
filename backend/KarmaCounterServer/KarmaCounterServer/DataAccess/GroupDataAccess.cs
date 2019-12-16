@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -10,8 +11,7 @@ using KarmaCounterServer.Model;
 using KarmaCounterServer.ModelMapping;
 using KarmaCounterServer.ModelMapping.AttributeTemplates;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Group;
-using System;
-using System.Collections;
+using System.Linq;
 
 namespace KarmaCounterServer.DataAccess
 {
@@ -36,7 +36,7 @@ namespace KarmaCounterServer.DataAccess
                     newGroup = mapper.MapToModelSingle<Group, TableAttribute, GroupSelectInserted, ForeignIgnore>(reader);
             }
 
-            return await GetById(newGroup.Id);
+            return await GetById<GroupSelectSecure>(newGroup.Id);
         }
 
         public async Task<List<Group>> GetAll()
@@ -58,14 +58,15 @@ namespace KarmaCounterServer.DataAccess
             }
         }
 
-        public async Task<List<Group>> GetByOwner(User owner)
+        public async Task<List<Group>> GetByOwner<T>(User owner)
+            where T : DbMappingAttribute
         {
             IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
             ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
 
             using (DbConnection connection = repoFactory.GetConnection())
             {
-                DbMappingInfo groupSelectInfo = mapper.MapFromModel<Group, TableAttribute, GroupSelect, GroupSelectForeign, GroupSelectWhereOwner>(new Group(new Ownership(owner)));
+                DbMappingInfo groupSelectInfo = mapper.MapFromModel<Group, TableAttribute, T, GroupSelectForeign, GroupSelectWhereOwner>(new Group(new Ownership(owner)));
 
                 (string cmdText, List<(string key, object val)> par) cmdSelectInfo = groupSelectInfo.CreateSelectText();
                 DbCommand cmd = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
@@ -73,11 +74,12 @@ namespace KarmaCounterServer.DataAccess
                 await connection.OpenAsync();
 
                 using (DbDataReader reader = await cmd.ExecuteReaderAsync())
-                    return mapper.MapToModel<Group, TableAttribute, GroupSelect, GroupSelectForeign>(reader);
+                    return mapper.MapToModel<Group, TableAttribute, T, GroupSelectForeign>(reader);
             }
         }
 
-        public async Task<Group> GetById(long id)
+        public async Task<Group> GetById<T>(long id)
+            where T : DbMappingAttribute
         {
             IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
             ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
@@ -85,7 +87,7 @@ namespace KarmaCounterServer.DataAccess
 
             using (DbConnection connection = repoFactory.GetConnection())
             {
-                DbMappingInfo newGroupMappringInfo = mapper.MapFromModel<Group, TableAttribute, GroupSelect, GroupSelectForeign, GroupSelectWhere>(new Group(id));
+                DbMappingInfo newGroupMappringInfo = mapper.MapFromModel<Group, TableAttribute, T, GroupSelectForeign, GroupSelectWhere>(new Group(id));
 
                 (string cmdText, List<(string key, object val)> par) cmdSelectInfo = newGroupMappringInfo.CreateSelectText();
                 DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
@@ -93,23 +95,68 @@ namespace KarmaCounterServer.DataAccess
                 await connection.OpenAsync();
 
                 using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
-                    group = mapper.MapToModelSingle<Group, TableAttribute, GroupSelect, GroupSelectForeign>(reader);
+                    group = mapper.MapToModelSingle<Group, TableAttribute, T, GroupSelectForeign>(reader);
             }
 
-            foreach (Membership member in await Global.DI.Resolve<MembershipDataAccess>().GetGroupMemberships(id))
-                group.Members.Add(member);
+            return await AttachRules(await AttachMemberships(group));
+        }
 
+        public async Task<Group> GetByPublicKey(string public_key)
+        {
+            IRepoFactory repoFactory = Global.DI.Resolve<IRepoFactory>();
+            ModelMapper mapper = Global.DI.Resolve<ModelMapper>();
+            Group group = null;
+
+            using (DbConnection connection = repoFactory.GetConnection())
+            {
+                DbMappingInfo groupSelectInfo = mapper.MapFromModel<Group, TableAttribute, GroupSelectSecure, GroupSelectForeign, GroupSelectWherePublicKey>(new Group(new Ownership(public_key)));
+
+                (string cmdText, List<(string key, object val)> par) cmdSelectInfo = groupSelectInfo.CreateSelectText();
+                DbCommand cmdSelect = CreateCommand(cmdSelectInfo.cmdText, connection, repoFactory, cmdSelectInfo.par);
+
+                await connection.OpenAsync();
+
+                using (DbDataReader reader = await cmdSelect.ExecuteReaderAsync())
+                    group = mapper.MapToModelSingle<Group, TableAttribute, GroupSelectSecure, GroupSelectForeign>(reader);
+            }
+
+            return await AttachRules(await AttachMemberships(group));
+        }
+
+        //private async Task<List<Group>> AttachMemberships(List<Group> groups)
+        //{
+        //    foreach (Group group in groups)
+        //        await AttachMemberships(group);
+        //    return groups;
+        //}
+
+        //private async Task<List<Group>> AttachRules(List<Group> groups)
+        //{
+        //    foreach (Group group in groups)
+        //        await AttachRules(group);
+        //    return groups;
+        //}
+
+        private async Task<Group> AttachMemberships(Group group) 
+        {
+            group.Members.AddRange(await Global.DI.Resolve<MembershipDataAccess>().GetGroupMemberships(group.Id));
+            return group;
+        }
+
+        private async Task<Group> AttachRules(Group group) 
+        {
+            group.Rules.AddRange(await Global.DI.Resolve<RuleDataAccess>().GetByGroup(group.Id));
             return group;
         }
 
         public override Task<Group> Delete(Group model)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override Task<Group> Update(Group model)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\build\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\build\Microsoft.CodeAnalysis.Analyzers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -55,6 +56,18 @@
     <Reference Include="Logger">
       <HintPath>lib\Logger.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.3.5.0-beta1-final\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.3.5.0-beta1-final\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Scripting, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Scripting.3.5.0-beta1-final\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Scripting, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Scripting.Common.3.5.0-beta1-final\lib\netstandard2.0\Microsoft.CodeAnalysis.Scripting.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nethereum.Hex, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Hex.3.4.0\lib\net451\Nethereum.Hex.dll</HintPath>
@@ -65,17 +78,41 @@
     <Reference Include="Nethereum.Util, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Util.3.4.0\lib\net451\Nethereum.Util.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SolidityEncoder">
       <HintPath>lib\SolidityEncoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.6.0\lib\netstandard2.0\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -113,14 +150,13 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataAccess\DataAccess.cs" />
-    <Compile Include="DataAccess\Exceptions\DbExceptionParser.cs" />
-    <Compile Include="DataAccess\Exceptions\DuplicateKeyException.cs" />
-    <Compile Include="DataAccess\Exceptions\UnknownDbException.cs" />
     <Compile Include="DataAccess\GroupDataAccess.cs" />
     <Compile Include="DataAccess\IDataAccess.cs" />
     <Compile Include="DataAccess\InvitationDataAccess.cs" />
     <Compile Include="DataAccess\MembershipDataAccess.cs" />
     <Compile Include="DataAccess\OwnershipDataAccess.cs" />
+    <Compile Include="DataAccess\RuleActionDataAccess.cs" />
+    <Compile Include="DataAccess\RuleDataAccess.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
     <Compile Include="Dto\CheckedGetForm.cs" />
     <Compile Include="Dto\DtoForm.cs" />
@@ -130,8 +166,9 @@
     <Compile Include="Dto\JoinGroupForm.cs" />
     <Compile Include="Dto\LoginForm.cs" />
     <Compile Include="Dto\RegistrationForm.cs" />
+    <Compile Include="Dto\RuleForm.cs" />
+    <Compile Include="Dto\RuleActionForm.cs" />
     <Compile Include="Exceptions\ForbiddenException.cs" />
-    <Compile Include="Exceptions\NotLegalInvitationException.cs" />
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Exceptions\InvalidSessionException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
@@ -141,9 +178,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionInsert.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectInserted.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectWhere.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelect.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Action\ActionSelectForeign.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\ForeignIgnore.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Group\GroupInsert.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Group\GroupInsertForeign.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Group\GroupSelectSecure.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Group\GroupSelectForeign.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Group\GroupSelectInserted.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Group\GroupSelect.cs" />
@@ -163,8 +206,15 @@
     <Compile Include="ModelMapping\AttributeTemplates\Membership\MembershipSelectWhere.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Ownership\OwnershipSelect.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Ownership\OwnershipSelectForeign.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Group\GroupSelectWherePublicKey.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Ownership\OwnershipSelectWhereUser.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\Ownership\OwnershipSelectWhereGroup.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Rule\RuleInsert.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Rule\RuleSelect.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Rule\RuleSelectForeign.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Rule\RuleSelectInserted.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Rule\RuleSelectWhere.cs" />
+    <Compile Include="ModelMapping\AttributeTemplates\Rule\RuleSelectWhereGroup.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\SelectIgnore.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\TableAttribute.cs" />
     <Compile Include="ModelMapping\AttributeTemplates\User\UserInsert.cs" />
@@ -185,6 +235,8 @@
     <Compile Include="Model\Invitation.cs" />
     <Compile Include="Model\Membership.cs" />
     <Compile Include="Model\Ownership.cs" />
+    <Compile Include="Model\Rule.cs" />
+    <Compile Include="Model\RuleAction.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +244,7 @@
     <Compile Include="Services\GroupService.cs" />
     <Compile Include="Services\GroupInvitationService.cs" />
     <Compile Include="Services\OwnershipService.cs" />
+    <Compile Include="Services\RuleService.cs" />
     <Compile Include="Services\SessionService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
@@ -204,7 +257,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -237,6 +293,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\build\Microsoft.CodeAnalysis.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.6\build\Microsoft.CodeAnalysis.Analyzers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

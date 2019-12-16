@@ -50,13 +50,17 @@ namespace KarmaCounterServer.Controllers
         }
 
         [HttpPost]
-        public async Task<List<Ownership>> GetOwnerships([FromBody] CheckedGetForm getForm)
+        public async Task<List<Group>> GetOwnedGroups([FromBody] CheckedGetForm getForm)
         {
             if (!ModelState.IsValid || getForm == null || !getForm.IsValid)
                 throw new BadRequestException(ModelState);
 
-            return await Global.DI.Resolve<OwnershipService>().GetUserOwnerships(getForm);
+            return await Global.DI.Resolve<GroupService>().GetOwnedGroups(getForm);
         }
+
+        [HttpGet]
+        public async Task<List<Group>> GetOwnedGroups(long userId) =>
+            (await Global.DI.Resolve<GroupService>().GetByOwnerId(userId)).owned;
 
         [HttpGet]
         public async Task<User> Get(long id) =>

@@ -40,16 +40,39 @@ namespace KarmaCounterServer.Controllers
             return await Global.DI.Resolve<GroupInvitationService>().Invite(inviteForm);
         }
 
-        [HttpGet]
-        public async Task<List<Group>> GetByOwnerId(long id) =>
-            (await Global.DI.Resolve<GroupService>().GetByOwnerId(id)).owned;
+        [HttpPost]
+        public async Task<RuleAction> AccountRuleViolation([FromBody] RuleActionForm actionForm)
+        {
+            if (!ModelState.IsValid || actionForm == null || !actionForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<RuleService>().AccountRuleViolation(actionForm);
+        }
+
+        [HttpPost]
+        public async Task<RuleAction> AccountRuleAdherence([FromBody] RuleActionForm actionForm)
+        {
+            if (!ModelState.IsValid || actionForm == null || !actionForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<RuleService>().AccountRuleAdherence(actionForm);
+        }
+
+        [HttpPost]
+        public async Task<Rule> AddRule([FromBody] RuleForm ruleForm)
+        {
+            if (!ModelState.IsValid || ruleForm == null || !ruleForm.IsValid)
+                throw new BadRequestException(ModelState);
+
+            return await Global.DI.Resolve<RuleService>().AddRule(ruleForm);
+        }
 
         [HttpGet]
         public async Task<List<Group>> GetAll() =>
             await Global.DI.Resolve<GroupService>().GetAll();
 
         [HttpGet]
-        public async Task<Group> Get(long id) =>
-            await Global.DI.Resolve<GroupService>().GetById(id);
+        public async Task<Group> Get(long groupId) =>
+            await Global.DI.Resolve<GroupService>().GetById(groupId);
     }
 }

@@ -20,11 +20,11 @@ namespace KarmaCounterServer.Services
             User invitee = await Global.DI.Resolve<UserService>().GetUserById(inviteForm.InviteeId); //may throw not found exception
             Group sourceGroup = await Global.DI.Resolve<GroupService>().GetById(inviteForm.GroupId); //may throw not found exception
 
-            if (sourceGroup.Members.Exists(M => M.Id == invitee.Id)) //if user is alreary member of the group
+            if (sourceGroup.Members.Exists(M => M.Member.Id == invitee.Id)) //if user is alreary member of the group
                 throw new ConflictException("Member");
 
-            if (!sourceGroup.Members.Exists(M => M.Id == inviteForm.InviterSession.UserId) && sourceGroup.Owner.Id != inviteForm.InviterSession.UserId) 
-                throw new NotLegalInvitationException(); //if invitation is illegal e.g. inviter is not member or owner of the group
+            if (!sourceGroup.Members.Exists(M => M.Member.Id == inviteForm.InviterSession.UserId) && sourceGroup.Owner.Id != inviteForm.InviterSession.UserId) 
+                throw new ForbiddenException("You're not a member or creator of the group"); //if invitation is illegal e.g. inviter is not member or owner of the group
 
             return await Global.DI.Resolve<InvitationDataAccess>().Create(new Invitation(invitee, sourceGroup));
         }
@@ -37,13 +37,13 @@ namespace KarmaCounterServer.Services
             return await GetInvitations(session.UserId); //may throw not found exception
         }
 
+        public async Task<bool> CheckInvitation(long userId, long groupId) =>
+            (await GetInvitations(userId)).Exists(I => I.SourceGroup.Id == groupId);
+
         private async Task<List<Invitation>> GetInvitations(long userId)
         {
             User invitee = await Global.DI.Resolve<UserService>().GetUserById(userId); //may throw not found exception
             return await Global.DI.Resolve<InvitationDataAccess>().GetByUserId(invitee.Id);
         }
-
-        public async Task<bool> CheckInvitation(long userId, long groupId) => 
-            (await GetInvitations(userId)).Exists(I => I.SourceGroup.Id == groupId);
     }
 }

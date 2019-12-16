@@ -8,12 +8,16 @@ using KarmaCounterServer.ModelMapping.AttributeTemplates.Group;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Membership;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Invitation;
 using KarmaCounterServer.ModelMapping.AttributeTemplates.Ownership;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Action;
 
 namespace KarmaCounterServer.Model
 {
     [Table("users", "id")]
     public class User : IModelElement
     {
+        [ActionSelect("id", "user_id")]
+        [ActionInsert("id")]
+
         [OwnershipSelectWhereUser("id")]
         [OwnershipSelect("id", "user_id")]
 
@@ -25,6 +29,7 @@ namespace KarmaCounterServer.Model
         [MembershipInsert("id")]
 
         [GroupSelectWhereOwner("id")]
+        [GroupSelectSecure("id", "owner_id")]
         [GroupSelect("id", "owner_id")]
         [GroupInsert("id")]
         
@@ -35,10 +40,12 @@ namespace KarmaCounterServer.Model
         [JsonProperty("id")]
         public long Id { get; private set; }
 
+        [ActionSelect("login")]
         [OwnershipSelect("login")]
-
         [InvitationSelect("login")]
         [MembershipSelect("login")]
+        
+        [GroupSelectSecure("login")]
         [GroupSelect("login")]
 
         [UserSelectWhereLogin("login")]
@@ -52,10 +59,12 @@ namespace KarmaCounterServer.Model
         [JsonIgnore]
         public string Password { get; private set; }
 
+        [ActionSelect("email")]
         [OwnershipSelect("email")]
-
         [InvitationSelect("email")]
         [MembershipSelect("email")]
+
+        [GroupSelectSecure("email")]
         [GroupSelect("email")]
 
         [UserSelect("email")]

@@ -10,6 +10,7 @@ using KarmaCounterServer.Dto;
 using KarmaCounterServer.Model;
 using KarmaCounterServer.DataAccess;
 using KarmaCounterServer.Exceptions;
+using KarmaCounterServer.ModelMapping.AttributeTemplates.Group;
 
 namespace KarmaCounterServer.Services
 {
@@ -24,7 +25,7 @@ namespace KarmaCounterServer.Services
         private double CalcGlobalGroupCreationFee(int count) =>
             GLOBAL_GROUP_CREATION_MIN_FEE + count - MAX_FREE_GROUP_CREATIONS;
 
-        public async Task<Ownership> CreateGroup(GroupForm groupForm)
+        public async Task<Ownership> CreateGroup(GroupForm groupForm, bool paid = false)
         {
             KeccakEncoder encoder = new KeccakEncoder();
             string publicKey = encoder.Encode(new KeccakEncoder.ToBeHashed(KeccakEncoder.HashType.String, Guid.NewGuid().ToString()));
@@ -35,10 +36,10 @@ namespace KarmaCounterServer.Services
 
             (User owner, List<Group> owned) owningInfo = await GetByOwnerId(groupForm.CreatorSession.UserId); //may throw not found exception
 
-            if (owningInfo.owned.Count >= MAX_FREE_GROUP_CREATIONS) //ask for payment if some groups already created
+            if (!paid && owningInfo.owned.Count >= MAX_FREE_GROUP_CREATIONS) //ask for payment if some groups already created
                 throw new PaymentNeededException(CalcExtraGroupCreationFee(owningInfo.owned.Count + 1));
 
-            if (!groupForm.IsLocal) //ask for payment if creating global group
+            if (!paid && !groupForm.IsLocal) //ask for payment if creating global group
                 throw new PaymentNeededException(CalcGlobalGroupCreationFee(owningInfo.owned.Count + 1));
 
             Ownership ownership = new Ownership(owningInfo.owner, publicKey, privateKey);
@@ -70,7 +71,7 @@ namespace KarmaCounterServer.Services
 
         public async Task<Group> GetById(long id)
         {
-            Group group = await Global.DI.Resolve<GroupDataAccess>().GetById(id);
+            Group group = await Global.DI.Resolve<GroupDataAccess>().GetById<GroupSelect>(id);
 
             if (group == null)
                 throw new NotFoundException("Group");
@@ -81,7 +82,26 @@ namespace KarmaCounterServer.Services
         public async Task<(User owner, List<Group> owned)> GetByOwnerId(long userId)
         {
             User owner = await Global.DI.Resolve<UserService>().GetUserById(userId); //may throw not found exception
-            return (owner, await Global.DI.Resolve<GroupDataAccess>().GetByOwner(owner));
+            return (owner, await Global.DI.Resolve<GroupDataAccess>().GetByOwner<GroupSelect>(owner));
+        }
+
+        public async Task<List<Group>> GetOwnedGroups(CheckedGetForm checkedGetForm)
+        {
+            if (!(await Global.DI.Resolve<SessionService>().CheckSession(checkedGetForm.Session)).Result) //if user is unauthorized
+                throw new InvalidSessionException();
+
+            User owner = await Global.DI.Resolve<UserService>().GetUserById(checkedGetForm.Session.UserId); //may throw not found exception
+            return await Global.DI.Resolve<GroupDataAccess>().GetByOwner<GroupSelectSecure>(owner);
+        }
+
+        public async Task<Group> GetByPublicKey(string public_key)
+        {
+            Group group = await Global.DI.Resolve<GroupDataAccess>().GetByPublicKey(public_key);
+
+            if (group == null)
+                throw new NotFoundException("Public key");
+
+            return group;
         }
 
         public async Task<List<Group>> GetAll() =>
