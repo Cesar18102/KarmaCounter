@@ -17,7 +17,8 @@ namespace KarmaCounter.Server.Interaction
     {
         private const int RESEND_DELAY = 1000;
         private const int NOT_RESPONDING_MAX_COUNT = 10;
-        private static readonly Regex NOT_RESPONDING_ANSWER_PATTERN = new Regex("(<!DOCTYPE HTML)|(<!DOCTYPE html)|(An error has occurred)");
+        private static readonly Regex NOT_RESPONDING_ANSWER_PATTERN = new Regex("(<!DOCTYPE HTML)|(<!DOCTYPE html)");
+        private static readonly Regex ERROR_RESPONSE_ANSWER_PATTERN = new Regex("(An error has occurred)");
 
         private IServerCommunicator Server { get; set; }
         private int NotRespondingCount = 0;
@@ -37,7 +38,12 @@ namespace KarmaCounter.Server.Interaction
                 if (NOT_RESPONDING_ANSWER_PATTERN.IsMatch(response.Data))
                 {
                     NotRespondingCount++;
-
+                    Thread.Sleep(RESEND_DELAY);
+                    return await SendQuery(query, repeat, container);
+                } 
+                else if(ERROR_RESPONSE_ANSWER_PATTERN.IsMatch(response.Data))
+                {
+                    NotRespondingCount++;
                     if (repeat)
                     {
                         Thread.Sleep(RESEND_DELAY);

@@ -16,5 +16,11 @@ namespace KarmaCounter.Pages
         {
             InitializeComponent();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            App.Current.MainPage = new AuthPage();
+            return true;
+        }
     }
 }
