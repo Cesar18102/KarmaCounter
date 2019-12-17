@@ -7,13 +7,20 @@ namespace LoadBalancer.Models
     [JsonObject]
     public class Server : IComparable
     {
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
+        [JsonIgnore]
+        public Uri Ip { get; private set; }
+
+        [JsonProperty("domain")]
+        public Uri Domain { get; private set; }
 
         [JsonProperty("session_count")]
         public int UserCount { get; private set; }
 
-        public Server(string url) => Url = new Uri(url);
+        public Server(string ip, string domain)
+        {
+            Ip = new Uri(ip);
+            Domain = new Uri(domain);
+        }
 
         public void Connect() => ++UserCount;
         public void Disconnect() => --UserCount;

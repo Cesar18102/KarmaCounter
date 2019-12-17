@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KarmaCounter.Pages.App">
+    <Application.Resources>
+        
+        <Color x:Key="BarBackColor">#67A93D</Color>
+        <Color x:Key="BarTextColor">#3D3D3C</Color>
+
+        <Color x:Key="ContentBackColor">#FFFFFF</Color>
+        <Color x:Key="ContentTextColor">#3D3D3C</Color>
+
+        <Color x:Key="AdditionalColor">#67A93D</Color>
+        <Color x:Key="InactiveTransperentColor">#C0808080</Color>
+
+        <Color x:Key="InvalidColor">#CD5C5C</Color>
+        <Color x:Key="ValidColor">#FFFFFF</Color>
+
+        <x:Single x:Key="PopupCornerRaius">10</x:Single>
+
+        <x:Double x:Key="LargeFontSize">24</x:Double>
+        <x:Double x:Key="MediumFontSize">20</x:Double>
+        <x:Double x:Key="SmallFontSize">16</x:Double>
+        <x:Double x:Key="MicroFontSize">12</x:Double>
+
+        <Style x:Key="ContentLabel" TargetType="Label" ApplyToDerivedTypes="True">
+            <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/>
+        </Style>
+
+        <Style x:Key="LargeTextLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}" ApplyToDerivedTypes="True">
+            <Setter Property="FontSize" Value="{StaticResource LargeFontSize}"/>
+        </Style>
+
+        <Style x:Key="MediumTextLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}" ApplyToDerivedTypes="True">
+            <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+        </Style>
+
+        <Style x:Key="SmallTextLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}" ApplyToDerivedTypes="True">
+            <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/>
+        </Style>
+
+        <Style x:Key="MicroTextLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}" ApplyToDerivedTypes="True">
+            <Setter Property="FontSize" Value="{StaticResource MicroFontSize}"/>
+        </Style>
+
+        <Style x:Key="CommonButton" TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource BarBackColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+
+        <Style x:Key="HeaderLabel" TargetType="Label" BasedOn="{StaticResource LargeTextLabel}" ApplyToDerivedTypes="True">
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource BarBackColor}"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="FillLayout" TargetType="Layout" ApplyToDerivedTypes="True">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        </Style>
+
+        <Style x:Key="FillAbsoluteLayoutChild" TargetType="View" ApplyToDerivedTypes="True">
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1"/>
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
+        </Style>
+
+        <Style x:Key="PopupPageLayout" TargetType="Layout" BasedOn="{StaticResource FillLayout}" ApplyToDerivedTypes="True">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style x:Key="PopupPageContentOuterLayout" TargetType="Layout" BasedOn="{StaticResource FillAbsoluteLayoutChild}" ApplyToDerivedTypes="True"/>
+        <Style x:Key="PopupPageContentInnerLayout" TargetType="Layout" BasedOn="{StaticResource FillLayout}" ApplyToDerivedTypes="True"/>
+        <Style x:Key="PopupBackgroud" TargetType="ContentView" BasedOn="{StaticResource FillAbsoluteLayoutChild}" ApplyToDerivedTypes="True"/>
+
+        <Style x:Key="PopupOuterFrame" TargetType="Frame" ApplyToDerivedTypes="True">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style x:Key="PopupInnerFrame" TargetType="Frame" ApplyToDerivedTypes="True">
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style x:Key="PopupInnerView" TargetType="View" ApplyToDerivedTypes="True">
+            <Setter Property="Margin" Value="-10,0,-10,0"/>
+        </Style>
+
+        <Style x:Key="NotOnlyInRowPopupView" TargetType="View" ApplyToDerivedTypes="True">
+            <Setter Property="Margin" Value="0,0,-10,0"/>
+        </Style>
+
+        <Style x:Key="PopupLabel" TargetType="Label" BasedOn="{StaticResource MediumTextLabel}">
+            <Setter Property="Margin" Value="-10,0,-10,0"/>
+        </Style>
+
+        <Style x:Key="PopupEntry" TargetType="Entry" BasedOn="{StaticResource PopupInnerView}">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/>
+        </Style>
+
+        <Style x:Key="PopupDatePicker" TargetType="DatePicker" BasedOn="{StaticResource PopupInnerView}">
+            <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        </Style>
+
+        <Style x:Key="PopupButton" TargetType="Button" BasedOn="{StaticResource PopupInnerView}">
+            <Setter Property="BackgroundColor" Value="{StaticResource AdditionalColor}"/>
+            <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+
+        <Style x:Key="WrapperOuterFrame" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource BarBackColor}"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="WrapperInnerFrame" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style x:Key="PageContentWrapper" TargetType="Grid">
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="Padding" Value="10,10,10,10"/>
+        </Style>
+
+        <Style x:Key="HyperLink" TargetType="Label" BasedOn="{StaticResource MediumTextLabel}" ApplyToDerivedTypes="True">
+            <Setter Property="TextColor" Value="Blue"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+        </Style>
+
+        <Style x:Key="BurgerButtonStyle" TargetType="BoxView">
+            <Setter Property="WidthRequest" Value="40"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,50,50"/>
+        </Style>
+
+    </Application.Resources>
+</Application>

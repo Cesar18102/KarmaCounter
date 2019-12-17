@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templates="clr-namespace:KarmaCounter.Controls.Popups"
+             xmlns:customcontrols="clr-namespace:CustomControls;assembly=CustomControls"
+             mc:Ignorable="d"
+             x:Class="KarmaCounter.Pages.AuthPage">
+
+    <ContentPage.Content>
+        <AbsoluteLayout Style="{StaticResource PopupPageLayout}">
+
+            <StackLayout Style="{StaticResource PopupPageContentOuterLayout}">
+                <StackLayout Style="{StaticResource PopupPageContentInnerLayout}" BackgroundColor="Transparent">
+
+                    <StackLayout VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
+                        <Button Style="{StaticResource CommonButton}" x:Name="SignUpButton" Clicked="SignUpButton_Clicked" VerticalOptions="Center" Text="Sign Up"/>
+                        <Button Style="{StaticResource CommonButton}" x:Name="LogInButton" Clicked="LogInButton_Clicked" VerticalOptions="Center" Text="Log In"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </StackLayout>
+
+            <templates:Popup Style="{StaticResource PopupBackgroud}" x:Name="SignUpPopup" Closable="True" BackgroundColor="{StaticResource InactiveTransperentColor}" IsVisible="False">
+                <customcontrols:ClickableFrame Style="{StaticResource PopupOuterFrame}" x:Name="SignUpPopupOuterLayout" HeightRequest="330" WidthRequest="250" CornerRadius="10">
+                    <customcontrols:ClickableFrame Style="{StaticResource PopupInnerFrame}" HeightRequest="330" WidthRequest="250" BackgroundColor="{StaticResource BarBackColor}">
+                        <StackLayout>
+
+                            <Label Style="{StaticResource PopupLabel}" Text="Signing Up" HorizontalTextAlignment="Center" FontSize="20"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="SignUpLoginEntry" Placeholder="Login (8-20)" Text="cesar18102"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="SignUpPasswordEntry" Placeholder="Password (8-30)" IsPassword="True" Text="11111111"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="SignUpPasswordConfirmEntry" Placeholder="Confirm Password" IsPassword="True" Text="11111111"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="SignUpEmailEntry" Placeholder="Email" Text="cesar18102000@gmail.com"/>
+                            <Button Style="{StaticResource PopupButton}" x:Name="SignUpPopupConfirm" VerticalOptions="End" Text="Sign Up" Clicked="SignUpPopupConfirm_Clicked"/>
+
+                        </StackLayout>
+
+                    </customcontrols:ClickableFrame>
+                </customcontrols:ClickableFrame>
+            </templates:Popup>
+
+            <templates:Popup Style="{StaticResource PopupBackgroud}" x:Name="LogInPopup" Closable="True" BackgroundColor="{StaticResource InactiveTransperentColor}" IsVisible="False">
+                <customcontrols:ClickableFrame Style="{StaticResource PopupOuterFrame}" x:Name="LogInPopupOuterLayout" HeightRequest="220" WidthRequest="200" CornerRadius="10" >
+                    <customcontrols:ClickableFrame Style="{StaticResource PopupInnerFrame}" HeightRequest="220" WidthRequest="200" BackgroundColor="{StaticResource BarBackColor}">
+                        <StackLayout>
+
+                            <Label Style="{StaticResource PopupLabel}" Text="Logging In" HorizontalTextAlignment="Center" FontSize="20"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="LogInLoginEntry" Placeholder="Login" Text="cesar18102"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="LogInPasswordEntry" Placeholder="Password" IsPassword="True" Text="11111111"/>
+                            <Button Style="{StaticResource PopupButton}" x:Name="LogInPopupConfirm" VerticalOptions="End" Text="Log In" Clicked="LogInPopupConfirm_Clicked"/>
+
+                        </StackLayout>
+                    </customcontrols:ClickableFrame>
+                </customcontrols:ClickableFrame>
+            </templates:Popup>
+
+            <templates:LoadingPopup x:Name="ActivityPopup" CircleRadius="50"/>
+            <templates:SimpleMessagePopup x:Name="ErrorPopup" PopupWidth="250" PopupHeight="150" FirstButtonText="Ок"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+
+</ContentPage>

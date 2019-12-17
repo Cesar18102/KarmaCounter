@@ -12,6 +12,6 @@ namespace KarmaCounterServer.Exceptions
             base(message, "", HttpStatusCode.BadRequest) { }
 
         public BadRequestException(ModelStateDictionary modelState) : 
-            base(JsonConvert.SerializeObject(modelState.Where(MS => !modelState.IsValidField(MS.Key)).Select(NV => NV.Key + " is not valid").ToArray()), "", HttpStatusCode.BadRequest) { }
+            base(string.Join(", ", modelState.Where(MS => !modelState.IsValidField(MS.Key)).Select(NV => NV.Key + " is not valid")), "", HttpStatusCode.BadRequest) { }
     }
 }

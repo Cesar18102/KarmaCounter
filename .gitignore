@@ -13,6 +13,13 @@
 /backend/KarmaCounterServer/KarmaCounterServer/bin
 /backend/KarmaCounterServer/KarmaCounterServer/obj
 
+/mobile/KarmaCounter/.vs
+/mobile/KarmaCounter/packages
+/mobile/KarmaCounter/KarmaCounter/KarmaCounter/bin
+/mobile/KarmaCounter/KarmaCounter/KarmaCounter/obj
+/mobile/KarmaCounter/KarmaCounter/KarmaCounter.Android/bin
+/mobile/KarmaCounter/KarmaCounter/KarmaCounter.Android/obj
+
 /lib/DbUtil/.vs
 /lib/DbUtil/packages
 /lib/DbUtil/DbUtil/bin

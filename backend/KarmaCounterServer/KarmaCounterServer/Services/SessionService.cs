@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 using KarmaCounterServer.Model;
+using KarmaCounterServer.Exceptions;
 
 namespace KarmaCounterServer.Services
 {
@@ -21,10 +22,14 @@ namespace KarmaCounterServer.Services
         public async Task<Session> CreateSession(string userId)
         {
             string data = "{ \"" + USER_ID_PARAM_NAME + "\" : \"" + userId + "\" }";
+            string responseText = "";
 
             using (HttpWebResponse response = await SendQuery(WebRequestMethods.Http.Post, APP_JSON_CONTENT_TYPE, SESSION_SERVER_CREATE, data))
             using (StreamReader str = new StreamReader(response.GetResponseStream()))
-                return JsonConvert.DeserializeObject<Session>(str.ReadToEnd());
+                responseText = str.ReadToEnd();
+
+            try { return JsonConvert.DeserializeObject<Session>(responseText); }
+            catch { throw JsonConvert.DeserializeObject<BadRequestException>(responseText); }
         }
 
         public async Task<BoolResult> CheckSession(Session session)

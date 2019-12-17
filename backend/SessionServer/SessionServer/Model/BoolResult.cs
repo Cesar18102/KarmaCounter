@@ -4,6 +4,7 @@ namespace SessionServer.Model
 {
     public class BoolResult
     {
+        [JsonRequired]
         [JsonProperty("result")]
         public bool Result { get; private set; }
 

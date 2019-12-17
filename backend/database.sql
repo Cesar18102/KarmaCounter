@@ -49,6 +49,7 @@ CREATE TABLE rules_actions(
     rule_id INTEGER NOT NULL,
     date_time DATETIME NOT NULL,
     violated BIT DEFAULT 0,
+	fee FLOAT NOT NULL DEFAULT 0,
     FOREIGN KEY(group_id) REFERENCES karma_groups(id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
     FOREIGN KEY(rule_id) REFERENCES group_rules_fees(id) ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -67,3 +68,13 @@ CREATE TABLE log(
     date_time_code DATETIME,
     message NTEXT
 );
+
+
+-- DELETE FROM group_invitations;
+-- DELETE FROM rules_actions;
+-- DELETE FROM group_rules_fees;
+-- DELETE FROM group_members;
+-- DELETE FROM karma_groups;
+-- DELETE FROM group_owners;
+-- DELETE FROM users;
+-- DELETE FROM log;

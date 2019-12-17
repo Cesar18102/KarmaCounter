@@ -25,6 +25,6 @@ namespace LoadBalancer.Util
         public static Uri GetHttpUri(string url) => new Uri("http://" + GetDomain(url));
         public static Uri GetHttpsUri(string url) => new Uri("http://" + GetDomain(url));
 
-        public static string GetDomain(string url) => url.Replace("http://", "").Replace("https://", "");
+        public static string GetDomain(string url) => url.Replace("http://", "").Replace("https://", "").Trim('/');
     }
 }

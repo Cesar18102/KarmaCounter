@@ -32,16 +32,13 @@ namespace SessionServer.Controllers
             HttpWebRequest request = HttpWebRequest.CreateHttp($"{(connect ? LOAD_BALANCER_CONNECT : LOAD_BALANCER_DISCONNECT)}?url={url}");
             request.Method = WebRequestMethods.Http.Get;
 
-            try
-            {
-                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-                using (StreamReader str = new StreamReader(response.GetResponseStream()))
-                    return JsonConvert.DeserializeObject<BoolResult>(str.ReadToEnd());
-            }
-            catch(WebException e)
-            {
-                return null;
-            }
+            string responseText = "";
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            using (StreamReader str = new StreamReader(response.GetResponseStream()))
+                responseText = str.ReadToEnd();
+
+            try { return JsonConvert.DeserializeObject<BoolResult>(responseText); }
+            catch { throw JsonConvert.DeserializeObject<BadRequestException>(responseText); }
         }
 
         [HttpPost]
