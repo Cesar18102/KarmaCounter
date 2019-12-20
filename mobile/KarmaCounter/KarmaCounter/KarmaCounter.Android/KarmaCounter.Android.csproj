@@ -88,7 +88,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidAsset Include="Assets\AddItemSmall.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KarmaCounter\KarmaCounter.csproj">
       <Project>{90F9272E-6210-46E8-AFF5-2F51DF55C1FF}</Project>
@@ -97,6 +99,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\preload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\burger.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

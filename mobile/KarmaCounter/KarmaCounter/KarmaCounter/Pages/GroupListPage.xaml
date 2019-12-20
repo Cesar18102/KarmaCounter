@@ -3,13 +3,129 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templates="clr-namespace:KarmaCounter.Controls.Popups"
+             xmlns:customcontrols="clr-namespace:CustomControls;assembly=CustomControls"
+             xmlns:resources="clr-namespace:KarmaCounter.Resources"
              mc:Ignorable="d"
-             x:Class="KarmaCounter.Pages.GroupListPage">
+             x:Class="KarmaCounter.Pages.GroupListPage"
+             Appearing="ContentPage_Appearing">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="GroupListScroller" TargetType="ScrollView" BasedOn="{StaticResource FillAbsoluteLayoutChild}">
+                <Setter Property="Margin" Value="10,10,10,10"/>
+            </Style>
+
+            <Style x:Key="GroupListWrapper" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <Style x:Key="GroupAddButton" TargetType="customcontrols:Img">
+                <Setter Property="WidthRequest" Value="75"/>
+                <Setter Property="HeightRequest" Value="75"/>
+                <Setter Property="AbsoluteLayout.LayoutFlags" Value="XProportional,YProportional"/>
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="0.9,0.95"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout Style="{StaticResource PopupPageLayout}">
+
+            <StackLayout Style="{StaticResource PopupPageContentOuterLayout}">
+                <StackLayout Style="{StaticResource PopupPageContentInnerLayout}" BackgroundColor="Transparent">
+                    <Grid Style="{StaticResource FillLayout}">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <AbsoluteLayout Grid.Row="0">
+                            <Label Style="{StaticResource HeaderLabel}" AbsoluteLayout.LayoutBounds="0,0,1,1" Text="{x:Static resources:AppResources.GroupListPageTitle}"/>
+                            <customcontrols:Img Style="{StaticResource BurgerButtonStyle}" x:Name="Burger" OnClick="Burger_OnClick" Source="burger.png" Border="False" BorderOnClick="False"/>
+                        </AbsoluteLayout>
+
+                        <AbsoluteLayout Style="{StaticResource FillLayout}" Grid.Row="1">
+
+                            <ScrollView Style="{StaticResource GroupListScroller}" x:Name="GroupListLayoutWrapper">
+                                <StackLayout Style="{StaticResource GroupListWrapper}" x:Name="GroupListLayout">
+
+                                    <!-- Offers-->
+
+                                </StackLayout>
+                            </ScrollView>
+
+                            <customcontrols:Img Style="{StaticResource GroupAddButton}" Source="AddItemSmall.png"
+                                                Border="False" BorderOnClick="False" ScaleOnClicked="0.9"
+                                                OnClick="AddGroupButton_OnClick"/>
+
+                        </AbsoluteLayout>
+
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+
+            <templates:Popup Style="{StaticResource PopupBackgroud}" x:Name="AddGroupPopup" Closable="True" BackgroundColor="{x:StaticResource InactiveTransperentColor}" IsVisible="False">
+                <customcontrols:ClickableFrame Style="{StaticResource PopupOuterFrame}" HeightRequest="350" WidthRequest="300" CornerRadius="{StaticResource PopupCornerRaius}" >
+                    <customcontrols:ClickableFrame Style="{StaticResource PopupInnerFrame}" HeightRequest="350" WidthRequest="300" BackgroundColor="{StaticResource BarBackColor}">
+                        <StackLayout>
+
+                            <Label Style="{StaticResource HeaderLabel}" Text="{x:Static resources:AppResources.AddGroupPopupTitle}"/>
+
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="GroupNameInput" Placeholder="{x:Static resources:AppResources.GroupNameEntryPlaceholderText}"/>
+                            <Editor Style="{StaticResource PopupInnerView}" x:Name="GroupDescriptionInput" BackgroundColor="{StaticResource ContentBackColor}" HeightRequest="100" 
+                                    Placeholder="{x:Static resources:AppResources.GroupDescriptionEntryPlaceholderText}"/>
+                            
+                            <Grid BackgroundColor="{StaticResource BarBackColor}">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <customcontrols:CheckBox x:Name="GroupPublicChecker" OuterColor="{StaticResource ContentBackColor}" 
+                                                         InnerColor="{StaticResource ContentBackColor}" HorizontalOptions="Center" 
+                                                         VerticalOptions="Center" WidthRequest="25" RadiusDiffer="2" Checked="False"
+                                                         Grid.Row="0" Grid.Column="0"/>
+                                <customcontrols:ClickableLabel Style="{StaticResource HeaderLabel}" x:Name="PublicCheckerLabel" 
+                                                               OnClick="CheckerLabel_OnClick" BindingContext="{Reference GroupPublicChecker}" 
+                                                               Text="{x:Static resources:AppResources.PublicGroupCheckerLabelText}" 
+                                                               Grid.Row="0" Grid.Column="1"/>
+
+                                <customcontrols:CheckBox x:Name="GroupLocalChecker" OuterColor="{StaticResource ContentBackColor}" 
+                                                         InnerColor="{StaticResource ContentBackColor}" HorizontalOptions="Center"
+                                                         VerticalOptions="Center" WidthRequest="25" RadiusDiffer="2" Checked="False" 
+                                                         Grid.Row="1" Grid.Column="0"/>
+                                <customcontrols:ClickableLabel Style="{StaticResource HeaderLabel}" x:Name="LocalCheckerLabel"
+                                                               OnClick="CheckerLabel_OnClick" BindingContext="{Reference GroupLocalChecker}" 
+                                                               Text="{x:Static resources:AppResources.LocalGroupCheckerLabelText}" 
+                                                               Grid.Row="1" Grid.Column="1"/>
+
+                            </Grid>
+
+                            <Button Style="{StaticResource PopupButton}"
+                                    x:Name="ConfirmGroupAddingButton" Clicked="ConfirmGroupCreationButton_Clicked" 
+                                    Text="{x:Static resources:AppResources.AddGroupConfirmButtonText}"/>
+
+                        </StackLayout>
+                    </customcontrols:ClickableFrame>
+                </customcontrols:ClickableFrame>
+            </templates:Popup>
+
+            <templates:LoadingPopup x:Name="ActivityPopup" CircleRadius="50"/>
+            <templates:SimpleMessagePopup x:Name="ErrorPopup" PopupWidth="250" PopupHeight="150" FirstButtonText="OK"/>
+            <templates:SimpleMessagePopup x:Name="ExitConfirmPopup" PopupWidth="250" PopupHeight="100" 
+                                          MessageText="{x:Static resources:AppResources.ExitQuestionText}" 
+                                          FirstButtonText="{x:Static resources:AppResources.ConfirmText}"
+                                          SecondButtonText="{x:Static resources:AppResources.RefuseText}"/>
+            <templates:SimpleMessagePopup x:Name="PayPopup" PopupWidth="250" PopupHeight="100" 
+                                          MessageText="{x:Static resources:AppResources.PaymentExceptionText}" 
+                                          FirstButtonText="{x:Static resources:AppResources.OkText}"
+                                          SecondButtonText="{x:Static resources:AppResources.CancelText}"/>
+
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

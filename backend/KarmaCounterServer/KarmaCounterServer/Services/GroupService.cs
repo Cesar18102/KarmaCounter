@@ -34,16 +34,16 @@ namespace KarmaCounterServer.Services
             string publicKey = encoder.Encode(new KeccakEncoder.ToBeHashed(KeccakEncoder.HashType.String, Guid.NewGuid().ToString()));
             string privateKey = encoder.Encode(new KeccakEncoder.ToBeHashed(KeccakEncoder.HashType.String, Guid.NewGuid().ToString()));
 
-            if (!(await Global.DI.Resolve<SessionService>().CheckSession(groupForm.CreatorSession)).Result) //if user is unauthorized
+            if (!paid && !(await Global.DI.Resolve<SessionService>().CheckSession(groupForm.CreatorSession)).Result) //if user is unauthorized
                 throw new InvalidSessionException();
 
             (User owner, List<Group> owned) owningInfo = await GetByOwnerId(groupForm.CreatorSession.UserId); //may throw not found exception
 
-            if (!paid && owningInfo.owned.Count >= MAX_FREE_GROUP_CREATIONS) //ask for payment if some groups already created
-                throw new PaymentNeededException(CalcExtraGroupCreationFee(owningInfo.owned.Count + 1));
-
             if (!paid && !groupForm.IsLocal) //ask for payment if creating global group
                 throw new PaymentNeededException(CalcGlobalGroupCreationFee(owningInfo.owned.Count + 1));
+
+            if (!paid && owningInfo.owned.Count >= MAX_FREE_GROUP_CREATIONS) //ask for payment if some groups already created
+                throw new PaymentNeededException(CalcExtraGroupCreationFee(owningInfo.owned.Count + 1));
 
             Ownership ownership = new Ownership(owningInfo.owner, publicKey, privateKey);
             Group group = new Group(groupForm.Name, groupForm.Description, groupForm.IsPublic, groupForm.IsLocal, ownership);

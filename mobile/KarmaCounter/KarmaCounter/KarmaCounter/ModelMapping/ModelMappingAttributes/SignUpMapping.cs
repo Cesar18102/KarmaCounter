@@ -1,7 +1,7 @@
 ﻿namespace KarmaCounter.ModelMapping.ModelMappingAttributes
 {
-    public class SignUpMapping : ModelMappringAttribute
+    public class CreateGroup : ModelMappringAttribute
     {
-        public SignUpMapping(string name = null) : base(name) { }
+        public CreateGroup(string name = null) : base(name) { }
     }
 }

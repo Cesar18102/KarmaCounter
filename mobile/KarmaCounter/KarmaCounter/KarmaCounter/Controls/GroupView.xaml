@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customcontrols:ClickableContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customcontrols="clr-namespace:CustomControls;assembly=CustomControls"
+             mc:Ignorable="d"
+             x:Class="KarmaCounter.Controls.GroupView"
+             x:Name="CurrentGroupView">
+    
+    <customcontrols:ClickableContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="Indicator" TargetType="BoxView">
+
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="10"/>
+                <Setter Property="CornerRadius" Value="10"/>
+
+            </Style>
+
+        </ResourceDictionary>
+    </customcontrols:ClickableContentView.Resources>
+
+    <customcontrols:ClickableContentView.Content>
+        <StackLayout BindingContext="{Reference CurrentGroupView}">
+
+            <Frame Style="{StaticResource WrapperOuterFrame}">
+                <Frame Style="{StaticResource WrapperInnerFrame}">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="0"/>
+
+                        <BoxView Style="{StaticResource Indicator}" BackgroundColor="{Binding AccessIndicatorColor}" Grid.Row="0" Grid.Column="1"/>
+                        <BoxView Style="{StaticResource Indicator}" BackgroundColor="{Binding SpreadIndicatorColor}" Grid.Row="0" Grid.Column="2"/>
+
+                        <Label Text="{Binding SourceGroup.Description}" Grid.Row="1" Grid.ColumnSpan="3"/>
+
+                    </Grid>
+                </Frame>
+            </Frame>
+
+        </StackLayout>
+    </customcontrols:ClickableContentView.Content>
+</customcontrols:ClickableContentView>

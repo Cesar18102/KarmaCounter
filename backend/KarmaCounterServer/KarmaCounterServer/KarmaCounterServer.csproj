@@ -242,6 +242,8 @@
     <Compile Include="Model\Invitation.cs" />
     <Compile Include="Model\Membership.cs" />
     <Compile Include="Model\Ownership.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\PaymentInfo.cs" />
     <Compile Include="Model\Rule.cs" />
     <Compile Include="Model\RuleAction.cs" />
     <Compile Include="Model\Session.cs" />

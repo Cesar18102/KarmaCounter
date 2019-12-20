@@ -3,11 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:KarmaCounter.Resources"
              mc:Ignorable="d"
-             x:Class="KarmaCounter.Pages.SideMenuPage">
+             x:Class="KarmaCounter.Pages.SideMenuPage"
+             BackgroundColor="{StaticResource ContentBackColor}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MenuWrapper" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+            </Style>
+
+            <Style x:Key="MenuButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource ContentTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+            </Style>
+
+            <Style x:Key="MenuButtonSeparator" TargetType="BoxView">
+                <Setter Property="Margin" Value="5,0,5,0"/>
+                <Setter Property="HeightRequest" Value="3"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource AdditionalColor}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            
+        <StackLayout Style="{StaticResource MenuWrapper}" >
+
+            <Button Style="{StaticResource MenuButton}" x:Name="WatchGroupList" 
+                    Text="{x:Static resources:AppResources.WatchGroupListMenuOptionText}" 
+                    Clicked="WatchGroupList_Clicked"/>
+
+            <BoxView Style="{StaticResource MenuButtonSeparator}"/>
+            <Button Style="{StaticResource MenuButton}" x:Name="WatchProfile" 
+                    Text="{x:Static resources:AppResources.WatchProfileMenuOptionText}" 
+                    Clicked="WatchProfile_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

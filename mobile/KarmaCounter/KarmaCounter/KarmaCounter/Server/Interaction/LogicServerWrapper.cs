@@ -20,6 +20,8 @@ namespace KarmaCounter.Server.Interaction
         private static readonly Regex NOT_RESPONDING_ANSWER_PATTERN = new Regex("(<!DOCTYPE HTML)|(<!DOCTYPE html)");
         private static readonly Regex ERROR_RESPONSE_ANSWER_PATTERN = new Regex("(An error has occurred)");
 
+        public string CurrentConnection => Server?.ServerURL;
+
         private IServerCommunicator Server { get; set; }
         private int NotRespondingCount = 0;
 

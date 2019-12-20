@@ -16,5 +16,19 @@ namespace KarmaCounter.Pages
         {
             InitializeComponent();
         }
+
+        private void WatchGroupList_Clicked(object sender, EventArgs e) =>
+            MainPageChangeDetail<GroupListPage>();
+
+        private void WatchProfile_Clicked(object sender, EventArgs e) =>
+            MainPageChangeDetail<UserPage>();
+
+        private void MainPageChangeDetail<T>() where T : Page, new()
+        {
+            MasterDetailPage mainPage = (App.Current.MainPage as MasterDetailPage);
+
+            mainPage.Detail = new T();
+            mainPage.IsPresented = false;
+        }
     }
 }

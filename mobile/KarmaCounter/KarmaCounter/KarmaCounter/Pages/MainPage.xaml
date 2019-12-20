@@ -5,15 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pages="clr-namespace:KarmaCounter.Pages"
              mc:Ignorable="d"
-             x:Class="KarmaCounter.Pages.MainPage"
-                  Appearing="MasterDetailPage_Appearing">
+             x:Class="KarmaCounter.Pages.MainPage">
 
     <MasterDetailPage.Master>
         <pages:SideMenuPage Title="Karma Counter Menu"/>
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>
-        <pages:UserPage/>
+        <pages:GroupListPage/>
     </MasterDetailPage.Detail>
 
 </MasterDetailPage>

@@ -14,7 +14,7 @@ namespace KarmaCounter.Server.Output
         public string message { get; set; }
 
         [JsonRequired]
-        public string body { get; set; }
+        public object body { get; set; }
 
         public ResponseException() { }
 
