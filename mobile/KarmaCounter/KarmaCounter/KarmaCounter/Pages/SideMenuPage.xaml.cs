@@ -23,6 +23,9 @@ namespace KarmaCounter.Pages
         private void WatchProfile_Clicked(object sender, EventArgs e) =>
             MainPageChangeDetail<UserPage>();
 
+        private void WatchMyGroupsStatistics_Clicked(object sender, EventArgs e) =>
+            MainPageChangeDetail<MyGroupsStats>();
+
         private void MainPageChangeDetail<T>() where T : Page, new()
         {
             MasterDetailPage mainPage = (App.Current.MainPage as MasterDetailPage);

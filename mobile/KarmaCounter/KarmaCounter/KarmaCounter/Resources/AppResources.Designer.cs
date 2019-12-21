@@ -304,6 +304,15 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My groups statistics.
+        /// </summary>
+        internal static string MyGroupsStatsMenuOptionText {
+            get {
+                return ResourceManager.GetString("MyGroupsStatsMenuOptionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string OkText {

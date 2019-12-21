@@ -39,6 +39,12 @@
                     Text="{x:Static resources:AppResources.WatchProfileMenuOptionText}" 
                     Clicked="WatchProfile_Clicked"/>
 
+            <BoxView Style="{StaticResource HorisontalSeparaor}"/>
+            
+            <Button Style="{StaticResource MenuButton}" x:Name="WatchMyGroupsStatistics" 
+                    Text="{x:Static resources:AppResources.MyGroupsStatsMenuOptionText}" 
+                    Clicked="WatchMyGroupsStatistics_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

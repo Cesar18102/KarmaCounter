@@ -66,12 +66,6 @@ namespace KarmaCounter.Pages
             SourceGroup = group;
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            (App.Current.MainPage as MasterDetailPage).Detail = new GroupListPage();
-            return true;
-        }
-
         private async void CurrentGroupPage_Appearing(object sender, EventArgs e)
         {
             PopupControl.OpenPopup(ActivityPopup);
@@ -200,6 +194,16 @@ namespace KarmaCounter.Pages
         private async void AddRuleButton_Clicked(object sender, EventArgs e)
         {
             //TODO
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (PopupControl.OpenedPopupsCount != 0)
+                PopupControl.CloseTopPopupAndHideKeyboardIfNeeded();
+            else
+                (App.Current.MainPage as MasterDetailPage).Detail = new GroupListPage();
+
+            return true;
         }
     }
 }
