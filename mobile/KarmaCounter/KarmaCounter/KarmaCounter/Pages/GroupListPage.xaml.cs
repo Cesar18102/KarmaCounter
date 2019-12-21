@@ -1,5 +1,4 @@
 ﻿using System.Resources;
-using System.Collections.Generic;
 
 using Android.Views;
 
@@ -16,7 +15,6 @@ using KarmaCounter.Resources;
 using KarmaCounter.Controllers;
 using KarmaCounter.Server.Output;
 using KarmaCounter.Controls.Popups;
-using Newtonsoft.Json;
 
 [assembly : NeutralResourcesLanguage("en-US")]
 namespace KarmaCounter.Pages
@@ -43,14 +41,24 @@ namespace KarmaCounter.Pages
 
         private void EnlistGroup(Group group)
         {
-            GroupListLayout.Children.Add(new GroupView()
-            {
+            GroupView view = new GroupView() {
                 SourceGroup = group,
                 PublicGroupIndicatorColor = Color.LightGreen,
                 PrivateGroupIndicatorColor = Color.IndianRed,
                 GlobalGroupIndicatorColor = Color.LightGreen,
                 LocalGroupIndicatorColor = Color.IndianRed
-            });
+            };
+
+            view.OnClick += (ME, ctx) =>
+            {
+                if (ME.Action != MotionEventActions.Down)
+                    return false;
+
+                (App.Current.MainPage as MasterDetailPage).Detail = new GroupPage(group);
+                return true;
+            };
+
+            GroupListLayout.Children.Add(view);
         }
 
         private async void UpdateGroupList()
@@ -128,6 +136,9 @@ namespace KarmaCounter.Pages
             }
         }
 
+        private bool CheckerLabel_OnClick(MotionEvent ME, IClickable sender) =>
+            ((sender as Element).BindingContext as IClickable).Click(ME);
+
         protected override bool OnBackButtonPressed()
         {
             if (PopupControl.OpenedPopupsCount != 0)
@@ -137,8 +148,5 @@ namespace KarmaCounter.Pages
 
             return true;
         }
-
-        private bool CheckerLabel_OnClick(MotionEvent ME, IClickable sender) => 
-            ((sender as Element).BindingContext as IClickable).Click(ME);
     }
 }

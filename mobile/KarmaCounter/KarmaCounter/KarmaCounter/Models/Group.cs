@@ -8,6 +8,10 @@ namespace KarmaCounter.Models
 {
     public class Group : IModelElement
     {
+        [InviteGroup("group_id")]
+        [JoinGroup("group_id")]
+        [GetGroupById("id")]
+        [GetOwnership("group_id")]
         [JsonProperty("id")]
         public long Id { get; private set; }
 
@@ -28,7 +32,7 @@ namespace KarmaCounter.Models
         public bool IsLocal { get; private set; }
 
         [JsonProperty("members")]
-        public List<User> Members { get; private set; }
+        public List<Membership> Members { get; private set; }
 
         [JsonProperty("rules")]
         public List<Rule> Rules { get; private set; }
@@ -49,7 +53,7 @@ namespace KarmaCounter.Models
 
         [JsonConstructor]
         public Group(long id, string name, string description, bool is_public, bool is_local,
-                     List<User> members, List<Rule> rules, Ownership rights, User owner) :
+                     List<Membership> members, List<Rule> rules, Ownership rights, User owner) :
             this(name, description, is_public, is_local)
         {
             Id = id;

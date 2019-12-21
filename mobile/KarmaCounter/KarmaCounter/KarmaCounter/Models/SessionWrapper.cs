@@ -6,6 +6,9 @@ namespace KarmaCounter.Models
 {
     public class SessionWrapper : IModelElement
     {
+        [InviteGroup("inviter_session")]
+        [JoinGroup("member_session")]
+        [GetOwnership("creator_session")]
         [CreateGroup("creator_session")]
 
         [JsonProperty("session")]

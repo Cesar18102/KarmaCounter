@@ -79,6 +79,15 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add rule.
+        /// </summary>
+        internal static string AddRuleButtonText {
+            get {
+                return ResourceManager.GetString("AddRuleButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string CancelText {
@@ -97,6 +106,15 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copied to clipboard.
+        /// </summary>
+        internal static string CopiedMessageText {
+            get {
+                return ResourceManager.GetString("CopiedMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure want to exit?.
         /// </summary>
         internal static string ExitQuestionText {
@@ -106,11 +124,11 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Global group.
+        ///   Looks up a localized string similar to Global.
         /// </summary>
-        internal static string GlobalGroupCheckerLabelText {
+        internal static string GlobalGroupIndicatorText {
             get {
-                return ResourceManager.GetString("GlobalGroupCheckerLabelText", resourceCulture);
+                return ResourceManager.GetString("GlobalGroupIndicatorText", resourceCulture);
             }
         }
         
@@ -124,11 +142,29 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group description.
+        /// </summary>
+        internal static string GroupDescriptionLabelText {
+            get {
+                return ResourceManager.GetString("GroupDescriptionLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group List.
         /// </summary>
         internal static string GroupListPageTitle {
             get {
                 return ResourceManager.GetString("GroupListPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group members.
+        /// </summary>
+        internal static string GroupMembersLabelText {
+            get {
+                return ResourceManager.GetString("GroupMembersLabelText", resourceCulture);
             }
         }
         
@@ -142,11 +178,83 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group rules.
+        /// </summary>
+        internal static string GroupRulesLabelText {
+            get {
+                return ResourceManager.GetString("GroupRulesLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group type.
+        /// </summary>
+        internal static string GroupTypeLabelText {
+            get {
+                return ResourceManager.GetString("GroupTypeLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invite.
+        /// </summary>
+        internal static string InviteConfirmButtonText {
+            get {
+                return ResourceManager.GetString("InviteConfirmButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invited.
+        /// </summary>
+        internal static string InvitedMessageText {
+            get {
+                return ResourceManager.GetString("InvitedMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invite user.
+        /// </summary>
+        internal static string InviteMemberButtonText {
+            get {
+                return ResourceManager.GetString("InviteMemberButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inviting.
+        /// </summary>
+        internal static string InvitePopupTitle {
+            get {
+                return ResourceManager.GetString("InvitePopupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join.
+        /// </summary>
+        internal static string JoinGroupButtonText {
+            get {
+                return ResourceManager.GetString("JoinGroupButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local group.
         /// </summary>
         internal static string LocalGroupCheckerLabelText {
             get {
                 return ResourceManager.GetString("LocalGroupCheckerLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local.
+        /// </summary>
+        internal static string LocalGroupIndicatorText {
+            get {
+                return ResourceManager.GetString("LocalGroupIndicatorText", resourceCulture);
             }
         }
         
@@ -169,6 +277,33 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Global Karma.
+        /// </summary>
+        internal static string MemberListGlobalKarmaHeaderText {
+            get {
+                return ResourceManager.GetString("MemberListGlobalKarmaHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local Karma.
+        /// </summary>
+        internal static string MemberListLocalKarmaHeaderText {
+            get {
+                return ResourceManager.GetString("MemberListLocalKarmaHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string MemberListLoginHeaderText {
+            get {
+                return ResourceManager.GetString("MemberListLoginHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string OkText {
@@ -187,11 +322,20 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Private group.
+        ///   Looks up a localized string similar to Private.
         /// </summary>
-        internal static string PrivateGroupCheckerLabelText {
+        internal static string PrivateGroupIndicatorText {
             get {
-                return ResourceManager.GetString("PrivateGroupCheckerLabelText", resourceCulture);
+                return ResourceManager.GetString("PrivateGroupIndicatorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private key.
+        /// </summary>
+        internal static string PrivateKeyLabelText {
+            get {
+                return ResourceManager.GetString("PrivateKeyLabelText", resourceCulture);
             }
         }
         
@@ -205,11 +349,47 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Public.
+        /// </summary>
+        internal static string PublicGroupIndicatorText {
+            get {
+                return ResourceManager.GetString("PublicGroupIndicatorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public key.
+        /// </summary>
+        internal static string PublicKeyLabelText {
+            get {
+                return ResourceManager.GetString("PublicKeyLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string RefuseText {
             get {
                 return ResourceManager.GetString("RefuseText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string RuleNameHeader {
+            get {
+                return ResourceManager.GetString("RuleNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string RuleTextHeader {
+            get {
+                return ResourceManager.GetString("RuleTextHeader", resourceCulture);
             }
         }
         

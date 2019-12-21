@@ -13,13 +13,17 @@
 
             <Style x:Key="Indicator" TargetType="BoxView">
 
-                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="Start"/>
 
                 <Setter Property="HeightRequest" Value="10"/>
                 <Setter Property="WidthRequest" Value="10"/>
                 <Setter Property="CornerRadius" Value="10"/>
 
+            </Style>
+
+            <Style x:Key="IndicatorText" TargetType="Label" BasedOn="{StaticResource MicroTextLabel}">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             </Style>
 
         </ResourceDictionary>
@@ -33,9 +37,9 @@
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.8*"/>
-                            <ColumnDefinition Width="0.1*"/>
-                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.9*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.05*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>

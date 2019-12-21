@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:KarmaCounter.Resources"
+             xmlns:templates="clr-namespace:KarmaCounter.Controls.Popups"
+             xmlns:customcontrols="clr-namespace:CustomControls;assembly=CustomControls"
+             mc:Ignorable="d"
+             x:Class="KarmaCounter.Pages.GroupPage"
+             x:Name="CurrentGroupPage"
+             Appearing="CurrentGroupPage_Appearing"
+             BackgroundColor="{StaticResource ContentBackColor}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="GroupListScroller" TargetType="ScrollView" BasedOn="{StaticResource FillAbsoluteLayoutChild}">
+                <Setter Property="Margin" Value="10,10,10,10"/>
+            </Style>
+
+            <Style x:Key="ListLabel" TargetType="Label" BasedOn="{StaticResource AdditionalLabel}">
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                
+                <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+            </Style>
+
+            <Style x:Key="ListInfoLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}">
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+
+                <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+            </Style>
+
+            <Style x:Key="InfoGrid" TargetType="Grid">
+                <Setter Property="ColumnSpacing" Value="2"/>
+                <Setter Property="RowSpacing" Value="2"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BarBackColor}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout Style="{StaticResource PopupPageLayout}">
+
+            <StackLayout Style="{StaticResource PopupPageContentOuterLayout}">
+                <StackLayout Style="{StaticResource PopupPageContentInnerLayout}" BackgroundColor="Transparent">
+                    <Grid Style="{StaticResource FillLayout}" BindingContext="{Reference CurrentGroupPage}">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Style="{StaticResource HeaderLabel}" Text="{Binding SourceGroup.Name}" Grid.Row="0"/>
+
+                        <ScrollView Style="{StaticResource GroupListScroller}"  Grid.Row="1">
+                            <Grid Style="{StaticResource FillLayout}">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.4*"/>
+                                    <ColumnDefinition Width="0.6*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.GroupDescriptionLabelText}" Grid.Row="0" Grid.Column="0"/>
+                                <Label Style="{StaticResource ListInfoLabel}" Text="{Binding SourceGroup.Description}"  Grid.Row="0" Grid.Column="1"/>
+
+                                <Grid x:Name="Keys" Grid.Row="1" Grid.ColumnSpan="2" IsVisible="False">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.PublicKeyLabelText}" Grid.Row="0" Grid.Column="0"/>
+                                    <customcontrols:ClickableLabel Style="{StaticResource ContentLabel}" OnClick="KeyLabel_Click" 
+                                                                   Text="{Binding Rights.PublicKey}" Grid.Row="0" Grid.Column="1"/>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.PrivateKeyLabelText}" Grid.Row="1" Grid.Column="0"/>
+                                    <customcontrols:ClickableLabel Style="{StaticResource ContentLabel}" OnClick="KeyLabel_Click" 
+                                                                   Text="{Binding Rights.PrivateKey}" Grid.Row="1" Grid.Column="1"/>
+
+                                    <Button Style="{StaticResource CommonButton}" x:Name="AddRuleButton" 
+                                            Text="{x:Static resources:AppResources.AddRuleButtonText}" 
+                                            Clicked="AddRuleButton_Clicked" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+                                </Grid>
+
+                                <BoxView Style="{StaticResource HorisontalSeparaor}" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+                                <StackLayout Style="{StaticResource FillLayout}" Grid.Row="3" Grid.ColumnSpan="2">
+
+                                    <Button Style="{StaticResource CommonButton}" x:Name="JoinGroupButton" 
+                                            Text="{x:Static resources:AppResources.JoinGroupButtonText}" 
+                                            Clicked="JoinGroupButton_Clicked"/>
+
+                                    <Button Style="{StaticResource CommonButton}" x:Name="InviteButton" 
+                                            Text="{x:Static resources:AppResources.InviteMemberButtonText}" 
+                                            Clicked="InviteButton_Clicked"/>
+
+                                    <BoxView Style="{StaticResource HorisontalSeparaor}"/>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.GroupRulesLabelText}"/>
+                                    <Grid Style="{StaticResource InfoGrid}" x:Name="Rules">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!--Rules-->
+
+                                    </Grid>
+
+                                    <BoxView Style="{StaticResource HorisontalSeparaor}"/>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.GroupMembersLabelText}"/>
+                                    <Grid Style="{StaticResource InfoGrid}" x:Name="Members">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!--Members-->
+
+                                    </Grid>
+                                </StackLayout>
+
+                            </Grid>
+                        </ScrollView>
+
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+
+            <templates:Popup Style="{StaticResource PopupBackgroud}" x:Name="InvitePopup" Closable="True" BackgroundColor="{StaticResource InactiveTransperentColor}" IsVisible="False">
+                <customcontrols:ClickableFrame Style="{StaticResource PopupOuterFrame}" HeightRequest="220" WidthRequest="200" CornerRadius="10" >
+                    <customcontrols:ClickableFrame Style="{StaticResource PopupInnerFrame}" HeightRequest="220" WidthRequest="200" BackgroundColor="{StaticResource BarBackColor}">
+                        <StackLayout>
+
+                            <Label Style="{StaticResource PopupLabel}" Text="{x:Static resources:AppResources.InvitePopupTitle}" HorizontalTextAlignment="Center" FontSize="20"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="LoginEntry" Placeholder="Login" Text="cesar18102"/>
+                            <Button Style="{StaticResource PopupButton}" x:Name="InviteConfirm" VerticalOptions="End" Text="{x:Static resources:AppResources.InviteConfirmButtonText}" Clicked="InviteConfirm_Clicked"/>
+
+                        </StackLayout>
+                    </customcontrols:ClickableFrame>
+                </customcontrols:ClickableFrame>
+            </templates:Popup>
+
+            <templates:LoadingPopup x:Name="ActivityPopup" CircleRadius="50"/>
+            <templates:SimpleMessagePopup x:Name="ErrorPopup" PopupWidth="250" PopupHeight="150" FirstButtonText="OK"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

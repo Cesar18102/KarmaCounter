@@ -173,6 +173,7 @@
     <Compile Include="Exceptions\BadRequestException.cs" />
     <Compile Include="Exceptions\InvalidSessionException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\OK.cs" />
     <Compile Include="Exceptions\PaymentNeededException.cs" />
     <Compile Include="Exceptions\ResponseException.cs" />
     <Compile Include="Exceptions\WrongPasswordException.cs" />

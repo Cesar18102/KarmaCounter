@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
 
+using KarmaCounter.ModelMapping.ModelMappingAttributes;
+
 namespace KarmaCounter.Models
 {
     public class User : IModelElement
     {
+        [InviteGroup("invitee_user_id")]
         [JsonProperty("id")]
         public long Id { get; private set; }
 

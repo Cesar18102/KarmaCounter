@@ -81,29 +81,10 @@ namespace KarmaCounterServer.Controllers
             return await Global.DI.Resolve<GroupService>().UpdateCustomData(customDataForm);
         }
 
-        private static readonly SHA1 Sha1 = SHA1.Create();
-        private const string LIQPAY_PRIVATE_KEY = "sandbox_kgwzzF9TsmUOIJmQQeQyM4G4yrxfGJxVq64k8hLn";
-
         [HttpPost]
         public async Task AcceptPayment(Payment payment)
         {
             await Global.DI.Resolve<ILogger>().Trace($"Payment callback: {JsonConvert.SerializeObject(payment)}");
-            //string hashable = LIQPAY_PRIVATE_KEY + payment.data + LIQPAY_PRIVATE_KEY;
-
-            //byte[] sbytes = Encoding.ASCII.GetBytes(payment.signature);
-            //byte[] s2 = new FromBase64Transform().TransformFinalBlock(sbytes, 0, sbytes.Length);
-
-            //byte[] dbytes = Encoding.UTF8.GetBytes(hashable);
-            //byte[] s1 = Sha1.ComputeHash(dbytes, 0, dbytes.Length);
-
-            //if (!s1.Equals(s2))
-            //{
-            //    await Global.DI.Resolve<ILogger>().Trace($"Invalid payment info; Data = {payment.data}; Sign = {payment.signature}");
-            //    return;
-            //}
-
-            //await Global.DI.Resolve<ILogger>().Trace($"Paid group json = {json}");
-            //await Global.DI.Resolve<ILogger>().Trace($"Paid group form = {JsonConvert.SerializeObject(paymentInfo.Info)}");
 
             string info = Encoding.UTF8.GetString(Convert.FromBase64String(payment.data));
             await Global.DI.Resolve<ILogger>().Trace($"Paid group info raw = {info}");
@@ -111,6 +92,8 @@ namespace KarmaCounterServer.Controllers
             PaymentInfo paymentInfo = JsonConvert.DeserializeObject<PaymentInfo>(info);
             Ownership ownership = await Global.DI.Resolve<GroupService>().CreateGroup(paymentInfo.Form, true);
             await Global.DI.Resolve<ILogger>().Trace($"Paid group rights id = {ownership.Id}");
+
+            throw new OK();
         }
 
         [HttpGet]

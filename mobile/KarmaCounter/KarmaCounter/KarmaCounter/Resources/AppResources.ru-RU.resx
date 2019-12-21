@@ -123,29 +123,65 @@
   <data name="AddGroupPopupTitle" xml:space="preserve">
     <value>Создать группу</value>
   </data>
+  <data name="AddRuleButtonText" xml:space="preserve">
+    <value>Добавить правило</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Отмена</value>
   </data>
   <data name="ConfirmText" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="CopiedMessageText" xml:space="preserve">
+    <value>Скопировано в буфер обмена</value>
+  </data>
   <data name="ExitQuestionText" xml:space="preserve">
     <value>Покинуть приложение?</value>
   </data>
-  <data name="GlobalGroupCheckerLabelText" xml:space="preserve">
-    <value>Глобальная группа</value>
+  <data name="GlobalGroupIndicatorText" xml:space="preserve">
+    <value>Глобальная</value>
   </data>
   <data name="GroupDescriptionEntryPlaceholderText" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="GroupDescriptionLabelText" xml:space="preserve">
+    <value>Описание группы</value>
+  </data>
   <data name="GroupListPageTitle" xml:space="preserve">
     <value>Список групп</value>
+  </data>
+  <data name="GroupMembersLabelText" xml:space="preserve">
+    <value>Участники группы</value>
   </data>
   <data name="GroupNameEntryPlaceholderText" xml:space="preserve">
     <value>Название группы</value>
   </data>
+  <data name="GroupRulesLabelText" xml:space="preserve">
+    <value>Правила группы</value>
+  </data>
+  <data name="GroupTypeLabelText" xml:space="preserve">
+    <value>Тип группы</value>
+  </data>
+  <data name="InviteConfirmButtonText" xml:space="preserve">
+    <value>Пригласить</value>
+  </data>
+  <data name="InvitedMessageText" xml:space="preserve">
+    <value>приглашен</value>
+  </data>
+  <data name="InviteMemberButtonText" xml:space="preserve">
+    <value>Пригласить пользователя</value>
+  </data>
+  <data name="InvitePopupTitle" xml:space="preserve">
+    <value>Пригласить пользователя</value>
+  </data>
+  <data name="JoinGroupButtonText" xml:space="preserve">
+    <value>Присоединиться</value>
+  </data>
   <data name="LocalGroupCheckerLabelText" xml:space="preserve">
     <value>Локальная группа</value>
+  </data>
+  <data name="LocalGroupIndicatorText" xml:space="preserve">
+    <value>Локальная</value>
   </data>
   <data name="LogInButtonText" xml:space="preserve">
     <value>Войти</value>
@@ -153,20 +189,44 @@
   <data name="LogInPopupTitle" xml:space="preserve">
     <value>Вход</value>
   </data>
+  <data name="MemberListGlobalKarmaHeaderText" xml:space="preserve">
+    <value>Глобальная Карма</value>
+  </data>
+  <data name="MemberListLocalKarmaHeaderText" xml:space="preserve">
+    <value>Локальная Карма</value>
+  </data>
+  <data name="MemberListLoginHeaderText" xml:space="preserve">
+    <value>Логин</value>
+  </data>
   <data name="OkText" xml:space="preserve">
     <value>ОК</value>
   </data>
   <data name="PaymentExceptionText" xml:space="preserve">
     <value>Оплатите</value>
   </data>
-  <data name="PrivateGroupCheckerLabelText" xml:space="preserve">
-    <value>Частная группа</value>
+  <data name="PrivateGroupIndicatorText" xml:space="preserve">
+    <value>Частная</value>
+  </data>
+  <data name="PrivateKeyLabelText" xml:space="preserve">
+    <value>Приватный ключ</value>
   </data>
   <data name="PublicGroupCheckerLabelText" xml:space="preserve">
-    <value>Публичная группа</value>
+    <value>Общедоступная группа</value>
+  </data>
+  <data name="PublicGroupIndicatorText" xml:space="preserve">
+    <value>Общедоступная</value>
+  </data>
+  <data name="PublicKeyLabelText" xml:space="preserve">
+    <value>Публичный ключ</value>
   </data>
   <data name="RefuseText" xml:space="preserve">
     <value>Нет</value>
+  </data>
+  <data name="RuleNameHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="RuleTextHeader" xml:space="preserve">
+    <value>Описание</value>
   </data>
   <data name="SignUpButtonText" xml:space="preserve">
     <value>Зарегистрироваться</value>
