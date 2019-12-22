@@ -50,6 +50,16 @@ namespace KarmaCounter.Controllers
             return parser.Parse<User, ResponseException>(response);
         }
 
+        private const string USER_ID_PARAM_NAME = "id";
+        private const string GET_USER_BY_ID_SERVER_METHOD_NAME = "user/get";
+        public async Task<User> GetUserById(long id)
+        {
+            IQuery getUserByIdQuery = new Query(QueryMethod.GET, GET_USER_BY_ID_SERVER_METHOD_NAME,
+                parameters: new Dictionary<string, string>() { { USER_ID_PARAM_NAME, id.ToString() } });
+            IServerResponse response = await server.SendQuery(getUserByIdQuery, true);
+            return parser.Parse<User, ResponseException>(response);
+        }
+
         private const string GET_ACTIONS_USER_ID_PARAM_NAME = "userId";
         private const string GET_ACTIONS_SERVER_METHOD_NAME = "user/getactions";
         public async Task<List<RuleAction>> GetActions(long id)

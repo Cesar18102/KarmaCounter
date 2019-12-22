@@ -61,6 +61,60 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string ActionsDateTimeHeaderLabelText {
+            get {
+                return ResourceManager.GetString("ActionsDateTimeHeaderLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string ActionsHeaderLabelText {
+            get {
+                return ResourceManager.GetString("ActionsHeaderLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string ActionsLoginHeaderLabelText {
+            get {
+                return ResourceManager.GetString("ActionsLoginHeaderLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule name.
+        /// </summary>
+        internal static string ActionsRuleHeaderLabelText {
+            get {
+                return ResourceManager.GetString("ActionsRuleHeaderLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope.
+        /// </summary>
+        internal static string ActionsRuleScopeLabelText {
+            get {
+                return ResourceManager.GetString("ActionsRuleScopeLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string ActionsStatusHeaderLabelText {
+            get {
+                return ResourceManager.GetString("ActionsStatusHeaderLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         internal static string AddGroupConfirmButtonText {
@@ -372,6 +426,33 @@ namespace KarmaCounter.Resources {
         internal static string PrivateKeyLabelText {
             get {
                 return ResourceManager.GetString("PrivateKeyLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string ProfileEmailLabelText {
+            get {
+                return ResourceManager.GetString("ProfileEmailLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global karma.
+        /// </summary>
+        internal static string ProfileGlobalKarmaLabelText {
+            get {
+                return ResourceManager.GetString("ProfileGlobalKarmaLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string ProfileLoginLabelText {
+            get {
+                return ResourceManager.GetString("ProfileLoginLabelText", resourceCulture);
             }
         }
         

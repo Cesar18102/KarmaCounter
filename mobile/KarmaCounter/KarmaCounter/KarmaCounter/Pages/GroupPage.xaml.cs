@@ -18,6 +18,7 @@ using KarmaCounter.Resources;
 using KarmaCounter.Controllers;
 using KarmaCounter.Server.Output;
 using KarmaCounter.Controls.Popups;
+using System.Collections.Generic;
 
 namespace KarmaCounter.Pages
 {
@@ -84,10 +85,10 @@ namespace KarmaCounter.Pages
         }
 
         private Label CreateHeaderLabel(string text) =>
-            new Label() { Style = Resources["ListLabel"] as Style, Text = text };
+            new Label() { Style = App.Current.Resources["ListLabel"] as Style, Text = text };
 
         private Label CreateInfoLabel(string text) =>
-            new Label() { Style = Resources["ListInfoLabel"] as Style, Text = text };
+            new Label() { Style = App.Current.Resources["ListInfoLabel"] as Style, Text = text };
 
         private async Task UpdateGroupInfo()
         {
@@ -98,17 +99,22 @@ namespace KarmaCounter.Pages
                 SourceGroup = await DI.Services.Resolve<GroupController>().GetGroupDetailInfo(SourceGroup);
 
                 Rules.Children.Clear();
+                Rules.RowDefinitions.Clear();
+                Rules.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 Rules.Children.Add(CreateHeaderLabel(AppResources.RuleNameHeader), 0, 0);
                 Rules.Children.Add(CreateHeaderLabel(AppResources.RuleTextHeader), 1, 0);
 
                 int row = 1;
                 foreach (Rule rule in SourceGroup.Rules)
                 {
+                    Rules.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                     Rules.Children.Add(CreateInfoLabel(rule.Title), 0, row);
                     Rules.Children.Add(CreateInfoLabel(rule.Text), 1, row++);
                 }
 
                 Members.Children.Clear();
+                Members.RowDefinitions.Clear();
+                Members.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 Members.Children.Add(CreateHeaderLabel(AppResources.MemberListLoginHeaderText), 0, 0);
                 Members.Children.Add(CreateHeaderLabel(AppResources.MemberListGlobalKarmaHeaderText), 1, 0);
                 Members.Children.Add(CreateHeaderLabel(AppResources.MemberListLocalKarmaHeaderText), 2, 0);
@@ -116,9 +122,36 @@ namespace KarmaCounter.Pages
                 row = 1;
                 foreach (Membership membership in SourceGroup.Members)
                 {
+                    Members.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                     Members.Children.Add(CreateInfoLabel(membership.Member.Login), 0, row);
                     Members.Children.Add(CreateInfoLabel(membership.Member.Karma.ToString()), 1, row);
                     Members.Children.Add(CreateInfoLabel(membership.Karma.ToString()), 2, row++);
+                }
+
+                List<RuleAction> actions = await DI.Services.Resolve<GroupController>().GetActions(SourceGroup.Id);
+
+                Actions.Children.Clear();
+                Actions.RowDefinitions.Clear();
+                Actions.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                Actions.Children.Add(CreateHeaderLabel(AppResources.ActionsLoginHeaderLabelText), 0, 0);
+                Actions.Children.Add(CreateHeaderLabel(AppResources.ActionsRuleHeaderLabelText), 1, 0);
+                Actions.Children.Add(CreateHeaderLabel(AppResources.ActionsDateTimeHeaderLabelText), 2, 0);
+                Actions.Children.Add(CreateHeaderLabel(AppResources.ActionsStatusHeaderLabelText), 3, 0);
+
+                row = 1;
+                foreach (RuleAction action in actions)
+                {
+                    Actions.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                    Actions.Children.Add(CreateInfoLabel(action.ActionSubject.Login), 0, row);
+                    Actions.Children.Add(CreateInfoLabel(action.ActionObject.Title), 1, row);
+                    Actions.Children.Add(CreateInfoLabel(action.TimeStamp.ToShortDateString()), 2, row);
+                    Actions.Children.Add(new StackLayout() { 
+                        BackgroundColor = (Color)App.Current.Resources["ContentBackColor"], Children = {
+                            new BoxView() { Style = (Style)App.Current.Resources["Indicator"], 
+                                                    BackgroundColor = action.Violated ? Color.IndianRed : Color.LightGray 
+                            }
+                        } 
+                    }, 3, row++);
                 }
 
                 PopupControl.CloseTopPopupAndHideKeyboardIfNeeded(true);

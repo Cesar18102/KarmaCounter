@@ -3,13 +3,99 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customcontrols="clr-namespace:CustomControls;assembly=CustomControls"
+             xmlns:templates="clr-namespace:KarmaCounter.Controls.Popups"
+             xmlns:resources="clr-namespace:KarmaCounter.Resources"
              mc:Ignorable="d"
-             x:Class="KarmaCounter.Pages.UserPage">
+             x:Class="KarmaCounter.Pages.UserPage"
+             x:Name="CurrentUserPage"
+             Appearing="CurrentUserPage_Appearing"
+             BackgroundColor="{StaticResource ContentBackColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="ProfileScroller" TargetType="ScrollView" BasedOn="{StaticResource FillAbsoluteLayoutChild}">
+                <Setter Property="Margin" Value="10,10,10,10"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout Style="{StaticResource PopupPageLayout}" BindingContext="{Reference CurrentUserPage}">
+
+            <StackLayout Style="{StaticResource PopupPageContentOuterLayout}">
+                <StackLayout Style="{StaticResource PopupPageContentInnerLayout}" BackgroundColor="Transparent">
+                    <Grid Style="{StaticResource FillLayout}">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <AbsoluteLayout Grid.Row="0">
+                            <Label Style="{StaticResource HeaderLabel}" AbsoluteLayout.LayoutBounds="0,0,1,1" Text="{Binding ObservedUser.Login}"/>
+                            <customcontrols:Img Style="{StaticResource BurgerButtonStyle}" x:Name="Burger" OnClick="Burger_OnClick" Source="burger.png" Border="False" BorderOnClick="False"/>
+                        </AbsoluteLayout>
+
+                        <ScrollView Style="{StaticResource ProfileScroller}" Grid.Row="1">
+                            <StackLayout>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.ProfileLoginLabelText}" Grid.Row="0" Grid.Column="0"/>
+                                    <Label Style="{StaticResource ListInfoLabel}" Text="{Binding ObservedUser.Login}" Grid.Row="0" Grid.Column="1"/>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.ProfileEmailLabelText}" Grid.Row="1" Grid.Column="0"/>
+                                    <Label Style="{StaticResource ListInfoLabel}" Text="{Binding ObservedUser.Email}" Grid.Row="1" Grid.Column="1"/>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.ProfileGlobalKarmaLabelText}" Grid.Row="2" Grid.Column="0"/>
+                                    <Label Style="{StaticResource ListInfoLabel}" Text="{Binding ObservedUser.Karma}" Grid.Row="2" Grid.Column="1"/>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource HorisontalSeparaor}"/>
+
+                                <StackLayout>
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.ActionsHeaderLabelText}"/>
+                                    <Grid Style="{StaticResource InfoGrid}" x:Name="Actions">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.4*"/>
+                                            <ColumnDefinition Width="0.25*"/>
+                                            <ColumnDefinition Width="0.1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--Actions-->
+
+                                    </Grid>
+                                </StackLayout>
+                                
+                            </StackLayout>
+                        </ScrollView>
+
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+
+            <templates:LoadingPopup x:Name="ActivityPopup" CircleRadius="50"/>
+            <templates:SimpleMessagePopup x:Name="ErrorPopup" PopupWidth="250" PopupHeight="150" FirstButtonText="OK"/>
+            <templates:SimpleMessagePopup x:Name="ExitConfirmPopup" PopupWidth="250" PopupHeight="100" 
+                                          MessageText="{x:Static resources:AppResources.ExitQuestionText}" 
+                                          FirstButtonText="{x:Static resources:AppResources.ConfirmText}"
+                                          SecondButtonText="{x:Static resources:AppResources.RefuseText}"/>
+
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

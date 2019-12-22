@@ -165,5 +165,42 @@
             <Setter Property="BackgroundColor" Value="{StaticResource AdditionalColor}"/>
         </Style>
 
+        <Style x:Key="ListLabel" TargetType="Label" BasedOn="{StaticResource AdditionalLabel}">
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+
+            <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+        </Style>
+
+        <Style x:Key="ListInfoLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}">
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+
+            <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
+        </Style>
+
+        <Style x:Key="InfoGrid" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="2"/>
+            <Setter Property="RowSpacing" Value="2"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource BarBackColor}"/>
+        </Style>
+
+        <Style x:Key="Indicator" TargetType="BoxView">
+
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+
+            <Setter Property="HeightRequest" Value="10"/>
+            <Setter Property="WidthRequest" Value="10"/>
+            <Setter Property="CornerRadius" Value="10"/>
+
+        </Style>
+
     </Application.Resources>
 </Application>

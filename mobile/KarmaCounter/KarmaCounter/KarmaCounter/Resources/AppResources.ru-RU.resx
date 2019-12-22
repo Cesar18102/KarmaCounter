@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionsDateTimeHeaderLabelText" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="ActionsHeaderLabelText" xml:space="preserve">
+    <value>События</value>
+  </data>
+  <data name="ActionsLoginHeaderLabelText" xml:space="preserve">
+    <value>Участник</value>
+  </data>
+  <data name="ActionsRuleHeaderLabelText" xml:space="preserve">
+    <value>Правило</value>
+  </data>
+  <data name="ActionsRuleScopeLabelText" xml:space="preserve">
+    <value>Суть</value>
+  </data>
+  <data name="ActionsStatusHeaderLabelText" xml:space="preserve">
+    <value>Статус</value>
+  </data>
   <data name="AddGroupConfirmButtonText" xml:space="preserve">
     <value>Создать</value>
   </data>
@@ -221,6 +239,15 @@
   </data>
   <data name="PrivateKeyLabelText" xml:space="preserve">
     <value>Приватный ключ</value>
+  </data>
+  <data name="ProfileEmailLabelText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ProfileGlobalKarmaLabelText" xml:space="preserve">
+    <value>Глобальная карма</value>
+  </data>
+  <data name="ProfileLoginLabelText" xml:space="preserve">
+    <value>Логин</value>
   </data>
   <data name="PublicGroupCheckerLabelText" xml:space="preserve">
     <value>Общедоступная группа</value>

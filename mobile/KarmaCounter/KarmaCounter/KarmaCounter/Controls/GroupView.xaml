@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:customcontrols="clr-namespace:CustomControls;assembly=CustomControls"
-             mc:Ignorable="d"
+                                     xmlns:controls="clr-namespace:KarmaCounter.Controls"
+                                     mc:Ignorable="d"
              x:Class="KarmaCounter.Controls.GroupView"
              x:Name="CurrentGroupView">
     

@@ -1,4 +1,5 @@
-﻿using System.Resources;
+﻿using System;
+using System.Resources;
 
 using Android.Views;
 
@@ -102,7 +103,7 @@ namespace KarmaCounter.Pages
             return true;
         }
 
-        private async void ConfirmGroupCreationButton_Clicked(object sender, System.EventArgs e)
+        private async void ConfirmGroupCreationButton_Clicked(object sender, EventArgs e)
         {
             try
             {

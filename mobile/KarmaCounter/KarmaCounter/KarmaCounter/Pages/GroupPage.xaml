@@ -19,32 +19,6 @@
                 <Setter Property="Margin" Value="10,10,10,10"/>
             </Style>
 
-            <Style x:Key="ListLabel" TargetType="Label" BasedOn="{StaticResource AdditionalLabel}">
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                
-                <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
-            </Style>
-
-            <Style x:Key="ListInfoLabel" TargetType="Label" BasedOn="{StaticResource ContentLabel}">
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-
-                <Setter Property="BackgroundColor" Value="{StaticResource ContentBackColor}"/>
-            </Style>
-
-            <Style x:Key="InfoGrid" TargetType="Grid">
-                <Setter Property="ColumnSpacing" Value="2"/>
-                <Setter Property="RowSpacing" Value="2"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource BarBackColor}"/>
-            </Style>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -62,7 +36,7 @@
 
                         <Label Style="{StaticResource HeaderLabel}" Text="{Binding SourceGroup.Name}" Grid.Row="0"/>
 
-                        <ScrollView Style="{StaticResource GroupListScroller}"  Grid.Row="1">
+                        <ScrollView Style="{StaticResource GroupListScroller}" Grid.Row="1">
                             <Grid Style="{StaticResource FillLayout}">
 
                                 <Grid.RowDefinitions>
@@ -147,6 +121,23 @@
                                         <!--Members-->
 
                                     </Grid>
+
+                                    <BoxView Style="{StaticResource HorisontalSeparaor}"/>
+
+                                    <Label Style="{StaticResource ListLabel}" Text="{x:Static resources:AppResources.ActionsHeaderLabelText}"/>
+                                    <Grid Style="{StaticResource InfoGrid}" x:Name="Actions">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.3*"/>
+                                            <ColumnDefinition Width="0.3*"/>
+                                            <ColumnDefinition Width="0.3*"/>
+                                            <ColumnDefinition Width="0.1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--Actions-->
+
+                                    </Grid>
+
                                 </StackLayout>
 
                             </Grid>
