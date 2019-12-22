@@ -170,6 +170,30 @@
                 </customcontrols:ClickableFrame>
             </templates:Popup>
 
+            <templates:Popup Style="{StaticResource PopupBackgroud}" x:Name="AddRulePopup" Closable="True" BackgroundColor="{x:StaticResource InactiveTransperentColor}" IsVisible="False">
+                <customcontrols:ClickableFrame Style="{StaticResource PopupOuterFrame}" HeightRequest="350" WidthRequest="300" CornerRadius="{StaticResource PopupCornerRaius}" >
+                    <customcontrols:ClickableFrame Style="{StaticResource PopupInnerFrame}" HeightRequest="350" WidthRequest="300" BackgroundColor="{StaticResource BarBackColor}">
+                        <StackLayout>
+
+                            <Label Style="{StaticResource HeaderLabel}" Text="{x:Static resources:AppResources.AddRulePopupTitle}"/>
+
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="RuleNameInput" Placeholder="{x:Static resources:AppResources.RuleNamePlaceholderText}"/>
+                            <Editor Style="{StaticResource PopupInnerView}" x:Name="RuleScopeInput" BackgroundColor="{StaticResource ContentBackColor}" HeightRequest="100" 
+                                    Placeholder="{x:Static resources:AppResources.RuleDescriptionPlaceholderText}"/>
+                            <Entry Style="{StaticResource PopupEntry}" x:Name="RuleFeeFormula" Placeholder="{x:Static resources:AppResources.RuleFormulaPlaceholderText}"/>
+                            
+                            <Button Style="{StaticResource PopupButton}"
+                                    x:Name="AddVariableButton" Clicked="AddVariableButton_Clicked" 
+                                    Text="{x:Static resources:AppResources.AddVariableButtonText}"/>
+                            <Button Style="{StaticResource PopupButton}"
+                                    x:Name="ConfirmRuleAddingButton" Clicked="ConfirmRuleAddingButton_Clicked" 
+                                    Text="{x:Static resources:AppResources.AddRuleConfirmButtonText}"/>
+
+                        </StackLayout>
+                    </customcontrols:ClickableFrame>
+                </customcontrols:ClickableFrame>
+            </templates:Popup>
+
             <templates:LoadingPopup x:Name="ActivityPopup" CircleRadius="50"/>
             <templates:SimpleMessagePopup x:Name="ErrorPopup" PopupWidth="250" PopupHeight="150" FirstButtonText="OK"/>
 

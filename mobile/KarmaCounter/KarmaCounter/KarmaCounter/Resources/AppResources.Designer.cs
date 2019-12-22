@@ -88,6 +88,33 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string AddRuleConfirmButtonText {
+            get {
+                return ResourceManager.GetString("AddRuleConfirmButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding rule.
+        /// </summary>
+        internal static string AddRulePopupTitle {
+            get {
+                return ResourceManager.GetString("AddRulePopupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Variable.
+        /// </summary>
+        internal static string AddVariableButtonText {
+            get {
+                return ResourceManager.GetString("AddVariableButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string CancelText {
@@ -385,11 +412,38 @@ namespace KarmaCounter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rule scope.
+        /// </summary>
+        internal static string RuleDescriptionPlaceholderText {
+            get {
+                return ResourceManager.GetString("RuleDescriptionPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule violation fee formula.
+        /// </summary>
+        internal static string RuleFormulaPlaceholderText {
+            get {
+                return ResourceManager.GetString("RuleFormulaPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string RuleNameHeader {
             get {
                 return ResourceManager.GetString("RuleNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule name.
+        /// </summary>
+        internal static string RuleNamePlaceholderText {
+            get {
+                return ResourceManager.GetString("RuleNamePlaceholderText", resourceCulture);
             }
         }
         

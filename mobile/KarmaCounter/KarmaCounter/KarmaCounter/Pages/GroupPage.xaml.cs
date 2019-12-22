@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using RG = System.Text.RegularExpressions;
 
 using Xamarin.Forms;
 using Xamarin.Essentials;
@@ -72,7 +73,7 @@ namespace KarmaCounter.Pages
 
             try 
             { 
-                Rights = await DI.Services.Resolve<GroupController>().GetOwnership(SourceGroup); 
+                Rights = await DI.Services.Resolve<UserController>().GetOwnership(SourceGroup); 
                 Keys.IsVisible = true; 
             }
             catch (ResponseException ex) { Keys.IsVisible = false; }
@@ -160,7 +161,7 @@ namespace KarmaCounter.Pages
             {
                 PopupControl.OpenPopup(ActivityPopup);
 
-                User user = await DI.Services.Resolve<GroupController>().GetUserByLogin(LoginEntry.Text);
+                User user = await DI.Services.Resolve<UserController>().GetUserByLogin(LoginEntry.Text);
                 await DI.Services.Resolve<GroupController>().Invite(SourceGroup, user);
                 DependencyService.Get<IToast>().Show($"{user.Login} {AppResources.InvitedMessageText}", false);
 
@@ -191,9 +192,54 @@ namespace KarmaCounter.Pages
             DependencyService.Get<IToast>().Show(messageText, false);
         }
 
-        private async void AddRuleButton_Clicked(object sender, EventArgs e)
+        private void AddRuleButton_Clicked(object sender, EventArgs e) =>
+            PopupControl.OpenPopup(AddRulePopup);
+
+        private static readonly RG.Regex FEE_FORMULA_VAR = new RG.Regex("\\{([1-9][0-9]*)\\}");
+
+        private void AddVariableButton_Clicked(object sender, EventArgs e)
         {
-            //TODO
+            try
+            {
+                string formula = RuleFeeFormula.Text;
+
+                if(string.IsNullOrEmpty(formula))
+                {
+                    RuleFeeFormula.Text += "{0}";
+                    return;
+                }
+
+                int maxVarNum = (formula.Contains("{0}") ? 0 : -1);
+                RG.MatchCollection vars = FEE_FORMULA_VAR.Matches(formula);
+
+                foreach (RG.Match var in vars)
+                    maxVarNum = Math.Max(Convert.ToInt32(var.Groups[1].Value), maxVarNum);
+
+                RuleFeeFormula.Text += "{" + (maxVarNum + 1) + "}";
+            }
+            catch { }
+        }
+
+        private async void ConfirmRuleAddingButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                PopupControl.OpenPopup(ActivityPopup);
+
+                Rule rule = new Rule(RuleNameInput.Text, RuleScopeInput.Text, RuleFeeFormula.Text);
+                await DI.Services.Resolve<GroupController>().AddRule(rule, SourceGroup);
+                await UpdateGroupInfo();
+
+                PopupControl.CloseTopPopupAndHideKeyboardIfNeeded(true);
+                PopupControl.CloseTopPopupAndHideKeyboardIfNeeded();
+            }
+            catch (ResponseException ex)
+            {
+                PopupControl.CloseTopPopupAndHideKeyboardIfNeeded(true);
+
+                ErrorPopup.MessageText = ex.message;
+                PopupControl.OpenPopup(ErrorPopup);
+            }
         }
 
         protected override bool OnBackButtonPressed()

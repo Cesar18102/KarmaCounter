@@ -51,7 +51,7 @@ namespace KarmaCounter.Pages
 
             view.OnClick += (ME, ctx) =>
             {
-                if (ME.Action != MotionEventActions.Down)
+                if (ME.Action != MotionEventActions.Up)
                     return false;
 
                 (App.Current.MainPage as MasterDetailPage).Detail = new GroupPage(group);

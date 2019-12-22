@@ -126,6 +126,15 @@
   <data name="AddRuleButtonText" xml:space="preserve">
     <value>Add rule</value>
   </data>
+  <data name="AddRuleConfirmButtonText" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddRulePopupTitle" xml:space="preserve">
+    <value>Adding rule</value>
+  </data>
+  <data name="AddVariableButtonText" xml:space="preserve">
+    <value>Variable</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -225,8 +234,17 @@
   <data name="RefuseText" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="RuleDescriptionPlaceholderText" xml:space="preserve">
+    <value>Rule scope</value>
+  </data>
+  <data name="RuleFormulaPlaceholderText" xml:space="preserve">
+    <value>Rule violation fee formula</value>
+  </data>
   <data name="RuleNameHeader" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="RuleNamePlaceholderText" xml:space="preserve">
+    <value>Rule name</value>
   </data>
   <data name="RuleTextHeader" xml:space="preserve">
     <value>Description</value>

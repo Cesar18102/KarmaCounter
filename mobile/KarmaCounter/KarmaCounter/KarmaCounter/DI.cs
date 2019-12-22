@@ -26,8 +26,8 @@ namespace KarmaCounter
             builder.RegisterType<SessionWrapper>().SingleInstance().AsSelf();
             builder.RegisterType<LogicServerWrapper>().SingleInstance().AsSelf();
 
-
             builder.RegisterType<AuthController>().SingleInstance().AsSelf();
+            builder.RegisterType<UserController>().SingleInstance().AsSelf();
             builder.RegisterType<GroupController>().SingleInstance().AsSelf();
 
             Services = builder.Build();

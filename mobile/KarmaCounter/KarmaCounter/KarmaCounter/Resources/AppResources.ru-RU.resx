@@ -126,6 +126,15 @@
   <data name="AddRuleButtonText" xml:space="preserve">
     <value>Добавить правило</value>
   </data>
+  <data name="AddRuleConfirmButtonText" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="AddRulePopupTitle" xml:space="preserve">
+    <value>Добавить правило</value>
+  </data>
+  <data name="AddVariableButtonText" xml:space="preserve">
+    <value>Переменная</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Отмена</value>
   </data>
@@ -225,7 +234,16 @@
   <data name="RefuseText" xml:space="preserve">
     <value>Нет</value>
   </data>
+  <data name="RuleDescriptionPlaceholderText" xml:space="preserve">
+    <value>Суть</value>
+  </data>
+  <data name="RuleFormulaPlaceholderText" xml:space="preserve">
+    <value>Формула рассчета штрафа</value>
+  </data>
   <data name="RuleNameHeader" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="RuleNamePlaceholderText" xml:space="preserve">
     <value>Название</value>
   </data>
   <data name="RuleTextHeader" xml:space="preserve">

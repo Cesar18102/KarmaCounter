@@ -8,6 +8,7 @@ namespace KarmaCounter.Models
 {
     public class Group : IModelElement
     {
+        [AddRule("group_id")]
         [InviteGroup("group_id")]
         [JoinGroup("group_id")]
         [GetGroupById("id")]
