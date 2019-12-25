@@ -2,72 +2,125 @@ AP_CONFIG = { ssid = "esp8266", pwd = "11111111", auth = wifi.WPA2_PSK, max = 1 
 IP_CONFIG = { ip = "192.168.1.1", netmask = "255.255.255.252", gateway = "192.168.1.1" }
 PORT_LISTENING = 80
 
-DAY_MSEC = 60000 -- 86400000
+ADHERENCE_ENDPOINT = "/api/group/accountruleadherence"
+VIOLATION_ENDPOINT = "/api/group/accountruleviolation"
+BALANCER_URL = "http://karmaloadbalancer.somee.com/api/server/get/"
+
+PUBLIC_KEY = "a98235230a71b5eef4064cae6b05e67bfc1ff4f5943ad09fe93103ed62634ab7"
+PRIVATE_KEY = "271793bcd2660d3763a043fa45f0180e696c0b7e4c3408c109cf6d7ff5137c7b"
+USER_ID = 127
+RULE_ID = 12
+
+MIN_WET = 512
+DAY_MSEC = 20000 -- 86400000
 MIN_WET_SECONDS_ALONG = 10 --1200
 BRUSHES_PER_DAY = 2
 
-print("start")
-
-wifi.setmode(wifi.SOFTAP)
-wifi.ap.config(AP_CONFIG)
-wifi.ap.setip(IP_CONFIG)
-
-print("access point active")
-
-server = net.createServer(net.TCP)
-
-print("server set up")
-
-function credsReciever(conn, data)
-
-    print(data)
-    local creds = data:gmatch("ssid=.+")(0)
-    
-    if(creds == nil) then
-        print("invalid creds recieved. rebooting.")
-        conn:send("400")
-        node.restart()
-        return
+function try(f, catch_f)
+    local status, exception = pcall(f)
+    if not status then
+        catch_f(exception)
     end
+end
 
-    ssid = creds:gmatch("ssid=([^&]+)")(0)
-    pwd = creds:gmatch("pwd=(.+)")(0)
+function tryRequest(url, method, headers, body, checkOkCallback, cycle, delay)
+    http.request(url, method, headers, body, 
+        function(code, data)
+            if(not checkOkCallback(code, data) and cycle) then
+                tmr.delay(delay)
+                tryRequest(url, method, headers, body, checkOkCallback, cycle, delay)
+            end
+        end
+    )
+end
 
-    if(pwd == nil) then pwd = "" end
+function getServer(callback)
+    tryRequest(BALANCER_URL, "GET", "", "", 
+        function(code, data)
+            if(code == 200) then
+                callback(data)
+                return true
+            end
+            return false
+        end, true, 1000
+    )
+end
 
-    print("ssid parsed: "..ssid)
-    print("pwd parsed: "..pwd)
+function createActionAccountTable(points)
 
-    conn:send("200")
-    conn:close()
+    table = { 
+        rule_id = RULE_ID, 
+        user_id = USER_ID, 
+        public_key = PUBLIC_KEY,
+        hash = string.upper(crypto.toHex(crypto.hash("md5", PRIVATE_KEY.."_"..RULE_ID.."_"..USER_ID.."_"..PUBLIC_KEY.."_"..PRIVATE_KEY))),
+        values = { points }
+    }
 
-    server:close()
-    print("server closed")
+    return table
 
-    print("connecting to "..ssid)
+end
+
+
+function accountSuccess(brushes, surl)
+    print("seding adherence to "..surl)
+
+    jsonData = sjson.encode(createActionAccountTable(brushes))
+    print("sending "..jsonData)
     
-    wifi.setmode(wifi.STATION)
+    tryRequest(surl..ADHERENCE_ENDPOINT, "POST", "Content-Type: application/json\r\n", jsonData,
+        function(data)
+            print(data.." is responsed for sending adherence to "..surl)
+        end, false, 0
+    )
+end
+
+function accountFail(brushes, surl)
+    print("seding fail to "..surl)
+
+    jsonData = sjson.encode(createActionAccountTable(math.abs(BRUSHES_PER_DAY - brushes)))
+    print("sending "..jsonData)
     
-    if(wifi.sta.config({ ssid = ssid, pwd = pwd })) then
-        print("connected to "..ssid)
+    tryRequest(surl..VIOLATION_ENDPOINT, "POST", "Content-Type: application/json\r\n", jsonData,
+        function(data)
+            print(data.." is responsed for sending violation to "..surl)
+        end, false, 0
+    )
+end
+
+function checkWet()
+    level = adc.read(0)
+    if(level >= MIN_WET) then
+        print(tmr.now()..": it's wet("..level..")")
+        return true
     else
-        print("failed to connect to "..ssid.." wrong creds either ap is unreachable")
-        node.restart()
-        return
+        print(tmr.now()..": it's dry("..level..")")
+        return false
     end
-    
-    wifi.sta.connect()
+end
 
+function startCheckingAdherence()
+
+    serv = {}
+    getServer(
+        function(data)
+            serv = sjson.decode(data)
+            print(serv.domain)
+        end
+    )
+    
     todayBrushes = 0
     wetSecondsAlong = 0
 
     dayTmr = tmr.create()
     dayTmr:register(DAY_MSEC, tmr.ALARM_AUTO, 
         function() 
+            if(wetSecondsAlong >= MIN_WET_SECONDS_ALONG) then
+                todayBrushes = todayBrushes + 1 -- if day is out, but it's still wet
+            end
             if(todayBrushes == BRUSHES_PER_DAY) then
-                accountSuccess()
+                accountSuccess(todayBrushes, serv.domain)
             else
-                accountFail()
+                accountFail(todayBrushes, serv.domain)
             end
             todayBrushes = 0
             wetSecondsAlong = 0
@@ -91,6 +144,73 @@ function credsReciever(conn, data)
     checkTmr:start()
 end
 
+function connectAP(ssid, pwd)
+
+    print("connecting to "..ssid)
+    wifi.setmode(wifi.STATION)
+
+    sta_cnf = { ssid = ssid, pwd = pwd, auto = false }
+
+    print(sta_cnf.ssid)
+    print(sta_cnf.pwd)
+    
+    if(wifi.sta.config(sta_cnf)) then
+        print("connected to "..ssid)
+    else
+        print("failed to connect to "..ssid.." wrong creds either ap is unreachable")
+        node.restart()
+        return
+    end
+
+    wifi.sta.connect(
+        function(e)
+            startCheckingAdherence()
+        end
+    )
+end
+
+function credsReciever(conn, data)
+
+    local creds = data:gmatch("ssid=.+")(0)
+    
+    if(creds == nil) then
+        print("invalid creds recieved. rebooting.")
+        conn:send("400")
+        node.restart()
+        return
+    end
+
+    ssid = creds:gmatch("ssid=([^&]+)")(0)
+    pwd = creds:gmatch("pwd=(.+)")(0)
+
+    if(pwd == nil) then pwd = "" end
+
+    print("ssid parsed: "..ssid)
+    print("pwd parsed: "..pwd)
+
+    conn:send("200")
+    conn:close()
+
+    server:close()
+    print("server closed")
+    
+    connectAP(ssid, pwd)
+end
+
+--------------------------------------------------
+
+print("start")
+
+wifi.setmode(wifi.SOFTAP)
+wifi.ap.config(AP_CONFIG)
+wifi.ap.setip(IP_CONFIG)
+
+print("access point active")
+
+server = net.createServer(net.TCP)
+
+print("server set up")
+
 server:listen(PORT_LISTENING, 
     function(conn)
         conn:on("receive", credsReciever)
@@ -98,26 +218,3 @@ server:listen(PORT_LISTENING,
 )
 
 print("server is listening to port "..PORT_LISTENING)
-    
-
-function accountSuccess()
-    print("well done")
-    -- TODO
-end
-
-function accountFail()
-    print("fail")
-    -- TODO
-end
-
-function checkWet()
-    level = adc.read(0)
-    if(level >= 128) then -- move to const and increase
-        print(tmr.now()..": it's wet("..level..")")
-        return true
-    else
-        print(tmr.now()..": it's dry("..level..")")
-        return false
-    end
-end
-
