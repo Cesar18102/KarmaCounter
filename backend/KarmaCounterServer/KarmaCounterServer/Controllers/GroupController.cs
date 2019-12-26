@@ -1,21 +1,24 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Text;
+using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 
 using Autofac;
+
+using Logger;
+
+using Newtonsoft.Json;
 
 using KarmaCounterServer.Dto;
 using KarmaCounterServer.Model;
 using KarmaCounterServer.Services;
 using KarmaCounterServer.Exceptions;
-using System;
-using System.Text;
-using Newtonsoft.Json;
-using Logger;
 
 namespace KarmaCounterServer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GroupController : ApiController
     {
         [HttpPost]

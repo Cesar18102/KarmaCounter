@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -11,6 +12,7 @@ using KarmaCounterServer.Exceptions;
 
 namespace KarmaCounterServer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         [HttpPost]
