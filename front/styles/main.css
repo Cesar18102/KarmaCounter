@@ -1,0 +1,135 @@
+html, body {
+	margin : 0;
+	padding : 0;
+	background-color : #FFFFFF;
+}
+
+.header, .footer {
+	height : 7vh;
+	width : 100vw;
+	background-color : #67A93D;
+}
+
+.footer {
+	top : 93vh;
+}
+
+.header-button {
+	cursor : hand;
+	
+	border : 0.5vh solid #67A93D;
+	border-radius : 3vh;
+	
+	background-color : #0A3500;
+	color : #F1F1F1;
+	
+	padding-top : calc((5vh - 1em) / 2);
+	
+	display : table-cell;
+	width : 8vw;
+	height : 6vh;
+}
+
+.header-label {
+	font-size : 1.5em;
+	color : #3D3D3C;
+	
+	top : calc((5vh - 1.5em) / 2);
+	position : relative;
+	width : 80vw;
+}
+
+.header {
+	text-align : center;
+}
+
+.content-wrapper {
+	margin : 5vh;
+	min-height : 76vh;
+}
+
+.content {
+	
+}
+
+.content > * {
+	color : #3D3D3C;
+}
+
+.group {
+	cursor : hand;
+	
+	border : 1vh solid #67A93D;
+	border-radius : 3vh;
+	
+	margin-bottom : 1vh;
+	padding : 1vh;
+}
+
+.group-description {
+	text-align : center;
+}
+
+.indicator, .indicator-pos, .indicator-neg {
+	width : 3vh;
+	height : 3vh;
+	
+	border-radius : 1.5vh;
+}
+
+.indicator-pos {
+	background-color : green;
+}
+
+.indicator-neg {
+	background-color : red;
+}
+
+.group > * {
+	color : #3D3D3C;
+}
+
+.loader {
+  border: 2vh solid #FFFFFF00;
+  border-top: 2vh solid #67A93D;
+  border-left: 2vh solid #67A93D;
+  border-radius: 50%;
+  width: 10vh;
+  height: 10vh;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.separator {
+	height : 0.5vh;
+	background-color : #67A93D;
+	margin : 3vh;
+}
+
+.infoGrid {
+	margin : 2vh;
+}
+
+body > div:nth-child(2), body > div:first-child
+{
+    display: none !important;
+}
+
+.cbalink 
+{
+	display: none !important;
+}
+
+a[target="blank"] 
+{
+	display: none !important;
+}
+
+.mallbery-ext-install, .mallbery-ext-install + div 
+{
+	display: none !important;
+}

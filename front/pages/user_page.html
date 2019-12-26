@@ -1,0 +1,99 @@
+<html>
+    <head>
+		<link rel="stylesheet" href="../styles/main.css"/>
+		<script src="../scripts/group_controller.js"></script>
+		<script src="../scripts/user_controller.js"></script>
+		<script src="../scripts/util.js"></script>
+    </head>
+    <body>
+	
+		<table class="header" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="80%"><text class="header-label" id="userLogin"></text></td>
+			</tr>
+		</table>
+		
+		<center><div class="loader" id="loader" style="position : absolute; top: 45vh; left : calc((100vw - 10vh) / 2);"></div><center>
+		
+		<div class="content-wrapper">
+			<div class="content">
+				
+				<label for="userEmail">Email: </label>
+				<text id="userEmail"></text>
+				
+				<br/>
+				
+				<label for="userGlobalKarma">Global karma: </label>
+				<text id="userGlobalKarma"></text>
+				<br/>
+				
+				<div class="separator"></div>
+				
+				<text>User actions</text>
+				<table class="infoGrid" id="userActions" rules="all" cellpadding="3" cellspacing="3">
+					<tr>
+						<td width="5%">Rule id</td>
+						<td width="10%">Rule name</td>
+						<td width="70%">Rule scope</td>
+						<td width="10%">Date</td>
+						<td width="5%">Status</td>
+					</tr>
+					
+					<!--Actions-->
+					
+				</table>
+			</div>
+		</div>
+		
+		<div class="footer">
+		
+		</div>
+	
+    </body>
+	<script>
+		function loadProfile(user, actions) {
+			document.getElementById("userLogin").innerText = user.login + ' (id = ' + user.id + ')';
+			document.getElementById("userEmail").innerText = user.email;
+			document.getElementById("userGlobalKarma").innerText = user.global_karma;
+			
+			let actionsTable = document.getElementById("userActions");
+			for(let action of actions)
+			{
+				let dt = new Date(action.time_stamp);
+				let row = document.createElement("tr");
+				row.innerHTML = "<td>" + action.rule.id + "</td>" + 
+								"<td>" + action.rule.title + "</td>" + 
+								"<td>" + action.rule.text + "</td>" + 
+								"<td>" + (1900 + dt.getYear()) + '-' + dt.getMonth() + '-' + dt.getDate() + "</td>" + 
+								"<td>" + "<div class = 'indicator, " + (!action.violated ? 'indicator-pos' : 'indicator-neg') + "'>" + "</td>";
+				actionsTable.appendChild(row);
+			}
+		}
+	
+		window.onload = function() {
+			let userId = findGetParameter(location.search, "id"); 
+			getProfileById(userId, 
+				function(suc, res) {
+				
+					if(!suc) {
+						alert(JSON.parse(res).message);
+						return;
+					}
+					
+					getUserActions(userId, 
+						function(suc1, actions) {
+							
+							if(!suc1) {
+								alert(JSON.parse(actions).message);
+								return;
+							}
+						
+							document.getElementById("loader").hidden = true;
+							loadProfile(JSON.parse(res), JSON.parse(actions));
+						}
+					)
+				}
+			);
+		}
+	</script>
+</html>

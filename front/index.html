@@ -1,0 +1,68 @@
+<html>
+    <head>
+		<link rel="stylesheet" href="styles/main.css"/>
+		<script src="scripts/group_controller.js"></script>
+    </head>
+    <body>
+	
+		<table class="header" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="100%"><text class="header-label"> Karma Groups </text></td>
+			</tr>
+		</table>
+		
+		<center><div class="loader" id="loader" style="position : absolute; top: 45vh; left : calc((100vw - 10vh) / 2);"></div><center>
+		
+		<div class="content-wrapper">
+			<div class="content" id="groupsWrapper">
+				
+				<!--GROUPS-->
+				
+			</div>
+		</div>
+		
+		<div class="footer">
+		
+		</div>
+	
+    </body>
+	<script>
+		function buildGroupLayout(group){
+			let groupWrapper = document.createElement('div');
+			groupWrapper.classList.add('group');
+			groupWrapper.innerHTML = 
+				'<table width="100%">' + 
+					'<tr>' + 
+						'<td width="30%"><h1>Group "' + group.name + '" by ' + group.owner.login + '</h1></td>' + 
+						'<td width="60%"><h2 class="group-description">' + group.description + '</h2></td>' + 
+						'<td width="5%"><div class="indicator, ' + (group.is_public ? 'indicator-pos' : 'indicator-neg') +'"> </div></td>' + 
+						'<td width="5%"><div class="indicator, ' + (!group.is_local ? 'indicator-pos' : 'indicator-neg') +'"> </div></td>' + 
+					'</tr>' +
+				'</table>';
+			return groupWrapper;
+		}
+	
+		window.onload = function() {
+			getAllGroups(function(suc, res){ 
+				
+				document.getElementById("loader").hidden = true;
+				
+				if(!suc) {
+					alert(JSON.parse(res).message);
+					return;
+				}
+				
+				let groups = JSON.parse(res);
+				let groupsWrapper = document.getElementById('groupsWrapper');
+				
+				for(let group of groups) {
+					let groupLayout = buildGroupLayout(group);
+					groupLayout.onclick = function() {
+						window.location = "./pages/group_page.html?id=" + group.id;
+					};
+					groupsWrapper.appendChild(groupLayout);
+				}
+			});
+		}
+	</script>
+</html>

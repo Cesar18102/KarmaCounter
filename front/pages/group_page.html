@@ -1,0 +1,141 @@
+<html>
+    <head>
+		<link rel="stylesheet" href="../styles/main.css"/>
+		<script src="../scripts/group_controller.js"></script>
+		<script src="../scripts/util.js"></script>
+    </head>
+    <body>
+	
+		<table class="header" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="80%"><text class="header-label" id="groupName"></text></td>
+			</tr>
+		</table>
+		
+		<center><div class="loader" id="loader" style="position : absolute; top: 45vh; left : calc((100vw - 10vh) / 2);"></div><center>
+		
+		<div class="content-wrapper">
+			<div class="content">
+				
+				<label for="groupDescription">Group description: </label>
+				<text id="groupDescription"></text>
+				
+				<div class="separator"></div>
+				
+				<text>Group members</text>
+				<table class="infoGrid" id="groupMembers" rules="all" cellpadding="3" cellspacing="3">
+					<tr>
+						<td width="60%">Login</td>
+						<td width="20%">Global karma</td>
+						<td width="20%">Local karma</td>
+					</tr>
+					
+					<!--Members-->
+					
+				</table>
+				
+				<div class="separator"></div>
+				
+				<text>Group rules</text>
+				<table class="infoGrid" id="groupRules" rules="all" cellpadding="3" cellspacing="3">
+				
+					<tr>
+						<td width="10%">Id</td>
+						<td width="20%">Name</td>
+						<td width="50%">Scope</td>
+					</tr>
+				
+					<!--Rules-->
+						
+				</table>
+				
+				<div class="separator"></div>
+				
+				<text>Group actions</text>
+				<table class="infoGrid" id="groupActions" rules="all" cellpadding="3" cellspacing="3">
+				
+					<tr>
+						<td width="30%">Member</td>
+						<td width="30%">Rule</td>
+						<td width="30%">Date</td>
+						<td width="10%">Status</td>
+					</tr>
+				
+					<!--Actions-->
+				
+				</table>
+				
+			</div>
+		</div>
+		
+		<div class="footer">
+		
+		</div>
+	
+    </body>
+	<script>
+		function loadGroup(group, actions) {
+			document.getElementById("groupName").innerText = (group.is_public ? 'Public, ' : 'Private, ') + 
+															 (group.is_local ? 'local ' : 'global ') + 'group \"' + group.name + '\" (id = ' + group.id + ')';
+			document.getElementById("groupDescription").innerText = group.description;
+			
+			let membersTable = document.getElementById("groupMembers");
+			for(let member of group.members)
+			{
+				let row = document.createElement("tr");
+				row.innerHTML = "<td><a href='user_page.html?id=" + member.user.id + "'>" + member.user.login + "</a></td>" + 
+								"<td>" + member.user.global_karma + "</td>" + 
+								"<td>" + member.local_karma + "</td>";
+				membersTable.appendChild(row);
+			}
+			
+			let rulesTable = document.getElementById("groupRules");
+			for(let rule of group.rules)
+			{
+				let row = document.createElement("tr");
+				row.innerHTML = "<td>" + rule.id + "</td>" + 
+								"<td>" + rule.title + "</td>" + 
+								"<td>" + rule.text + "</td>";
+				rulesTable.appendChild(row);
+			}
+			
+			let actionsTable = document.getElementById("groupActions");
+			for(let action of actions)
+			{
+				let dt = new Date(action.time_stamp);
+				let row = document.createElement("tr");
+				row.innerHTML = "<td>" + action.user.login + "</td>" + 
+								"<td>" + action.rule.title + " (id = " + action.rule.id + ")</td>" + 
+								"<td>" + (1900 + dt.getYear()) + '-' + dt.getMonth() + '-' + dt.getDate() + "</td>" + 
+								"<td>" + "<div class = 'indicator, " + (!action.violated ? 'indicator-pos' : 'indicator-neg') + "'>" + "</td>";
+				actionsTable.appendChild(row);
+			}
+		}
+	
+		window.onload = function() {
+			let groupId = findGetParameter(location.search, "id"); 
+			getGroupById(groupId, 
+				function(suc, res) {
+				
+					if(!suc) {
+						alert(JSON.parse(res).message);
+						return;
+					}
+					
+					getGroupActions(groupId, 
+						function(suc1, actions) {
+							
+							if(!suc1) {
+								alert(JSON.parse(actions).message);
+								return;
+							}
+						
+							document.getElementById("loader").hidden = true;
+							loadGroup(JSON.parse(res), JSON.parse(actions));
+						}
+					)
+				}
+			);
+		}
+	</script>
+</html>
