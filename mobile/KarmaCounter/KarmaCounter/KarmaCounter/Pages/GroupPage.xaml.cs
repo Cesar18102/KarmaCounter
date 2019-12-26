@@ -147,8 +147,9 @@ namespace KarmaCounter.Pages
                     Actions.Children.Add(CreateInfoLabel(action.TimeStamp.ToShortDateString()), 2, row);
                     Actions.Children.Add(new StackLayout() { 
                         BackgroundColor = (Color)App.Current.Resources["ContentBackColor"], Children = {
-                            new BoxView() { Style = (Style)App.Current.Resources["Indicator"], 
-                                                    BackgroundColor = action.Violated ? Color.IndianRed : Color.LightGray 
+                            new BoxView() { 
+                                Style = (Style)App.Current.Resources["Indicator"], 
+                                BackgroundColor = action.Violated ? Color.IndianRed : Color.LightGreen
                             }
                         } 
                     }, 3, row++);

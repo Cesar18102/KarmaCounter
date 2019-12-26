@@ -84,8 +84,9 @@ namespace KarmaCounter.Pages
                     {
                         BackgroundColor = (Color)App.Current.Resources["ContentBackColor"],
                         Children = {
-                            new BoxView() { Style = (Style)App.Current.Resources["Indicator"],
-                                                    BackgroundColor = action.Violated ? Color.IndianRed : Color.LightGray
+                            new BoxView() { 
+                                Style = (Style)App.Current.Resources["Indicator"],
+                                BackgroundColor = action.Violated ? Color.IndianRed : Color.LightGreen
                             }
                         }
                     }, 3, row++);
