@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b6479b3f-3a58-4e11-ba8e-3e8fe437e8c6" name="FrontUseCase" linkedPackageId="6d67abcb-6b25-4708-abf0-e5cbfb2dcd50" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="5626375f-0966-4243-86fe-07ded0da1712">
+      <profileInstance Id="7be435ea-265d-409d-9863-a016350d34af" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="b89d3446-817c-4492-9648-cf6af4a2f112">
+      <profileInstance Id="d2964ebd-61ae-4502-a411-7ad71953b04d" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="2e9d4a23-a296-4477-a321-399e4677dea1" name="KarmaCounter" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fa2722d3-f666-41a2-accd-f656b721c920" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="fd398125-2fbb-42dc-bc52-8e27f4a343ad" name="Guest" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0dc3948b-d33d-4752-aaa0-e5c6f99a536b" />
+        <targetEnds>
+          <association Id="861fe514-55d7-4327-92ae-2a2643d9868b" isDerived="false" sourceEndRoleName="Guest" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ded4d6b0-501a-4f4a-8e0c-cefab1e678fe" LastKnownName="View group list" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1a4f08f9-aff8-46f0-a017-bc9bb66c9606" name="Guest" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5c8b7d94-9d58-4e90-a373-d46b13f12caa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7f9223d0-f1d3-4ea6-8a60-1d838c2eb4fb" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="af25de17-fd2e-4106-9eec-e07591ec04b3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0bc25050-4167-4ca4-a6c1-54910fc20ed9" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="ded4d6b0-501a-4f4a-8e0c-cefab1e678fe" name="View group list" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b8328ea4-47e9-4781-8e8e-dc10b2072b86" />
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="2ad4b710-aaa5-4732-8478-3463bba943b3" name="View group members list" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="218ffd43-e42b-4b32-8a15-82f4c71d9ae8" />
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="11519d86-8fa7-4fef-9c5f-97d8a6e888b5" name="View group rules list" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4da37f38-780f-4410-9323-f9d1d40c4026" />
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="fa7f6e16-0928-4c00-a7ab-a131981367a8" name="View group rule actions (violation/adherence) list" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="169c3db6-3af7-42bc-9642-3e082c5b0e03" />
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="c3cbc656-642d-4972-8153-633fb5cea72e" name="View particular group page" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9700e089-86c8-4a4b-9476-cd9de8f998c9" />
+        <extendedCases>
+          <extend Id="612912ae-d447-4ce0-99e6-b839ba1b916c">
+            <useCaseMoniker Id="ded4d6b0-501a-4f4a-8e0c-cefab1e678fe" LastKnownName="View group list" />
+            <elementDefinition Id="67388bde-9756-470d-b59d-6e2f60ce098e" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="edf610d2-8032-4377-b71b-8321ead5a9b9">
+            <useCaseMoniker Id="fa7f6e16-0928-4c00-a7ab-a131981367a8" LastKnownName="View group rule actions (violation/adherence) list" />
+            <elementDefinition Id="b3b23fb5-2101-408d-87b5-477cd1526413" />
+          </include>
+          <include Id="77885a6b-a222-4013-9c1c-440e73aaefa3">
+            <useCaseMoniker Id="11519d86-8fa7-4fef-9c5f-97d8a6e888b5" LastKnownName="View group rules list" />
+            <elementDefinition Id="2d8a698b-31a4-4e30-b7aa-736af8e75e60" />
+          </include>
+          <include Id="d87685f8-708a-43f7-9038-cfcbfd471f6e">
+            <useCaseMoniker Id="2ad4b710-aaa5-4732-8478-3463bba943b3" LastKnownName="View group members list" />
+            <elementDefinition Id="b2dd4836-053c-46f2-9a30-84bcba76cfdc" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="36bc554f-f7ee-44dd-9303-de7bd8196081" name="View user profile page" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="efedae73-925d-4fa5-b012-5a37d2f46183" />
+        <extendedCases>
+          <extend Id="543d3a7a-0b86-4619-8459-4a241a8b16b0">
+            <useCaseMoniker Id="2ad4b710-aaa5-4732-8478-3463bba943b3" LastKnownName="View group members list" />
+            <elementDefinition Id="68585839-0d9c-4ccf-9471-020c155377be" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="979042de-20c1-41f1-859f-94335a02a239">
+            <useCaseMoniker Id="9a4379d6-b30f-48c3-95ad-b8011bc0119b" LastKnownName="View user rule actions (violation/adherence) list1" />
+            <elementDefinition Id="f342d490-287c-4baa-9001-908848ca35d3" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="9a4379d6-b30f-48c3-95ad-b8011bc0119b" name="View user rule actions (violation/adherence) list1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6e1fa34c-93a4-4886-996d-1823affeb333" />
+        <subjects>
+          <subsystemMoniker Id="2e9d4a23-a296-4477-a321-399e4677dea1" LastKnownName="KarmaCounter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="6d67abcb-6b25-4708-abf0-e5cbfb2dcd50" name="FrontUseCaseProject">
+    <elementDefinition Id="88c63c86-9aaa-44f8-93da-f0be4240edfd" />
+  </package>
+</useCaseModelRoot>

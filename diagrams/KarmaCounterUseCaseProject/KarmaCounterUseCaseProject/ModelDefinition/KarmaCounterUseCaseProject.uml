@@ -30,32 +30,22 @@
         name="Visitor"
         isAbstract="false"
         isLeaf="false">
-        <generalsInternal>
-          <generalization
-            Id="ece70cd6-fa0d-4e0f-a3a9-b1bf61989dda"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="8dead497-7214-4b20-9ac6-4b04920b1ffe"
-              LastKnownName="Registered User"
-              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
           <association
-            Id="d39ecbf1-33c2-4a40-bee0-54769f15ef8a"
+            Id="e309abc9-a44c-440a-9776-552a59ce055b"
             isDerived="false"
             sourceEndRoleName="Visitor"
-            targetEndRoleName="View group list"
+            targetEndRoleName="Sign Up"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="40d47d1a-5d95-4f58-b7f8-8caf161d754e"
-              LastKnownName="View group list"
+              Id="b0f3705d-33a2-47c4-a786-1b48f6c8dde5"
+              LastKnownName="Sign Up"
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="229947c2-6601-4895-a9b0-f756a2385ccf"
+                  Id="43f72879-131b-4b4e-aff3-fe4851bfef80"
                   name="Visitor"
                   isLeaf="false"
                   isStatic="false"
@@ -68,8 +58,47 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="9a20d249-af66-4fb7-b1cd-25227b2d2853"
-                  name="View group list"
+                  Id="f29e631b-e92f-4f49-9595-1ffb9a9b3ae3"
+                  name="Sign Up"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="fddcea9c-9f80-4238-ba92-f22b8882c466"
+            isDerived="false"
+            sourceEndRoleName="Visitor"
+            targetEndRoleName="Log In"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="eadc8fdf-ede8-4144-bc09-3568e6e8ba2b"
+              LastKnownName="Log In"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d56cf9ad-98d1-4085-a162-29dca5ef6504"
+                  name="Visitor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="92e4fa09-4881-4bf4-8b2e-f0efa7f1f02b"
+                  name="Log In"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -89,16 +118,6 @@
         name="Registered User"
         isAbstract="false"
         isLeaf="false">
-        <generalsInternal>
-          <generalization
-            Id="79f8f6d3-6849-4953-b6bf-043a1933d9bd"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="a4bdd147-ce02-4a5a-998d-8a58029eaf44"
-              LastKnownName="Group member"
-              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
           <association
             Id="d0ccb6de-7471-46d4-864b-e8534fc7ed7d"
@@ -140,20 +159,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="11dfc2c4-2dfa-496f-8913-0710ff3e272c"
+            Id="317450eb-b514-4bae-8558-ed1588c11539"
             isDerived="false"
             sourceEndRoleName="Registered User"
-            targetEndRoleName="Join group"
+            targetEndRoleName="View group list"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="ab7d929f-8b75-4c9f-ba98-cde28ee8a200"
-              LastKnownName="Join group"
+              Id="40d47d1a-5d95-4f58-b7f8-8caf161d754e"
+              LastKnownName="View group list"
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="c992c08f-1eb2-43d0-a4fe-304c7430510f"
+                  Id="1240aeaf-db19-4076-8e6f-f55d54fc001a"
                   name="Registered User"
                   isLeaf="false"
                   isStatic="false"
@@ -166,8 +185,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="7cff9538-c403-45e8-ba3a-b54f9d856415"
-                  name="Join group"
+                  Id="4ddaadf7-bf8c-484b-80e3-d8176aecac9c"
+                  name="View group list"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -266,6 +285,84 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="591bfc72-6256-4fa6-ba21-3b841d94279c"
+            isDerived="false"
+            sourceEndRoleName="Group Owner"
+            targetEndRoleName="Invite user to join group"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="72bd67f1-bf72-4b50-9612-8b847547d908"
+              LastKnownName="Invite user to join group"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f46209c-7f94-4595-b199-84ba3735361a"
+                  name="Group Owner"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5cf971d4-6e61-4bc2-a1d8-2582ec7703f4"
+                  name="Invite user to join group"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4ab0b589-d257-4edd-aed0-a0881d6e8344"
+            isDerived="false"
+            sourceEndRoleName="Group Owner"
+            targetEndRoleName="Establish rules &amp; karma fees"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a5dd979a-a169-409c-8c1e-c864365025cd"
+              LastKnownName="Establish rules &amp; karma fees"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="91740802-a2ab-4d1b-a58b-fac46d2f42da"
+                  name="Group Owner"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e0bdcc04-ffb7-408f-805c-2dc1d872dd44"
+                  name="Establish rules &amp; karma fees"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -283,16 +380,6 @@
         name="Group member"
         isAbstract="false"
         isLeaf="false">
-        <generalsInternal>
-          <generalization
-            Id="1e9d79d1-6fce-49a2-b489-fd0414eda912"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="4f683ffa-445a-4f71-9f09-fdfaaea8d3fc"
-              LastKnownName="Group Owner"
-              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
           <association
             Id="ea26fb04-4c9d-41c7-9254-eb8cc4a77e33"
@@ -323,6 +410,45 @@
                 <memberEnd
                   Id="c79658fe-31fb-4044-acc1-b8fc143dae75"
                   name="Leave group"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="86aeb471-19ce-4c53-9875-1ad9b66c81d0"
+            isDerived="false"
+            sourceEndRoleName="Group member"
+            targetEndRoleName="Invite user to join group"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="72bd67f1-bf72-4b50-9612-8b847547d908"
+              LastKnownName="Invite user to join group"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a593d0bc-c0fb-42f7-982d-320f4be275ee"
+                  name="Group member"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="011919b4-98e0-43d3-a236-87dd8176b6df"
+                  name="Invite user to join group"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -505,15 +631,6 @@
         name="Create group"
         isAbstract="false"
         isLeaf="false">
-        <additions>
-          <include
-            Id="9bf894fc-2172-456f-9eb6-a272c1e79c59">
-            <useCaseMoniker
-              Id="a5dd979a-a169-409c-8c1e-c864365025cd"
-              LastKnownName="Establish rules &amp; karma fees"
-              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-          </include>
-        </additions>
         <subjects>
           <subsystemMoniker
             Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
@@ -528,6 +645,22 @@
         name="Join group"
         isAbstract="false"
         isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="779d419b-9783-4682-93fd-2eb07a2871f9">
+            <useCaseMoniker
+              Id="69959b37-cf12-47fa-a545-3b753ceca5be"
+              LastKnownName="View particular group"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+          </extend>
+          <extend
+            Id="48c5afb6-eb14-4909-b9d5-706514632894">
+            <useCaseMoniker
+              Id="72bd67f1-bf72-4b50-9612-8b847547d908"
+              LastKnownName="Invite user to join group"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+          </extend>
+        </extendedCases>
         <subjects>
           <subsystemMoniker
             Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
@@ -541,14 +674,7 @@
         Id="d72f872c-a2ed-43f5-8896-4c8b7d02fc0c"
         name="Leave group"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
-            LastKnownName="KarmaCounter"
-            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -590,6 +716,15 @@
         name="Establish rules &amp; karma fees"
         isAbstract="false"
         isLeaf="false">
+        <additions>
+          <include
+            Id="f713057c-f8ee-4ec5-9d61-299ad2fac45b">
+            <useCaseMoniker
+              Id="bb52a8ad-5c08-4f1c-b033-1152c06c485b"
+              LastKnownName="Provide some kind of adherence checking mechanism"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+          </include>
+        </additions>
         <subjects>
           <subsystemMoniker
             Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
@@ -640,14 +775,7 @@
         Id="83ee76e9-50d5-473f-8c70-69cbfa3f9008"
         name="Add a user to the group"
         isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
-            LastKnownName="KarmaCounter"
-            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-        </subjects>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -708,12 +836,6 @@
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
           </extend>
         </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
-            LastKnownName="KarmaCounter"
-            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-        </subjects>
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -731,12 +853,6 @@
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
           </extend>
         </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
-            LastKnownName="KarmaCounter"
-            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-        </subjects>
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -754,12 +870,6 @@
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
           </extend>
         </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
-            LastKnownName="KarmaCounter"
-            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-        </subjects>
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -777,18 +887,12 @@
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
           </extend>
         </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
-            LastKnownName="KarmaCounter"
-            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-        </subjects>
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="33602360-b611-4a64-8596-7b0641bc1fff"
-        name="Create private group"
+        name="Pay for creating group"
         isAbstract="false"
         isLeaf="false">
         <extendedCases>
@@ -814,47 +918,15 @@
         name="Manage group members' karma"
         isAbstract="false"
         isLeaf="false">
-        <targetEnds>
-          <association
-            Id="799ecae2-0a52-4e81-a4ef-3130e12a3bf5"
-            isDerived="false"
-            sourceEndRoleName="Manage group members' karma"
-            targetEndRoleName="Establish rules &amp; karma fees"
-            isLeaf="false"
-            isAbstract="false">
+        <additions>
+          <include
+            Id="d31ecfa0-ae4e-453d-a7f9-fc45f7c38fc3">
             <useCaseMoniker
-              Id="a5dd979a-a169-409c-8c1e-c864365025cd"
-              LastKnownName="Establish rules &amp; karma fees"
+              Id="f5d98090-4108-48e6-aa3e-d62fba380ee3"
+              LastKnownName="Collect statistics"
               LastKnownLocation="KarmaCounterUseCaseProject.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="50c7ce06-7082-4680-b377-bb7536e2b090"
-                  name="Manage group members' karma"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="0520ea2c-2156-476b-80e2-f57dd01579e3"
-                  name="Establish rules &amp; karma fees"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
+          </include>
+        </additions>
         <subjects>
           <subsystemMoniker
             Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
@@ -904,6 +976,83 @@
         name="UseCase5"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="eadc8fdf-ede8-4144-bc09-3568e6e8ba2b"
+        name="Log In"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b0f3705d-33a2-47c4-a786-1b48f6c8dde5"
+        name="Sign Up"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="afaff016-9c87-437d-90c1-93fe21e73d4c"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="967980ba-4455-4320-8ea3-786db97e865b"
+        name="Liqpay"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="f1babccc-0c85-4726-97b6-cbb1fe6fab39"
+            isDerived="false"
+            sourceEndRoleName="Liqpay"
+            targetEndRoleName="Pay for creating group"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="33602360-b611-4a64-8596-7b0641bc1fff"
+              LastKnownName="Pay for creating group"
+              LastKnownLocation="KarmaCounterUseCaseProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="87d82591-cecb-4ddf-b8fb-c5b79842c6aa"
+                  name="Liqpay"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="aa492104-10ae-45e8-b6fd-ff2cf7a20749"
+                  name="Pay for creating group"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

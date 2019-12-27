@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="75de321d-d1f4-4039-a7a8-84b811c50cb4" name="MobileStartDiagram" linkedPackageId="b0976f8c-0d9a-4e1c-ab06-813cf3bcc759" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="8c99bba4-cb3a-48dc-9ab3-2530f13a8075" name="MobileStartDiagram" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="3fedd455-66b4-438f-8fa6-4507e308e955" />
+        <nodes>
+          <initialNode Id="38004357-1e97-4818-9147-f3ea704fa8ed" name="Initial1" isLeaf="false">
+            <elementDefinition Id="cd3b29e2-eb04-4e32-8c63-be165d6215e2" />
+            <flowNodeTargets>
+              <controlFlow Id="4e7c0a58-6b13-44dd-b221-2d39eab510a1" isLeaf="false">
+                <forkNodeMoniker Id="d7d6708a-e186-46d6-b5f1-d573936f8327" LastKnownName="Fork1" />
+                <elementDefinition Id="53c0e12b-eaf2-40b4-ab15-6213c55e2c4f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <forkNode Id="d7d6708a-e186-46d6-b5f1-d573936f8327" name="Fork1" isLeaf="false">
+            <elementDefinition Id="aac4e990-63ef-4b80-9410-266408f42757" />
+            <flowNodeTargets>
+              <controlFlow Id="09be6017-f0b9-42fe-9cde-7c67a7011bae" guard="Unregistered" isLeaf="false">
+                <opaqueActionMoniker Id="d4951de2-8798-4662-80d0-d0229249e183" LastKnownName="Fill registaration form" />
+                <elementDefinition Id="cef50cff-7ffb-4c23-9743-f034a920a5e7" />
+              </controlFlow>
+              <controlFlow Id="69277c59-a64a-46ef-96e7-84e73cac863a" guard="Registered" isLeaf="false">
+                <opaqueActionMoniker Id="7354d9a5-1b28-4bca-82d2-73c5797fb519" LastKnownName="Fill login form" />
+                <elementDefinition Id="37439591-5b3b-4938-ac4b-6cef11737f06" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <opaqueAction Id="d4951de2-8798-4662-80d0-d0229249e183" name="Fill registaration form" isLeaf="false">
+            <elementDefinition Id="979bffb6-59ef-4024-a5f2-5407a48c84f6" />
+            <flowNodeTargets>
+              <controlFlow Id="d9e643c0-566a-4d2d-8643-99363aa8c552" isLeaf="false">
+                <joinNodeMoniker Id="caff5225-cae7-4006-ac83-f9f805b94347" LastKnownName="Join1" />
+                <elementDefinition Id="eb36eb77-61a3-41b1-b85a-c2f318fdf660" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="7354d9a5-1b28-4bca-82d2-73c5797fb519" name="Fill login form" isLeaf="false">
+            <elementDefinition Id="6df9d872-ff34-4762-9538-0885e0833891" />
+            <flowNodeTargets>
+              <controlFlow Id="5b52d55f-6cb0-4045-972b-14fff10fa419" isLeaf="false">
+                <decisionNodeMoniker Id="b82bb92a-f2f0-4cd4-a799-40a951dca720" LastKnownName="Decision1" />
+                <elementDefinition Id="53a27036-9991-4ef7-bd9f-51912fc275d8" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="b82bb92a-f2f0-4cd4-a799-40a951dca720" name="Decision1" isLeaf="false">
+            <elementDefinition Id="8755ae16-4a8c-452f-b17a-496b2a16af98" />
+            <flowNodeTargets>
+              <controlFlow Id="cf3417bc-96f4-4171-b905-242a35b1073f" guard="Wrong credentials" isLeaf="false">
+                <opaqueActionMoniker Id="7354d9a5-1b28-4bca-82d2-73c5797fb519" LastKnownName="Fill login form" />
+                <elementDefinition Id="07a34b20-4dcf-4746-adc0-e3d66fd328ac" />
+              </controlFlow>
+              <controlFlow Id="2c05d386-3175-4ccb-bf46-169c2a7370e3" isLeaf="false">
+                <joinNodeMoniker Id="caff5225-cae7-4006-ac83-f9f805b94347" LastKnownName="Join1" />
+                <elementDefinition Id="0cc2fbdc-db6a-41b8-aeaa-97aa22a4277d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="1d21dfc2-8279-42f7-8851-bc71e758cc34" name="View groups list" isLeaf="false">
+            <elementDefinition Id="bde978d1-cbfa-40da-a181-7222a07d6ac1" />
+            <flowNodeTargets>
+              <controlFlow Id="16a5b5ae-af87-43aa-98e7-e0f94a72b5aa" isLeaf="false">
+                <opaqueActionMoniker Id="1937fda3-0019-48ed-9cc1-13a259b7d415" LastKnownName="Select particular group" />
+                <elementDefinition Id="28169bea-4b8c-47f8-b94d-cc945ec0e345" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <joinNode Id="caff5225-cae7-4006-ac83-f9f805b94347" name="Join1" isLeaf="false">
+            <elementDefinition Id="e950c69f-cc9a-4b61-99f8-623025a6d204" />
+            <flowNodeTargets>
+              <controlFlow Id="fc89b4a8-a693-4984-aaea-7b82106f4044" isLeaf="false">
+                <opaqueActionMoniker Id="ee76a5af-dc49-49b2-8522-0a7828173f80" LastKnownName="Enter system" />
+                <elementDefinition Id="481ebbe4-3e76-4309-ae23-dff58e65d0f6" />
+              </controlFlow>
+            </flowNodeTargets>
+          </joinNode>
+          <opaqueAction Id="1937fda3-0019-48ed-9cc1-13a259b7d415" name="Select particular group" isLeaf="false">
+            <elementDefinition Id="9671afcc-e1d1-443e-acfa-ff381fbdad74" />
+            <flowNodeTargets>
+              <controlFlow Id="f1df8ca5-bab4-4fb6-8c2f-2c4d6ea49ca9" isLeaf="false">
+                <opaqueActionMoniker Id="ee4c37bd-cc6d-4233-a8b1-828a146eeb6a" LastKnownName="View selected group info" />
+                <elementDefinition Id="0876ad87-54fe-4062-a285-8e3271521180" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="ee4c37bd-cc6d-4233-a8b1-828a146eeb6a" name="View selected group info" isLeaf="false">
+            <elementDefinition Id="e720ace2-5a5a-4c15-aec5-57fe624ebb73" />
+            <flowNodeTargets>
+              <controlFlow Id="7344e118-e57f-421c-80fe-692c40d8f222" guard="Go back" isLeaf="false">
+                <opaqueActionMoniker Id="1d21dfc2-8279-42f7-8851-bc71e758cc34" LastKnownName="View groups list" />
+                <elementDefinition Id="deb1ebe6-7fe2-4066-b97c-3257fff7a4ef" />
+              </controlFlow>
+              <controlFlow Id="17215869-bf3a-43c6-9a39-73509ee2c1f8" isLeaf="false">
+                <decisionNodeMoniker Id="665a6372-e8be-4c18-a360-9d4fc924d05a" LastKnownName="Decision2" />
+                <elementDefinition Id="8a3d273c-3933-46fa-b417-98ae86c98b91" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="57ef7de4-2958-4001-aa8d-80f20f006d60" name="View API keys" isLeaf="false">
+            <elementDefinition Id="63b3e6b4-c0ee-4896-ad59-ef1036c9fdd2" />
+          </opaqueAction>
+          <decisionNode Id="665a6372-e8be-4c18-a360-9d4fc924d05a" name="Decision2" isLeaf="false">
+            <elementDefinition Id="efc7d369-1d39-4247-a991-1dad8bc63c77" />
+            <flowNodeTargets>
+              <controlFlow Id="d8982030-841a-4bdd-9a8c-e5716cefc0d0" guard="Watching as Owner" isLeaf="false">
+                <forkNodeMoniker Id="e4be162e-9a81-4e4c-837c-4f69c4d29943" LastKnownName="Fork2" />
+                <elementDefinition Id="a1001516-f54b-45ca-9089-7646cfa1f0eb" />
+              </controlFlow>
+              <controlFlow Id="4afc7f77-1a9a-4fef-a45d-fb67b5521867" guard="Watching as member" isLeaf="false">
+                <forkNodeMoniker Id="54b46a86-188e-40a9-b610-92b85bf38770" LastKnownName="Fork3" />
+                <elementDefinition Id="2f761365-066c-4eee-bbb3-f76f97ee878a" />
+              </controlFlow>
+              <controlFlow Id="d721a953-2881-4f06-bb92-90330c8af628" guard="Watching as group guest" isLeaf="false">
+                <forkNodeMoniker Id="6294a9d3-17c8-47f6-81d4-40ca80d64aae" LastKnownName="Fork4" />
+                <elementDefinition Id="e3fe4b1d-5a0d-4a64-9973-19db7f2622bd" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="cd845fb7-6851-4a26-bcf1-ccc77c4a3291" name="View group public info (members list, rules list, rules actions list, etc.)" isLeaf="false">
+            <elementDefinition Id="2614f3ea-eb91-4bc8-a72d-c9bed3c2d10a" />
+          </opaqueAction>
+          <opaqueAction Id="b032a26c-431f-4304-ac8f-b599df6e0422" name="Invite user" isLeaf="false">
+            <elementDefinition Id="85467fb3-2a90-4651-8e19-ae800d6c8991" />
+          </opaqueAction>
+          <opaqueAction Id="4e9559b1-dc6b-449a-9637-8941286a81c2" name="Join group" isLeaf="false">
+            <elementDefinition Id="b1f4df8c-d4ba-4b74-a8bb-42394cfe8dc4" />
+          </opaqueAction>
+          <opaqueAction Id="43238694-09d3-49e0-ac42-936d05011ff3" name="Add rule" isLeaf="false">
+            <elementDefinition Id="e8681a76-f626-4db1-831c-2dc068e97fd8" />
+          </opaqueAction>
+          <forkNode Id="e4be162e-9a81-4e4c-837c-4f69c4d29943" name="Fork2" isLeaf="false">
+            <elementDefinition Id="5548f044-f02f-432a-89e0-3462693fea83" />
+            <flowNodeTargets>
+              <controlFlow Id="48456c02-b272-446f-ab76-ee5b29ddb06d" isLeaf="false">
+                <opaqueActionMoniker Id="57ef7de4-2958-4001-aa8d-80f20f006d60" LastKnownName="View API keys" />
+                <elementDefinition Id="8918eb59-7d4c-46c2-8e29-3af5c349ebf4" />
+              </controlFlow>
+              <controlFlow Id="c6fe2c77-2f0e-40c0-a79e-ea564cbd103e" isLeaf="false">
+                <opaqueActionMoniker Id="b032a26c-431f-4304-ac8f-b599df6e0422" LastKnownName="Invite user" />
+                <elementDefinition Id="c9139fa0-12b9-49ef-85a1-7cb6193cedf2" />
+              </controlFlow>
+              <controlFlow Id="2f1a8ba2-96e3-4348-ba10-7de742388e4b" isLeaf="false">
+                <opaqueActionMoniker Id="43238694-09d3-49e0-ac42-936d05011ff3" LastKnownName="Add rule" />
+                <elementDefinition Id="d4711f34-d3fa-4b83-91a1-473276bbcc27" />
+              </controlFlow>
+              <controlFlow Id="95c758d7-c1bc-4255-a1c0-bd11d4fb77cb" isLeaf="false">
+                <opaqueActionMoniker Id="cd845fb7-6851-4a26-bcf1-ccc77c4a3291" LastKnownName="View group public info (members list, rules list, rules actions list, etc.)" />
+                <elementDefinition Id="57599a49-be18-48f6-bca8-f831d6a3a488" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <forkNode Id="54b46a86-188e-40a9-b610-92b85bf38770" name="Fork3" isLeaf="false">
+            <elementDefinition Id="11037d1e-7a02-43a3-9ee4-e069a5e4e5b2" />
+            <flowNodeTargets>
+              <controlFlow Id="357e1f91-ee0e-4fe2-a9fe-1b82f86a2c2b" isLeaf="false">
+                <opaqueActionMoniker Id="b032a26c-431f-4304-ac8f-b599df6e0422" LastKnownName="Invite user" />
+                <elementDefinition Id="95a0a842-8282-4124-84b7-43aed00add19" />
+              </controlFlow>
+              <controlFlow Id="db3ce4c4-3069-4051-ae64-77d45401b5c9" isLeaf="false">
+                <opaqueActionMoniker Id="cd845fb7-6851-4a26-bcf1-ccc77c4a3291" LastKnownName="View group public info (members list, rules list, rules actions list, etc.)" />
+                <elementDefinition Id="d94d1a05-6554-4cdf-a3bc-0a3a5c834b0b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <forkNode Id="6294a9d3-17c8-47f6-81d4-40ca80d64aae" name="Fork4" isLeaf="false">
+            <elementDefinition Id="3bfc959f-0f62-4888-b61f-c9c71a52ab00" />
+            <flowNodeTargets>
+              <controlFlow Id="36789394-2066-4ad1-9aab-16500d3dc942" isLeaf="false">
+                <decisionNodeMoniker Id="4fa3ba1b-13e3-4c46-84e3-3010c511b1ce" LastKnownName="Decision3" />
+                <elementDefinition Id="cdcc4eaf-7f2e-4f4b-a66f-a409c73d9156" />
+              </controlFlow>
+              <controlFlow Id="a5684e30-1e43-4583-88b4-211a7f004bc4" isLeaf="false">
+                <opaqueActionMoniker Id="cd845fb7-6851-4a26-bcf1-ccc77c4a3291" LastKnownName="View group public info (members list, rules list, rules actions list, etc.)" />
+                <elementDefinition Id="bea615b7-bcf4-4a78-b226-c247d62efdb9" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <decisionNode Id="4fa3ba1b-13e3-4c46-84e3-3010c511b1ce" name="Decision3" isLeaf="false">
+            <elementDefinition Id="07003752-31c4-4555-b210-100eda8ddd05" />
+            <flowNodeTargets>
+              <controlFlow Id="092ed7e2-7960-46c8-be08-49148638ca07" guard="If group is public or user is invited" isLeaf="false">
+                <opaqueActionMoniker Id="4e9559b1-dc6b-449a-9637-8941286a81c2" LastKnownName="Join group" />
+                <elementDefinition Id="545245e9-d900-45a5-9286-0619400d38fe" />
+              </controlFlow>
+              <controlFlow Id="44462395-57db-4e14-a557-0cf8aad741a0" isLeaf="false">
+                <opaqueActionMoniker Id="ee4c37bd-cc6d-4233-a8b1-828a146eeb6a" LastKnownName="View selected group info" />
+                <elementDefinition Id="1dab6af4-2e91-465c-b27d-e09e3435e9ef" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="ee76a5af-dc49-49b2-8522-0a7828173f80" name="Enter system" isLeaf="false">
+            <elementDefinition Id="e713d817-9314-489e-b186-5097f51f3125" />
+            <flowNodeTargets>
+              <controlFlow Id="a17a00fa-0665-459a-9820-4a8c45d87f60" isLeaf="false">
+                <forkNodeMoniker Id="af2fa76d-0655-4d66-aadd-3ed5ff3c0296" LastKnownName="Fork5" />
+                <elementDefinition Id="28d1d787-632d-4f7c-bffe-05aab0c49991" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <forkNode Id="af2fa76d-0655-4d66-aadd-3ed5ff3c0296" name="Fork5" isLeaf="false">
+            <elementDefinition Id="4fcf7399-003c-412d-b521-897bf0ae707b" />
+            <flowNodeTargets>
+              <controlFlow Id="872cabc0-8b9f-4da5-ac46-fa657e0244bb" isLeaf="false">
+                <opaqueActionMoniker Id="01bfa1a4-e1fb-4bc6-9d3e-e35a7ee2f5c9" LastKnownName="View own profile" />
+                <elementDefinition Id="2cf0c151-8f16-47c7-833e-1ba4c3e1e640" />
+              </controlFlow>
+              <controlFlow Id="4a244685-ad44-49ca-b7ed-03a21942dcb7" isLeaf="false">
+                <opaqueActionMoniker Id="1d21dfc2-8279-42f7-8851-bc71e758cc34" LastKnownName="View groups list" />
+                <elementDefinition Id="5104f402-0732-4f38-9a47-6f781870624a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <opaqueAction Id="01bfa1a4-e1fb-4bc6-9d3e-e35a7ee2f5c9" name="View own profile" isLeaf="false">
+            <elementDefinition Id="fc61fbcc-3c9e-4f96-84e2-e98587e67878" />
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="b0976f8c-0d9a-4e1c-ab06-813cf3bcc759" name="MobileStartProject">
+    <elementDefinition Id="6501330d-8645-48a2-abfa-eeea68bee886" />
+    <profileInstances>
+      <packageHasProfileInstances Id="d50463c3-f622-4bc4-84f2-78bf6a7c39bb">
+        <profileInstance Id="db37eb13-e41c-489c-ab3c-5a0af39b31b3" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="6d28f33e-c697-4a53-9603-cfbf2f702137">
+        <profileInstance Id="183c5022-665b-4502-9f0e-3df5d1b2f446" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

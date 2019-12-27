@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="88c63c86-9aaa-44f8-93da-f0be4240edfd"
+  name="FrontUseCaseProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <subsystem
+        Id="fa2722d3-f666-41a2-accd-f656b721c920"
+        name="KarmaCounter"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="0dc3948b-d33d-4752-aaa0-e5c6f99a536b"
+        name="Guest"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="0bc25050-4167-4ca4-a6c1-54910fc20ed9"
+            isDerived="false"
+            sourceEndRoleName="Guest"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b8328ea4-47e9-4781-8e8e-dc10b2072b86"
+              LastKnownName="View group list"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5c8b7d94-9d58-4e90-a373-d46b13f12caa"
+                  name="Guest"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="af25de17-fd2e-4106-9eec-e07591ec04b3"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b8328ea4-47e9-4781-8e8e-dc10b2072b86"
+        name="View group list"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="218ffd43-e42b-4b32-8a15-82f4c71d9ae8"
+        name="View group members list"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4da37f38-780f-4410-9323-f9d1d40c4026"
+        name="View group rules list"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="169c3db6-3af7-42bc-9642-3e082c5b0e03"
+        name="View group rule actions (violation/adherence) list"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9700e089-86c8-4a4b-9476-cd9de8f998c9"
+        name="View particular group page"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="67388bde-9756-470d-b59d-6e2f60ce098e">
+            <useCaseMoniker
+              Id="b8328ea4-47e9-4781-8e8e-dc10b2072b86"
+              LastKnownName="View group list"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="b3b23fb5-2101-408d-87b5-477cd1526413">
+            <useCaseMoniker
+              Id="169c3db6-3af7-42bc-9642-3e082c5b0e03"
+              LastKnownName="View group rule actions (violation/adherence) list"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+          </include>
+          <include
+            Id="2d8a698b-31a4-4e30-b7aa-736af8e75e60">
+            <useCaseMoniker
+              Id="4da37f38-780f-4410-9323-f9d1d40c4026"
+              LastKnownName="View group rules list"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+          </include>
+          <include
+            Id="b2dd4836-053c-46f2-9a30-84bcba76cfdc">
+            <useCaseMoniker
+              Id="218ffd43-e42b-4b32-8a15-82f4c71d9ae8"
+              LastKnownName="View group members list"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="efedae73-925d-4fa5-b012-5a37d2f46183"
+        name="View user profile page"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="68585839-0d9c-4ccf-9471-020c155377be">
+            <useCaseMoniker
+              Id="218ffd43-e42b-4b32-8a15-82f4c71d9ae8"
+              LastKnownName="View group members list"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="f342d490-287c-4baa-9001-908848ca35d3">
+            <useCaseMoniker
+              Id="6e1fa34c-93a4-4886-996d-1823affeb333"
+              LastKnownName="View user rule actions (violation/adherence) list1"
+              LastKnownLocation="FrontUseCaseProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="66cee9ed-b638-4e48-9c99-eb844f87f180"
+        name="View group rule actions (violation/adherence) list"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6e1fa34c-93a4-4886-996d-1823affeb333"
+        name="View user rule actions (violation/adherence) list1"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="fa2722d3-f666-41a2-accd-f656b721c920"
+            LastKnownName="KarmaCounter"
+            LastKnownLocation="FrontUseCaseProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
